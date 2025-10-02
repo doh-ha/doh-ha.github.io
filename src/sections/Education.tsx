@@ -1,12 +1,13 @@
 import React from "react";
 import { educations } from "../data/Education.data";
-import { Section, Container, Title, List, Block, Row, School, Degree, Meta, Period, Location, Details } from "./Education.styles";
+import { Section, List, Block, Row, School, Degree, Meta, Period, Location, Details } from "./Education.styles";
+import { SectionContainer, SectionTitle } from "../styles/section";
 
 const Education: React.FC = () => {
   return (
     <Section id="education">
-      <Container>
-        <Title>Education</Title>
+      <SectionContainer>
+        <SectionTitle>Education</SectionTitle>
         <List>
           {educations.map((ed, index) => (
             <Block key={index}>
@@ -31,7 +32,7 @@ const Education: React.FC = () => {
             </Block>
           ))}
         </List>
-      </Container>
+      </SectionContainer>
     </Section>
   );
 };

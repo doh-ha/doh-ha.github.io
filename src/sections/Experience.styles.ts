@@ -9,20 +9,6 @@ export const Section = styled.section`
   background: #fafafa;
 `;
 
-export const Container = styled.div`
-  max-width: 1000px;
-  width: 100%;
-`;
-
-export const Title = styled.h2`
-  font-size: 2.5rem;
-  font-weight: 700;
-  color: #1a1a1a;
-  text-align: center;
-  margin-bottom: 60px;
-  letter-spacing: -0.02em;
-`;
-
 export const Timeline = styled.div`
   position: relative;
 
@@ -43,14 +29,7 @@ export const ExperienceItem = styled.div<{ isLeft: boolean }>`
   margin-bottom: 40px;
   position: relative;
 
-  ${(props) =>
-    props.isLeft
-      ? `
-      flex-direction: row;
-    `
-      : `
-      flex-direction: row-reverse;
-    `}
+  ${(props) => (props.isLeft ? `flex-direction: row;` : `flex-direction: row-reverse;`)}
 `;
 
 export const ExperienceContent = styled.div<{ isLeft: boolean }>`
@@ -62,14 +41,7 @@ export const ExperienceContent = styled.div<{ isLeft: boolean }>`
   border: 1px solid #e5e7eb;
   position: relative;
 
-  ${(props) =>
-    props.isLeft
-      ? `
-      margin-right: 40px;
-    `
-      : `
-      margin-left: 40px;
-    `}
+  ${(props) => (props.isLeft ? `margin-right: 40px;` : `margin-left: 40px;`)}
 
   &::before {
     content: "";
@@ -78,16 +50,7 @@ export const ExperienceContent = styled.div<{ isLeft: boolean }>`
     width: 0;
     height: 0;
     border: 8px solid transparent;
-    ${(props) =>
-      props.isLeft
-        ? `
-        right: -16px;
-        border-left-color: white;
-      `
-        : `
-        left: -16px;
-        border-right-color: white;
-      `}
+    ${(props) => (props.isLeft ? `right: -16px; border-left-color: white;` : `left: -16px; border-right-color: white;`)}
     transform: translateY(-50%);
   }
 `;
@@ -113,7 +76,7 @@ export const ExperienceTitle = styled.h3`
 `;
 
 export const Company = styled.p`
-  color: ${(props) => props.theme.colors.textAccent};
+  color: ${(props) => props.theme.colors.primary};
   font-weight: 500;
   margin-bottom: 4px;
   font-size: 0.9rem;

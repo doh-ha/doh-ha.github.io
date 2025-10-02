@@ -18,7 +18,7 @@ export const Title = styled.h2`
   font-size: 1.875rem; /* ~30px */
   font-weight: ${({ theme }) => theme.typography.fontWeight.bold};
   color: ${({ theme }) => theme.colors.textPrimary};
-  text-align: right;
+  text-align: center;
   margin-bottom: 28px;
 `;
 
