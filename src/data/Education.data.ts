@@ -7,7 +7,7 @@ export interface EducationItemData {
 
 export const educations: EducationItemData[] = [
   {
-    school: "하연대학교",
+    school: "oo대학교",
     degree: "컴퓨터공학 학사",
     period: "2018.03 - 2022.02",
     details: "알고리즘, 웹 개발, HCI 관련 과목 이수. 학부 연구생 활동.",

@@ -2,11 +2,11 @@ import styled from "styled-components";
 
 export const Section = styled.section`
   min-height: 100vh;
-  padding: 100px 20px 60px;
+  padding: 80px 20px 40px;
   display: flex;
   align-items: center;
   justify-content: center;
-  background: ${({ theme }) => theme.colors.backgroundGray};
+  background: ${({ theme }) => theme.colors.backgroundWhite};
 `;
 
 export const Container = styled.div`
@@ -15,93 +15,80 @@ export const Container = styled.div`
 `;
 
 export const Title = styled.h2`
-  font-size: ${({ theme }) => theme.typography.fontSize["2xl"]};
+  font-size: 1.875rem; /* ~30px */
   font-weight: ${({ theme }) => theme.typography.fontWeight.bold};
   color: ${({ theme }) => theme.colors.textPrimary};
-  text-align: center;
-  margin-bottom: ${({ theme }) => theme.spacing["3xl"]};
+  text-align: right;
+  margin-bottom: 28px;
 `;
 
-export const Timeline = styled.div`
-  position: relative;
-
-  &::before {
-    content: "";
-    position: absolute;
-    left: 50%;
-    top: 0;
-    bottom: 0;
-    width: 2px;
-    background: ${({ theme }) => theme.colors.borderColor};
-    transform: translateX(-50%);
-  }
-`;
-
-export const Item = styled.div<{ isLeft: boolean }>`
+export const List = styled.div`
   display: flex;
-  margin-bottom: 32px;
-  position: relative;
-
-  ${(props) => (props.isLeft ? "flex-direction: row;" : "flex-direction: row-reverse;")}
+  flex-direction: column;
+  gap: 24px;
 `;
 
-export const Card = styled.div<{ isLeft: boolean }>`
-  flex: 1;
-  background: ${({ theme }) => theme.colors.backgroundWhite};
-  border-radius: ${({ theme }) => theme.borderRadius.lg};
-  padding: ${({ theme }) => theme.spacing.lg};
-  box-shadow: ${({ theme }) => theme.shadows.sm};
-  border: 1px solid ${({ theme }) => theme.colors.borderColor};
-  position: relative;
+export const Block = styled.div`
+  padding: 0;
+`;
 
-  ${(props) => (props.isLeft ? "margin-right: 40px;" : "margin-left: 40px;")}
+export const Row = styled.div`
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 12px;
 
-  &::before {
-    content: "";
-    position: absolute;
-    top: 50%;
-    width: 0;
-    height: 0;
-    border: 8px solid transparent;
-    ${(props) => (props.isLeft ? "right: -16px; border-left-color: #fff;" : "left: -16px; border-right-color: #fff;")}
-    transform: translateY(-50%);
+  @media (max-width: ${({ theme }) => theme.breakpoints.mobile}) {
+    grid-template-columns: 1fr;
   }
-`;
-
-export const Dot = styled.div`
-  position: absolute;
-  left: 50%;
-  top: 50%;
-  transform: translate(-50%, -50%);
-  width: 12px;
-  height: 12px;
-  background: ${({ theme }) => theme.colors.primary};
-  border-radius: 50%;
-  border: 3px solid ${({ theme }) => theme.colors.backgroundWhite};
-  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
 `;
 
 export const School = styled.h3`
-  font-size: 1.125rem;
-  font-weight: 600;
+  font-size: 1.25rem; /* 20px */
+  font-weight: 700;
   color: ${({ theme }) => theme.colors.textPrimary};
-  margin-bottom: 4px;
+  margin: 0;
 `;
 
-export const Degree = styled.p`
+export const Degree = styled.h3`
+  font-size: 1.25rem; /* 20px */
+  font-weight: 700;
   color: ${({ theme }) => theme.colors.textAccent};
-  font-weight: 500;
-  margin-bottom: 6px;
+  margin: 0;
+`;
+
+export const Meta = styled.div`
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 12px;
+  margin-top: 6px;
+
+  @media (max-width: ${({ theme }) => theme.breakpoints.mobile}) {
+    grid-template-columns: 1fr;
+  }
 `;
 
 export const Period = styled.p`
   color: ${({ theme }) => theme.colors.textSecondary};
-  font-size: 0.9rem;
-  margin-bottom: 12px;
+  font-size: 0.975rem; /* ~15.6px */
+  font-weight: 600;
+  margin: 0;
 `;
 
-export const Details = styled.p`
+export const Location = styled.p`
+  color: ${({ theme }) => theme.colors.textSecondary};
+  font-size: 0.975rem;
+  font-weight: 600;
+  margin: 0;
+`;
+
+export const Details = styled.ul`
+  margin: 10px 0 0;
+  padding-left: 1rem;
   color: ${({ theme }) => theme.colors.textMuted};
-  line-height: 1.6;
-  font-size: 0.95rem;
+  line-height: 1.7;
+  font-size: 0.95rem; /* ~15px */
+
+  li::marker {
+    color: ${({ theme }) => theme.colors.primary};
+  }
 `;
