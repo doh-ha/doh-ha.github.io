@@ -88,7 +88,7 @@ const NavBar: React.FC<NavBarProps> = ({ activeSection, onSectionChange }) => {
     { id: "about", label: "About" },
     { id: "project", label: "Project" },
     { id: "experience", label: "Experience" },
-    { id: "contact", label: "Contact" },
+    { id: "education", label: "Education" },
   ];
 
   const handleClick = (e: React.MouseEvent<HTMLAnchorElement>, sectionId: string) => {

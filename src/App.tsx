@@ -5,7 +5,7 @@ import NavBar from "./components/NavBar";
 import About from "./sections/About";
 import Project from "./sections/Project";
 import Experience from "./sections/Experience";
-import Contact from "./sections/Contact";
+import Education from "./sections/Education";
 
 const AppContainer = styled.div`
   font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen", "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue", sans-serif;
@@ -21,7 +21,7 @@ const App: React.FC = () => {
 
   useEffect(() => {
     const handleScroll = () => {
-      const sections = ["about", "project", "experience", "contact"];
+      const sections = ["about", "project", "experience", "education"];
       const scrollPosition = window.scrollY + 100;
 
       for (const section of sections) {
@@ -48,7 +48,7 @@ const App: React.FC = () => {
         <About />
         <Project />
         <Experience />
-        <Contact />
+        <Education />
       </AppContainer>
     </ThemeProvider>
   );
