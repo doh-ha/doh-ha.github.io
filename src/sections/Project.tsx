@@ -1,12 +1,13 @@
 import React from "react";
-import { Section, Container, SectionTitle, Grid, Card, ButtonLink } from "../styles/styled-components";
+import { Section, Grid, Card, ButtonLink } from "../styles/styled-components";
+import { SectionContainer, SectionTitle } from "../styles/section";
 import { ProjectTitle, ProjectDescription, TechStack, TechTag } from "./Project.styles";
 import { projects } from "../data/Project.data";
 
 const Project: React.FC = () => {
   return (
     <Section id="project" background="white">
-      <Container>
+      <SectionContainer>
         <SectionTitle>Projects</SectionTitle>
         <Grid columns={3}>
           {projects.map((project, index) => (
@@ -22,7 +23,7 @@ const Project: React.FC = () => {
             </Card>
           ))}
         </Grid>
-      </Container>
+      </SectionContainer>
     </Section>
   );
 };
