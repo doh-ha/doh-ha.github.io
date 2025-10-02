@@ -35,8 +35,8 @@ const NavItem = styled.li`
 
 const NavLink = styled.a<{ isActive: boolean }>`
   text-decoration: none;
-  color: ${(props) => (props.isActive ? "#2563eb" : "#64748b")};
-  font-weight: ${(props) => (props.isActive ? "600" : "500")};
+  color: ${(props) => (props.isActive ? props.theme.colors.primary : "#64748b")};
+  font-weight: ${(props) => (props.isActive ? "700" : "600")};
   font-size: 15px;
   padding: 10px 20px;
   border-radius: 12px;
@@ -45,14 +45,14 @@ const NavLink = styled.a<{ isActive: boolean }>`
   white-space: nowrap;
 
   &:hover {
-    color: #2563eb;
-    background: rgba(37, 99, 235, 0.08);
+    color: ${(props) => props.theme.colors.primary};
+    background: rgba(0, 70, 42, 0.08);
   }
 
   ${(props) =>
     props.isActive &&
     `
-    background: rgba(37, 99, 235, 0.1);
+    background: rgba(0, 70, 42, 0.1);
   `}
 `;
 
@@ -63,7 +63,7 @@ const ActiveIndicator = styled.div`
   transform: translateX(-50%);
   width: 4px;
   height: 4px;
-  background: #2563eb;
+  background: ${(props) => props.theme.colors.primary};
   border-radius: 50%;
 `;
 

@@ -99,7 +99,7 @@ export const TimelineDot = styled.div`
   transform: translate(-50%, -50%);
   width: 12px;
   height: 12px;
-  background: #2563eb;
+  background: ${(props) => props.theme.colors.primary};
   border-radius: 50%;
   border: 3px solid white;
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
@@ -113,7 +113,7 @@ export const ExperienceTitle = styled.h3`
 `;
 
 export const Company = styled.p`
-  color: #2563eb;
+  color: ${(props) => props.theme.colors.textAccent};
   font-weight: 500;
   margin-bottom: 4px;
   font-size: 0.9rem;

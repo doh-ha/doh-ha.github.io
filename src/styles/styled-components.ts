@@ -3,16 +3,29 @@ import styled, { createGlobalStyle, css } from "styled-components";
 // Theme Configuration
 export const theme = {
   colors: {
-    primary: "#2563eb",
-    primaryHover: "#1d4ed8",
-    textPrimary: "#1a1a1a",
-    textSecondary: "#6b7280",
+    // Primary brand
+    primary: "#00462A", // main CTA/link
+    primaryHover: "#006B42", // hover state
+
+    // Text
+    textPrimary: "#1a1a1a", // keep black-ish as requested
+    textSecondary: "#4A5D57", // use provided caption tone
     textMuted: "#374151",
+    textAccent: "#36AE92", // 강조 텍스트 색상
+
+    // Backgrounds
     backgroundWhite: "#ffffff",
-    backgroundGray: "#fafafa",
-    backgroundLight: "#f9fafb",
-    borderColor: "#e5e7eb",
+    backgroundGray: "#F3F8F6", // map to sage/mint tint
+    backgroundLight: "#E8F1ED", // map to card background tint
+
+    // Borders / dividers
+    borderColor: "#CDE1D9", // map to provided divider color
     borderLight: "#f3f4f6",
+
+    // Supporting accents
+    supportGreen: "#6BAE9C", // tags/hover subtle
+    amber: "#935F06", // highlight/warn
+    coralRed: "#CC0000", // error/focus
   },
 
   spacing: {
@@ -139,7 +152,7 @@ export const GlobalStyle = createGlobalStyle`
 
   /* Selection Styles */
   ::selection {
-    background-color: rgba(37, 99, 235, 0.2);
+    background-color: rgba(0, 70, 42, 0.2);
     color: ${({ theme }) => theme.colors.textPrimary};
   }
 `;

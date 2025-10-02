@@ -8,11 +8,15 @@ declare module "styled-components" {
       textPrimary: string;
       textSecondary: string;
       textMuted: string;
+      textAccent: string;
       backgroundWhite: string;
       backgroundGray: string;
       backgroundLight: string;
       borderColor: string;
       borderLight: string;
+      supportGreen: string;
+      amber: string;
+      coralRed: string;
     };
     spacing: {
       xs: string;
