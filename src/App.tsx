@@ -1,26 +1,57 @@
-import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import React, { useState, useEffect } from "react";
+import styled, { ThemeProvider } from "styled-components";
+import { GlobalStyle, theme } from "./styles/styled-components";
+import NavBar from "./components/NavBar";
+import About from "./sections/About";
+import Project from "./sections/Project";
+import Experience from "./sections/Experience";
+import Contact from "./sections/Contact";
 
-function App() {
+const AppContainer = styled.div`
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen", "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue", sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  margin: 0;
+  padding: 0;
+  overflow-x: hidden;
+`;
+
+const App: React.FC = () => {
+  const [activeSection, setActiveSection] = useState("about");
+
+  useEffect(() => {
+    const handleScroll = () => {
+      const sections = ["about", "project", "experience", "contact"];
+      const scrollPosition = window.scrollY + 100;
+
+      for (const section of sections) {
+        const element = document.getElementById(section);
+        if (element) {
+          const { offsetTop, offsetHeight } = element;
+          if (scrollPosition >= offsetTop && scrollPosition < offsetTop + offsetHeight) {
+            setActiveSection(section);
+            break;
+          }
+        }
+      }
+    };
+
+    window.addEventListener("scroll", handleScroll);
+    return () => window.removeEventListener("scroll", handleScroll);
+  }, []);
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <ThemeProvider theme={theme}>
+      <GlobalStyle />
+      <AppContainer>
+        <NavBar activeSection={activeSection} onSectionChange={setActiveSection} />
+        <About />
+        <Project />
+        <Experience />
+        <Contact />
+      </AppContainer>
+    </ThemeProvider>
   );
-}
+};
 
 export default App;
