@@ -1,8 +1,8 @@
 import React from "react";
-import { Section, Grid, Card, ButtonLink } from "../styles/styled-components";
-import { SectionContainer, SectionTitle } from "../styles/section";
+import { Section, Grid, Card, ButtonLink } from "../../styles/styled-components";
+import { SectionContainer, SectionTitle } from "../../styles/section";
 import { ProjectTitle, ProjectDescription, TechStack, TechTag } from "./Project.styles";
-import { projects } from "../data/Project.data";
+import { projects } from "./Project.data";
 
 const Project: React.FC = () => {
   return (

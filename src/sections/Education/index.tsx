@@ -19,7 +19,7 @@ import {
   DegreeItem,
   HighlightSubTitle,
 } from "./Education.styles";
-import { SectionContainer, SectionTitle } from "../styles/section";
+import { SectionContainer, SectionTitle } from "../../styles/section";
 
 const Education: React.FC = () => {
   return (

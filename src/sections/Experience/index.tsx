@@ -1,8 +1,8 @@
 import React from "react";
 import { Section, Timeline, ExperienceItem, ExperienceContent, TimelineDot, Duration, Description, CardHeader, RoleTitle, OrgLabel, OrgColumn, OrgLogo, OrgDescription } from "./Experience.styles";
-import { SectionTitle } from "../styles/section";
-import { experiences } from "../data/Experience.data";
-import { Container } from "../styles/styled-components";
+import { SectionTitle } from "../../styles/section";
+import { experiences } from "./Experience.data";
+import { Container } from "../../styles/styled-components";
 
 const Experience: React.FC = () => {
   return (

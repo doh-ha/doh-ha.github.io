@@ -120,39 +120,11 @@ export const GlobalStyle = createGlobalStyle`
     letter-spacing: -0.02em;
   }
 
-  h1 {
-    font-size: ${({ theme }) => theme.typography.fontSize["3xl"]};
-  }
+  h1 { font-size: ${({ theme }) => theme.typography.fontSize["3xl"]}; }
+  h2 { font-size: ${({ theme }) => theme.typography.fontSize["2xl"]}; }
+  h3 { font-size: ${({ theme }) => theme.typography.fontSize.xl}; }
 
-  h2 {
-    font-size: ${({ theme }) => theme.typography.fontSize["2xl"]};
-  }
-
-  h3 {
-    font-size: ${({ theme }) => theme.typography.fontSize.xl};
-  }
-
-  p {
-    line-height: ${({ theme }) => theme.typography.lineHeight.relaxed};
-  }
-
-  /* Custom Scrollbar */
-  ::-webkit-scrollbar {
-    width: 8px;
-  }
-
-  ::-webkit-scrollbar-track {
-    background: ${({ theme }) => theme.colors.backgroundLight};
-  }
-
-  ::-webkit-scrollbar-thumb {
-    background: ${({ theme }) => theme.colors.primary};
-    border-radius: ${({ theme }) => theme.borderRadius.sm};
-  }
-
-  ::-webkit-scrollbar-thumb:hover {
-    background: ${({ theme }) => theme.colors.primaryHover};
-  }
+  p { line-height: ${({ theme }) => theme.typography.lineHeight.relaxed}; }
 
   /* Selection Styles */
   ::selection {
