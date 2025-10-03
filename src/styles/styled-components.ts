@@ -22,6 +22,10 @@ export const theme = {
     borderColor: "#CDE1D9", // map to provided divider color
     borderLight: "#f3f4f6",
 
+    // Neutral grays
+    gray400: "#9CA3AF",
+    gray200: "#E5E7EB",
+
     // Supporting accents
     supportGreen: "#6BAE9C", // tags/hover subtle
     amber: "#935F06", // highlight/warn

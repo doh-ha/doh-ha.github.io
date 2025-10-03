@@ -14,6 +14,8 @@ declare module "styled-components" {
       backgroundLight: string;
       borderColor: string;
       borderLight: string;
+      gray400: string;
+      gray200: string;
       supportGreen: string;
       amber: string;
       coralRed: string;
