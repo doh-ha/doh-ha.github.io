@@ -1,0 +1,22 @@
+---
+alwaysApply: true
+---
+
+# Preferred UI Styles (Essential)
+
+## Floating Nav (Glass)
+
+- Centered at top; translateX(-50%)
+- Background rgba(255,255,255,0.7→0.95 on hover/scroll)
+- `backdrop-filter: blur(20px)`, radius 16px, padding 8px 16px
+- Shadow: 0 2px 12px → hover 0 6px 24px, border 1px solid rgba(255,255,255,0.3)
+- Ref: [src/components/NavBar.tsx](mdc:src/components/NavBar.tsx)
+
+## Contact Chips (Pills)
+
+- inline-flex, gap 8px, padding 8px 12px, radius 9999px
+- Base: bg `backgroundLight`, text `textSecondary`, border `borderColor`
+- Hover: bg `supportGreen`, text `backgroundWhite`, border `supportGreen`
+- Ref: [src/sections/About.tsx](mdc:src/sections/About.tsx)
+
+Use theme tokens from [styled-components.ts](mdc:src/styles/styled-components.ts).

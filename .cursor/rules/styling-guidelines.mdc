@@ -1,0 +1,12 @@
+---
+alwaysApply: true
+---
+
+# Styling (Essential)
+
+- Use styled-components only.
+- Always read tokens from theme (colors, spacing, typography, radius, shadows).
+- Reuse [src/styles/section.ts](mdc:src/styles/section.ts) for section layout/title.
+- Extract section-local styles into `*.styles.ts`.
+- Links: subtle underline; hover color = theme.colors.primary.
+- Global resets via `GlobalStyle`.
