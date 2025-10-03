@@ -1,5 +1,24 @@
 import React from "react";
-import { Section, List, Block, Row, Column, School, Degree, Meta, Period, Location, Details, InlineLink, DegreeGroup, Divider, DegreeItem, HighlightSubTitle } from "./Education.styles";
+import {
+  Section,
+  List,
+  Block,
+  Row,
+  Column,
+  LeftColumn,
+  RightColumn,
+  School,
+  Degree,
+  Meta,
+  Period,
+  Location,
+  Details,
+  InlineLink,
+  DegreeGroup,
+  Divider,
+  DegreeItem,
+  HighlightSubTitle,
+} from "./Education.styles";
 import { SectionContainer, SectionTitle } from "../styles/section";
 
 const Education: React.FC = () => {
@@ -10,12 +29,12 @@ const Education: React.FC = () => {
         <List>
           <Block>
             <Row>
-              <Column>
+              <LeftColumn>
                 <School>Ewha Womans University</School>
                 <Period>Mar 2021 ~</Period>
                 <Location>Seoul, South Korea</Location>
-              </Column>
-              <Column>
+              </LeftColumn>
+              <RightColumn>
                 <Details>
                   <li>Total GPA 4.1 / 4.3</li>
                 </Details>
@@ -58,19 +77,19 @@ const Education: React.FC = () => {
                     </Details>
                   </DegreeItem>
                 </DegreeGroup>
-              </Column>
+              </RightColumn>
             </Row>
             <Divider />
           </Block>
 
           <Block>
             <Row>
-              <Column>
+              <LeftColumn>
                 <School>Uppsala University</School>
                 <Period>Aug 2023 ~ Jan 2024</Period>
                 <Location>Uppsala, Sweden</Location>
-              </Column>
-              <Column>
+              </LeftColumn>
+              <RightColumn>
                 <DegreeGroup>
                   <DegreeItem>
                     <HighlightSubTitle>Exchange student major in Computer Science</HighlightSubTitle>
@@ -79,7 +98,7 @@ const Education: React.FC = () => {
                     </Details>
                   </DegreeItem>
                 </DegreeGroup>
-              </Column>
+              </RightColumn>
             </Row>
           </Block>
         </List>

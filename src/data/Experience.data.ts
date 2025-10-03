@@ -1,27 +1,80 @@
-export interface ExperienceItemData {
+export interface ExperienceRole {
   title: string;
-  company: string;
-  duration: string;
   description: string;
+}
+
+export interface ExperienceItemData {
+  organization: string;
+  orgDescription?: string;
+  duration: string;
+  roles: ExperienceRole[];
+  logoUrl?: string;
 }
 
 export const experiences: ExperienceItemData[] = [
   {
-    title: "프론트엔드 개발자",
-    company: "테크 스타트업",
-    duration: "2023.01 - 현재",
-    description: "React와 TypeScript를 활용한 웹 애플리케이션 개발 및 사용자 경험 개선에 기여했습니다.",
+    organization: "KIXLAB @KAIST",
+    orgDescription: "KAIST Interaction Lab (Prof. Juho Kim)",
+    duration: "Jun 2025 - Present",
+    roles: [
+      {
+        title: "HCI Research Intern",
+        description: "Research on LLM-based Diagnosis System of Math Problem Solving Skills",
+      },
+    ],
   },
   {
-    title: "웹 개발 인턴",
-    company: "디지털 에이전시",
+    organization: "HCIL @EWHA",
+    orgDescription: "Human-Computer Interaction Lab (Prof. Uran Oh)",
     duration: "2022.06 - 2022.12",
-    description: "다양한 클라이언트 프로젝트에 참여하며 실무 경험을 쌓았습니다.",
+    roles: [
+      {
+        title: "HCI Research Intern",
+        description: "Research on Designing AI Prompt Engineering in Educational Contexts",
+      },
+    ],
   },
   {
-    title: "프리랜서 개발자",
-    company: "자유계약",
+    organization: "GDGoC",
+    orgDescription: "Google Developers Group on Campus",
     duration: "2021.03 - 2022.05",
-    description: "소규모 프로젝트를 통해 독립적인 개발 능력을 향상시켰습니다.",
+    roles: [
+      {
+        title: "AI Member",
+        description: "Participated in AI study sessions and worked on AI projects.",
+      },
+      {
+        title: "DevRel Core Member",
+        description:
+          "Managed the club’s Notion page, organized Part Exchange Sessions, MT and supported IT events such as Devfest 2024:Responsible AI in Action, co-hosted by GDG Pangyo, GDGoC Yonsei, and GDGoC Ewha.",
+      },
+    ],
+  },
+  {
+    organization: "EURON",
+    orgDescription: "Ewha AI & Data Analysis Club",
+    duration: "2021.03 - 2022.05",
+    roles: [
+      {
+        title: "ML Member",
+        description: "Participated in ML study sessions by delivering lectures to peers and worked on AI projects.",
+      },
+      {
+        title: "PR Team Executive",
+        description: "Managed the club’s Notion page and supported the planning of the Homecoming Day event.",
+      },
+    ],
+  },
+
+  {
+    organization: "EFUB",
+    orgDescription: "Ewha Web Development Carrer Club",
+    duration: "2021.03 - 2022.05",
+    roles: [
+      {
+        title: "Frontend Developer",
+        description: "Developed Frontend development skills through seminars and projects.",
+      },
+    ],
   },
 ];

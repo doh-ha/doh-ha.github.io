@@ -34,8 +34,9 @@ export const Block = styled.div`
 
 export const Row = styled.div`
   display: grid;
-  grid-template-columns: 0.9fr 1.7fr;
+  grid-template-columns: 0.3fr 0.7fr; /* 4:6 ratio */
   gap: 16px;
+  align-items: start;
 
   @media (max-width: ${({ theme }) => theme.breakpoints.mobile}) {
     grid-template-columns: 1fr;
@@ -46,6 +47,14 @@ export const Column = styled.div`
   display: flex;
   flex-direction: column;
   gap: 10px;
+`;
+
+export const LeftColumn = styled(Column)`
+  padding-left: 20px; /* align left edge with Experience OrgLabel */
+`;
+
+export const RightColumn = styled(Column)`
+  padding-left: 24px; /* match Experience card inner padding */
 `;
 
 export const School = styled.h3`
