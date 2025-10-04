@@ -267,8 +267,16 @@ export const Subtitle = styled.p`
 // Grid Components
 export const Grid = styled.div<{ columns?: number; gap?: string }>`
   display: grid;
-  grid-template-columns: ${({ columns = 3 }) => `repeat(auto-fit, minmax(${350 / columns}px, 1fr))`};
+  grid-template-columns: ${({ columns = 3 }) => `repeat(${columns}, 1fr)`};
   gap: ${({ theme, gap }) => gap || theme.spacing.lg};
+
+  @media (max-width: ${({ theme }) => theme.breakpoints.tablet}) {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  @media (max-width: ${({ theme }) => theme.breakpoints.mobile}) {
+    grid-template-columns: 1fr;
+  }
 `;
 
 // Responsive utilities
