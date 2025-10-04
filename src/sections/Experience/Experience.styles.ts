@@ -56,6 +56,7 @@ export const OrgDescription = styled.p`
   color: #4b5563; /* neutral caption */
   margin: 2px 0 0;
   padding-left: 20px; /* align with label start */
+  white-space: pre-line;
 `;
 
 export const OrgLogo = styled.div`
@@ -84,6 +85,43 @@ export const ExperienceContent = styled.div<{ isLeft: boolean }>`
   box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
   border: 1px solid #e5e7eb;
   position: relative;
+`;
+
+export const TagsContainer = styled.div`
+  position: absolute;
+  top: 16px;
+  right: 16px;
+  display: flex;
+  gap: 6px;
+`;
+
+export const Tag = styled.span<{ variant: "cse" | "edu" }>`
+  padding: 4px 8px;
+  border-radius: 6px;
+  font-size: 0.75rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+
+  ${({ variant, theme }) => {
+    switch (variant) {
+      case "cse":
+        return `
+          background: ${theme.colors.primary};
+          color: white;
+        `;
+      case "edu":
+        return `
+          background: ${theme.colors.supportGreen};
+          color: white;
+        `;
+      default:
+        return `
+          background: ${theme.colors.gray200};
+          color: ${theme.colors.textSecondary};
+        `;
+    }
+  }}
 `;
 
 export const CardHeader = styled.div`
@@ -149,6 +187,7 @@ export const Description = styled.p`
   color: #374151;
   line-height: 1.6;
   font-size: 0.9rem;
+  white-space: pre-line;
 `;
 
 export const Row = styled.div`

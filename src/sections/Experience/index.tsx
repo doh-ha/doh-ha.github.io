@@ -1,5 +1,21 @@
 import React from "react";
-import { Section, Timeline, ExperienceItem, ExperienceContent, TimelineDot, Duration, Description, CardHeader, RoleTitle, OrgLabel, OrgColumn, OrgLogo, OrgDescription } from "./Experience.styles";
+import {
+  Section,
+  Timeline,
+  ExperienceItem,
+  ExperienceContent,
+  TimelineDot,
+  Duration,
+  Description,
+  CardHeader,
+  RoleTitle,
+  OrgLabel,
+  OrgColumn,
+  OrgLogo,
+  OrgDescription,
+  TagsContainer,
+  Tag,
+} from "./Experience.styles";
 import { SectionTitle } from "../../styles/section";
 import { experiences } from "./Experience.data";
 import { Container } from "../../styles/styled-components";
@@ -23,6 +39,15 @@ const Experience: React.FC = () => {
                   ) : null}
                 </OrgColumn>
                 <ExperienceContent isLeft>
+                  {exp.tags && (
+                    <TagsContainer>
+                      {exp.tags.map((tag, tIdx) => (
+                        <Tag key={tIdx} variant={tag.toLowerCase() as "cse" | "edu"}>
+                          {tag}
+                        </Tag>
+                      ))}
+                    </TagsContainer>
+                  )}
                   {exp.roles.map((role, rIdx) => (
                     <div key={rIdx} style={{ marginBottom: rIdx < exp.roles.length - 1 ? 12 : 0 }}>
                       <RoleTitle>{role.title}</RoleTitle>
