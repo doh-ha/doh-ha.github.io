@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import {
   Section,
   Timeline,
@@ -9,24 +9,45 @@ import {
   Description,
   CardHeader,
   RoleTitle,
+  RolePeriod,
   OrgLabel,
   OrgColumn,
   OrgLogo,
   OrgDescription,
   TagsContainer,
   Tag,
+  FilterContainer,
+  FilterButton,
 } from "./Experience.styles";
 import { SectionTitle } from "../../styles/section";
 import { experiences } from "./Experience.data";
 import { Container } from "../../styles/styled-components";
 
 const Experience: React.FC = () => {
+  const [activeFilter, setActiveFilter] = useState<string>("all");
+
+  const filteredExperiences = experiences.filter((exp) => {
+    if (activeFilter === "all") return true;
+    return exp.tags?.includes(activeFilter.toUpperCase());
+  });
+
   return (
     <Section id="experience">
-      <Container>
+      <div style={{ width: "100%", maxWidth: "1200px", margin: "0 auto", padding: "0 20px" }}>
         <SectionTitle>Experience</SectionTitle>
+        <FilterContainer>
+          <FilterButton active={activeFilter === "all"} onClick={() => setActiveFilter("all")}>
+            All
+          </FilterButton>
+          <FilterButton active={activeFilter === "cse"} onClick={() => setActiveFilter("cse")}>
+            CSE
+          </FilterButton>
+          <FilterButton active={activeFilter === "edu"} onClick={() => setActiveFilter("edu")}>
+            EDU
+          </FilterButton>
+        </FilterContainer>
         <Timeline>
-          {experiences.map((exp, index) => (
+          {filteredExperiences.map((exp, index) => (
             <div key={index} style={{ position: "relative" }}>
               <ExperienceItem isLeft>
                 <OrgColumn>
@@ -50,8 +71,10 @@ const Experience: React.FC = () => {
                   )}
                   {exp.roles.map((role, rIdx) => (
                     <div key={rIdx} style={{ marginBottom: rIdx < exp.roles.length - 1 ? 12 : 0 }}>
-                      <RoleTitle>{role.title}</RoleTitle>
-                      <Duration>{exp.duration}</Duration>
+                      <RoleTitle>
+                        {role.title}
+                        {role.duration && <RolePeriod>{role.duration}</RolePeriod>}
+                      </RoleTitle>
                       <Description>{role.description}</Description>
                     </div>
                   ))}
@@ -61,7 +84,7 @@ const Experience: React.FC = () => {
             </div>
           ))}
         </Timeline>
-      </Container>
+      </div>
     </Section>
   );
 };

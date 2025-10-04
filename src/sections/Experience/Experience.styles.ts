@@ -4,13 +4,17 @@ export const Section = styled.section`
   min-height: 100vh;
   padding: 100px 20px 60px;
   display: flex;
-  align-items: center;
+  align-items: flex-start;
   justify-content: center;
   background: #fafafa;
+  width: 100%;
 `;
 
 export const Timeline = styled.div`
   position: relative;
+  min-height: 400px; /* 최소 높이 설정으로 레이아웃 폭 유지 */
+  width: 100%; /* 부모 요소의 전체 너비를 차지하도록 설정 */
+  max-width: 1200px; /* 최대 너비 제한으로 일정한 레이아웃 유지 */
 
   &::before {
     content: "";
@@ -133,7 +137,7 @@ export const CardHeader = styled.div`
 `;
 
 export const Organization = styled.h3`
-  font-size: 1rem;
+  font-size: 0.8rem;
   font-weight: 700;
   color: #1a1a1a;
   margin: 0;
@@ -141,9 +145,17 @@ export const Organization = styled.h3`
 
 export const RoleTitle = styled.p`
   color: ${({ theme }) => theme.colors.primary};
-  font-weight: 600;
+  font-weight: 800;
   margin: 2px 0 0;
-  font-size: 0.95rem;
+  font-size: 1.05rem;
+`;
+
+export const RolePeriod = styled.span`
+  color: ${({ theme }) => theme.colors.textSecondary};
+  font-weight: 400;
+  font-size: 0.85rem;
+  margin-left: 8px;
+  font-style: italic;
 `;
 
 export const LogoSlot = styled.div`
@@ -197,5 +209,31 @@ export const Row = styled.div`
 
   @media (max-width: ${({ theme }) => theme.breakpoints.mobile}) {
     grid-template-columns: 1fr;
+  }
+`;
+
+export const FilterContainer = styled.div`
+  display: flex;
+  gap: 12px;
+  margin-bottom: 32px;
+  justify-content: center;
+  flex-wrap: wrap;
+`;
+
+export const FilterButton = styled.button<{ active: boolean }>`
+  padding: 8px 16px;
+  border-radius: 20px;
+  border: 2px solid ${({ theme, active }) => (active ? theme.colors.primary : theme.colors.borderColor)};
+  background: ${({ theme, active }) => (active ? theme.colors.primary : "transparent")};
+  color: ${({ theme, active }) => (active ? "white" : theme.colors.textSecondary)};
+  font-size: 0.875rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.2s ease;
+
+  &:hover {
+    border-color: ${({ theme }) => theme.colors.primary};
+    background: ${({ theme, active }) => (active ? theme.colors.primary : theme.colors.backgroundLight)};
+    color: ${({ theme, active }) => (active ? "white" : theme.colors.primary)};
   }
 `;
