@@ -35,6 +35,7 @@ declare module "styled-components" {
       md: string;
       lg: string;
       xl: string;
+      full: string;
     };
     shadows: {
       sm: string;

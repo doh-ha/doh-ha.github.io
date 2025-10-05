@@ -129,7 +129,7 @@ export const MoreLink = styled.a`
   padding-top: ${({ theme }) => theme.spacing.sm};
   transition: color 0.2s ease;
   cursor: pointer;
-
+  align-self: flex-end;
   &:hover {
     color: ${({ theme }) => theme.colors.primaryHover};
     text-decoration: underline;

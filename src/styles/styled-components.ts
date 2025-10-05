@@ -48,6 +48,7 @@ export const theme = {
     md: "8px",
     lg: "12px",
     xl: "16px",
+    full: "50%",
   },
 
   shadows: {
