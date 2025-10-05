@@ -6,43 +6,48 @@ export interface ProjectItemData {
   imageUrl?: string;
   imageSize?: "small" | "medium" | "large";
   achievements?: string[];
+  roles?: string[];
 }
 
 export const projects: ProjectItemData[] = [
   {
     title: "Book Nook",
-    description: "React와 TypeScript를 사용하여 만든 반응형 포트폴리오 웹사이트입니다. 모던한 디자인과 부드러운 애니메이션을 적용했습니다.",
+    description: "Large-Print Book Search and Recommendation Service",
     tech: ["Python", "Selenium", "BeautifulSoup"],
     link: "#",
     imageUrl: "/img/BookNookLogo.png",
     imageSize: "medium",
+    roles: ["AI Engineer", "Product Manager"],
   },
   {
     title: "Foodie Buddy",
-    description: "음식 추천 및 리뷰 플랫폼으로, 사용자의 취향에 맞는 맛집을 추천하고 리뷰를 공유할 수 있는 웹 애플리케이션입니다.",
+    description: "Generative AI–Powered Chat Application Providing Personalized Korean Cuisine Information for Foreigners with Dietary Restrictions",
     tech: ["React Native", "TypeScript"],
     link: "#",
     imageUrl: "/img/FoodieBuddyLogo.png",
     imageSize: "large",
     achievements: ["🏅 Korea Tourism Data Lab Competition", "🏅 Engineering Capstone Design Contest", "🏅 Graduation Project Contest"],
+    roles: ["Frontend Developer", "Product Manager", "UI/UX Designer"],
   },
   {
     title: "Shopping Mall Review Ratings Classification Project",
-    description: "음식 추천 및 리뷰 플랫폼으로, 사용자의 취향에 맞는 맛집을 추천하고 리뷰를 공유할 수 있는 웹 애플리케이션입니다.",
+    description: "Rating Prediction Project Using Various Machine Learning Models Based on E-Commerce Review Texts",
     tech: ["Python", "Pandas", "Numpy", "Scikit-learn"],
     link: "#",
     imageUrl: "/img/ReviewRating.jpg",
     imageSize: "large",
     achievements: ["🏅 Outstanding Project"],
+    roles: ["AI Engineer"],
   },
   {
     title: "History Run",
-    description: "실시간 날씨 정보를 제공하는 모바일 친화적인 웹 애플리케이션입니다.",
+    description: "Interactive Historical Tourism Game",
     tech: ["Unity"],
     link: "#",
     imageUrl: "/img/HistoryRunLogo.png",
     imageSize: "medium",
     achievements: ["🏅 Outstanding Project"],
+    roles: ["Unity Developer", "Product Manager"],
   },
   {
     title: "SSK",
@@ -51,22 +56,25 @@ export const projects: ProjectItemData[] = [
     link: "#",
     imageUrl: "/img/SSK.png",
     imageSize: "large",
+    roles: ["Frontend Developer", "Product Manager"],
   },
   {
     title: "Steady Day",
-    description: "Private Tutoring Management Service",
+    description: "Study Group Management Website",
     tech: ["React", "JavaScript", "TypeScript", "Styled Components"],
     link: "#",
     imageUrl: "/img/SteadyDayLogo.png",
     imageSize: "medium",
+    roles: ["Frontend Developer", "Product Manager"],
   },
   {
     title: "Kiosk Ally",
-    description: "Private Tutoring Management Service",
+    description: "Kiosk Education Application for the Elderly",
     tech: ["Figma"],
     link: "#",
     imageUrl: "/img/KioskAlly2.png",
     imageSize: "large",
     achievements: ["🏅 A+ Grade"],
+    roles: ["Product Manager", "UI/UX Designer"],
   },
 ];

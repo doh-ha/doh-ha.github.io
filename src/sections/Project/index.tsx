@@ -1,29 +1,9 @@
 import React, { useState } from "react";
 import { Section, Grid } from "../../styles/styled-components";
 import { SectionContainer, SectionTitle } from "../../styles/section";
-import {
-  ProjectTitle,
-  ProjectDescription,
-  TechStack,
-  AchievementStack,
-  TechTag,
-  AchievementTag,
-  ProjectImage,
-  ProjectCard,
-  ProjectContent,
-  MoreLink,
-  ModalOverlay,
-  ModalContent,
-  ModalCloseButton,
-  ModalImage,
-  ModalTitle,
-  ModalDescription,
-  ModalTechStack,
-  ModalTechTag,
-  ModalActions,
-  ModalButton,
-} from "./Project.styles";
+import { ProjectTitle, ProjectDescription, TechStack, AchievementStack, TechTag, AchievementTag, RoleTag, ProjectImage, ProjectCard, ProjectContent, MoreLink } from "./Project.styles";
 import { projects, ProjectItemData } from "./Project.data";
+import Modal from "./Modal";
 
 const Project: React.FC = () => {
   const [selectedProject, setSelectedProject] = useState<ProjectItemData | null>(null);
@@ -43,7 +23,7 @@ const Project: React.FC = () => {
           <SectionTitle>Projects</SectionTitle>
           <Grid columns={3}>
             {projects.map((project, index) => (
-              <ProjectCard key={index}>
+              <ProjectCard key={index} onClick={() => openModal(project)}>
                 {project.imageUrl && (
                   <ProjectImage size={project.imageSize}>
                     <img src={project.imageUrl} alt={project.title} />
@@ -52,11 +32,14 @@ const Project: React.FC = () => {
                 <ProjectContent>
                   <ProjectTitle>{project.title}</ProjectTitle>
                   <ProjectDescription>{project.description}</ProjectDescription>
-                  <TechStack>
-                    {project.tech.map((tech, techIndex) => (
-                      <TechTag key={techIndex}>{tech}</TechTag>
-                    ))}
-                  </TechStack>
+
+                  {project.roles && project.roles.length > 0 && (
+                    <AchievementStack>
+                      {project.roles.map((role, roleIndex) => (
+                        <RoleTag key={`role-${roleIndex}`}>{role}</RoleTag>
+                      ))}
+                    </AchievementStack>
+                  )}
                   {project.achievements && project.achievements.length > 0 && (
                     <AchievementStack>
                       {project.achievements.map((achievement, achievementIndex) => (
@@ -64,7 +47,7 @@ const Project: React.FC = () => {
                       ))}
                     </AchievementStack>
                   )}
-                  <MoreLink onClick={() => openModal(project)}>More</MoreLink>
+                  <MoreLink>More</MoreLink>
                 </ProjectContent>
               </ProjectCard>
             ))}
@@ -72,30 +55,7 @@ const Project: React.FC = () => {
         </SectionContainer>
       </Section>
 
-      {selectedProject && (
-        <ModalOverlay onClick={closeModal}>
-          <ModalContent onClick={(e) => e.stopPropagation()}>
-            <ModalCloseButton onClick={closeModal}>×</ModalCloseButton>
-            {selectedProject.imageUrl && (
-              <ModalImage>
-                <img src={selectedProject.imageUrl} alt={selectedProject.title} />
-              </ModalImage>
-            )}
-            <ModalTitle>{selectedProject.title}</ModalTitle>
-            <ModalDescription>{selectedProject.description}</ModalDescription>
-            <ModalTechStack>
-              {selectedProject.tech.map((tech, techIndex) => (
-                <ModalTechTag key={techIndex}>{tech}</ModalTechTag>
-              ))}
-            </ModalTechStack>
-            <ModalActions>
-              <ModalButton href={selectedProject.link} target="_blank" rel="noopener noreferrer">
-                프로젝트 보기
-              </ModalButton>
-            </ModalActions>
-          </ModalContent>
-        </ModalOverlay>
-      )}
+      {selectedProject && <Modal isOpen={!!selectedProject} onClose={closeModal} project={selectedProject} />}
     </>
   );
 };
