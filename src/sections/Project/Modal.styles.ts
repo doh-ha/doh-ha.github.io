@@ -71,7 +71,7 @@ export const ModalImageContainer = styled.div`
   height: 400px;
   border-radius: ${({ theme }) => theme.borderRadius.lg};
   overflow: hidden;
-  background: ${({ theme }) => theme.colors.backgroundGray};
+  background: transparent;
   margin-bottom: ${({ theme }) => theme.spacing.md};
 `;
 
@@ -94,9 +94,9 @@ export const ModalImageNavigation = styled.div`
 `;
 
 export const ModalNavButton = styled.button`
-  background: ${({ theme }) => theme.colors.primary};
-  color: ${({ theme }) => theme.colors.backgroundWhite};
-  border: none;
+  background: ${({ theme }) => theme.colors.backgroundLight};
+  color: ${({ theme }) => theme.colors.supportGreen};
+  border: 2px solid ${({ theme }) => theme.colors.supportGreen};
   border-radius: ${({ theme }) => theme.borderRadius.full};
   width: 40px;
   height: 40px;
@@ -104,16 +104,24 @@ export const ModalNavButton = styled.button`
   align-items: center;
   justify-content: center;
   cursor: pointer;
-  font-size: 1.2rem;
-  transition: background-color 0.2s ease;
+  font-size: 1.4rem;
+  font-weight: bold;
+  transition: all 0.2s ease;
+  line-height: 1;
+  padding: 0;
 
   &:hover {
-    background: ${({ theme }) => theme.colors.primaryHover};
+    background: ${({ theme }) => theme.colors.supportGreen};
+    color: ${({ theme }) => theme.colors.backgroundWhite};
+    transform: scale(1.05);
   }
 
   &:disabled {
-    background: ${({ theme }) => theme.colors.gray400};
+    background: ${({ theme }) => theme.colors.gray200};
+    color: ${({ theme }) => theme.colors.gray400};
+    border-color: ${({ theme }) => theme.colors.gray400};
     cursor: not-allowed;
+    opacity: 0.5;
   }
 `;
 

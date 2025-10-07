@@ -111,23 +111,53 @@ const Modal: React.FC<ModalProps> = ({ isOpen, onClose, project }) => {
             <>
               <ModalSectionTitle>Project Images</ModalSectionTitle>
               <ModalImageGallery>
-                <ModalImageContainer>
-                  <ModalGalleryImage
-                    src={project.images[currentImageIndex]}
-                    alt={`${project.title} - Image ${currentImageIndex + 1}`}
-                    onClick={() => openImageModal(project.images![currentImageIndex])}
-                  />
-                </ModalImageContainer>
-                <ModalImageNavigation>
+                <div style={{ display: "flex", alignItems: "center", gap: "16px" }}>
                   <ModalNavButton onClick={prevImage} disabled={currentImageIndex === 0}>
                     ‹
                   </ModalNavButton>
-                  <ModalImageCounter>
-                    {currentImageIndex + 1} / {project.images.length}
-                  </ModalImageCounter>
+                  <ModalImageContainer>
+                    <ModalGalleryImage
+                      src={project.images[currentImageIndex]}
+                      alt={`${project.title} - Image ${currentImageIndex + 1}`}
+                      onClick={() => openImageModal(project.images![currentImageIndex])}
+                    />
+                  </ModalImageContainer>
                   <ModalNavButton onClick={nextImage} disabled={currentImageIndex === project.images.length - 1}>
                     ›
                   </ModalNavButton>
+                </div>
+                <ModalImageNavigation>
+                  {(() => {
+                    const totalPages = project.images.length;
+                    const currentPage = currentImageIndex + 1;
+                    const startPage = Math.floor((currentPage - 1) / 5) * 5 + 1;
+                    const endPage = Math.min(startPage + 4, totalPages);
+
+                    return Array.from({ length: endPage - startPage + 1 }, (_, i) => {
+                      const pageNumber = startPage + i;
+                      const pageIndex = pageNumber - 1;
+                      return (
+                        <ModalNavButton
+                          key={pageNumber}
+                          onClick={() => setCurrentImageIndex(pageIndex)}
+                          style={{
+                            backgroundColor: currentImageIndex === pageIndex ? "#E8F1ED" : "transparent",
+                            color: currentImageIndex === pageIndex ? "#00462A" : "#4A5D57",
+                            width: "32px",
+                            height: "32px",
+                            fontSize: "0.9rem",
+                            fontWeight: currentImageIndex === pageIndex ? "bold" : "normal",
+                            border: "none",
+                            borderRadius: "6px",
+                            cursor: "pointer",
+                            transition: "all 0.2s ease",
+                          }}
+                        >
+                          {pageNumber}
+                        </ModalNavButton>
+                      );
+                    });
+                  })()}
                 </ModalImageNavigation>
               </ModalImageGallery>
             </>
