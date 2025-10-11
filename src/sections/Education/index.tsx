@@ -37,6 +37,7 @@ const Education: React.FC = () => {
               <RightColumn>
                 <Details>
                   <li>Total GPA 4.1 / 4.3</li>
+                  <li>Major GPA: 4.1 / 4.3</li>
                 </Details>
                 <DegreeGroup>
                   <DegreeItem>
@@ -47,7 +48,6 @@ const Education: React.FC = () => {
                     </HighlightSubTitle>
                     <Details>
                       <li>Primary major</li>
-                      <li>Major GPA: 4.0 / 4.3</li>
                     </Details>
                   </DegreeItem>
 
