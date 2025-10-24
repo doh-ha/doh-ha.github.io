@@ -1,0 +1,14 @@
+---
+alwaysApply: true
+---
+
+# Theme Colors (Essential)
+
+- Primary: `primary` #00462A, `primaryHover` #006B42
+- Text: `textPrimary` #1A1A1A, `textSecondary` #4A5D57, `textMuted` #374151, `textAccent` #36AE92
+- Background: `backgroundWhite` #FFF, `backgroundGray` #F3F8F6, `backgroundLight` #E8F1ED
+- Border: `borderColor` #CDE1D9, `borderLight` #F3F4F6
+- Neutrals: `gray400` #9CA3AF, `gray200` #E5E7EB
+- Accent: `supportGreen` #6BAE9C
+
+Use theme tokens only. Update both [styled-components.ts](mdc:src/styles/styled-components.ts) and [styled.d.ts](mdc:src/styles/styled.d.ts) when adding colors.

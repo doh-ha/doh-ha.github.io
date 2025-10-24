@@ -1,0 +1,11 @@
+---
+alwaysApply: true
+---
+
+# Sections & Data (Essential)
+
+- Sections in [src/sections](mdc:src/sections); use `*.styles.ts` per section.
+- Shared: `SectionContainer`, `SectionTitle` from [styles/section.ts](mdc:src/styles/section.ts).
+- Nav items: about, project, experience, education.
+- Data files in [src/data](mdc:src/data). Education is inline by request.
+- Icons via [components/MonoIcon.tsx](mdc:src/components/MonoIcon.tsx).

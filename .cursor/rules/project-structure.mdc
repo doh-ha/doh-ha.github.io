@@ -1,0 +1,12 @@
+---
+alwaysApply: true
+---
+
+# Project Structure (Essential)
+
+- Entry: [src/index.tsx](mdc:src/index.tsx), Root: [src/App.tsx](mdc:src/App.tsx)
+- Theme & GlobalStyle: [src/styles/styled-components.ts](mdc:src/styles/styled-components.ts), types: [src/styles/styled.d.ts](mdc:src/styles/styled.d.ts)
+- Shared section UI: [src/styles/section.ts](mdc:src/styles/section.ts)
+- Sections: [src/sections](mdc:src/sections) (About, Project, Experience, Education)
+- Components: [src/components](mdc:src/components)
+- Styling: styled-components only (no CSS files)
