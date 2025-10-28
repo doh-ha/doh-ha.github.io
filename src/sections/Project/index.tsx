@@ -1,7 +1,20 @@
 import React, { useState } from "react";
 import { Section, Grid } from "../../styles/styled-components";
 import { SectionContainer, SectionTitle } from "../../styles/section";
-import { ProjectTitle, ProjectDescription, TechStack, AchievementStack, TechTag, AchievementTag, RoleTag, ProjectImage, ProjectCard, ProjectContent, MoreLink } from "./Project.styles";
+import {
+  ProjectTitle,
+  ProjectDescription,
+  TechStack,
+  AchievementStack,
+  TechTag,
+  AchievementTag,
+  RoleTag,
+  ProjectImage,
+  ProjectCard,
+  ProjectContent,
+  MoreLink,
+  ProjectImagePlaceholder,
+} from "./Project.styles";
 import { projects, ProjectItemData } from "./Project.data";
 import Modal from "./Modal";
 
@@ -24,11 +37,9 @@ const Project: React.FC = () => {
           <Grid columns={3}>
             {projects.map((project, index) => (
               <ProjectCard key={index} onClick={() => openModal(project)}>
-                {project.imageUrl && (
-                  <ProjectImage size={project.imageSize}>
-                    <img src={project.imageUrl} alt={project.title} />
-                  </ProjectImage>
-                )}
+                <ProjectImage size={project.imageSize}>
+                  {project.imageUrl ? <img src={project.imageUrl} alt={project.title} /> : <ProjectImagePlaceholder>In progress</ProjectImagePlaceholder>}
+                </ProjectImage>
                 <ProjectContent>
                   <ProjectTitle>{project.title}</ProjectTitle>
                   <ProjectDescription>{project.description}</ProjectDescription>

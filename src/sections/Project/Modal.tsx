@@ -35,7 +35,7 @@ export interface ProjectModalData {
   roles?: string[];
   achievements?: string[];
   keyFeatures?: string[];
-  reflection: string;
+  reflection?: string;
 }
 
 interface ModalProps {
@@ -163,8 +163,12 @@ const Modal: React.FC<ModalProps> = ({ isOpen, onClose, project }) => {
             </>
           )}
 
-          <ModalSectionTitle>Reflection</ModalSectionTitle>
-          <ModalDescription>{project.reflection}</ModalDescription>
+          {project.reflection && (
+            <>
+              <ModalSectionTitle>Reflection</ModalSectionTitle>
+              <ModalDescription>{project.reflection}</ModalDescription>
+            </>
+          )}
         </ModalContent>
       </ModalOverlay>
 
