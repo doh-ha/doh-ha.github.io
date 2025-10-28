@@ -1,14 +1,14 @@
 export interface ContactItemData {
   icon: string;
   label: string;
-  value: string;
+  value?: string;
   href?: string;
 }
 
 export const contacts: ContactItemData[] = [
-  { icon: "📧", label: "Email", value: "hayeon@example.com", href: "mailto:hayeon@example.com" },
-  { icon: "💼", label: "LinkedIn", value: "linkedin.com/in/hayeon", href: "https://linkedin.com/in/hayeon" },
-  { icon: "🐙", label: "GitHub", value: "github.com/hayeon", href: "https://github.com/hayeon" },
-  { icon: "🌍", label: "Tistory", value: "tistory.com/hayeon", href: "https://tistory.com/hayeon" },
-  { icon: "👀", label: "Velog", value: "velog.io/@hayeon", href: "https://velog.io/@hayeon" },
+  { icon: "📧", label: "Email", href: "mailto:hayeonlr@gmail.com" },
+  { icon: "💼", label: "LinkedIn", href: "https://www.linkedin.com/in/hayeon-doh-45102a252/" },
+  { icon: "🐙", label: "GitHub", href: "https://github.com/doh-ha" },
+  { icon: "🌍", label: "Tistory", href: "https://ardohtory.tistory.com/" },
+  { icon: "👀", label: "Velog", href: "https://velog.io/@ardoh/posts" },
 ];
