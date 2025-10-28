@@ -8,11 +8,23 @@ export interface ProjectItemData {
   images?: string[]; // 갤러리용 이미지들
   achievements?: string[];
   roles?: string[];
-  keyFeatures?: string[];
-  reflection: string;
+  // keyFeatures?: string[];
+  // reflection: string;
 }
 
 export const projects: ProjectItemData[] = [
+  {
+    title: "LLM-based Diagnosis System of Math Problem Solving Skills",
+    description: "",
+    tech: ["Prompt Engineering", "FastAPI", "LangFlow", "React"],
+    link: "#",
+    imageUrl: "",
+    imageSize: "medium",
+    images: [],
+    roles: ["HCI Researcher"],
+    // keyFeatures: ["In Progress..."],
+    // reflection: "In Progress...",
+  },
   {
     title: "Book Nook",
     description: "Large-Print Book Search and Recommendation Service",
@@ -50,8 +62,8 @@ export const projects: ProjectItemData[] = [
       "/img/BookNook/BookNookPPT/BookNookPPT_page-0027.jpg",
     ],
     roles: ["AI Engineer", "Product Manager"],
-    keyFeatures: ["웹 크롤링을 통한 도서 정보 수집", "대형 글씨 도서 필터링", "개인화된 도서 추천 시스템"],
-    reflection: "웹 크롤링을 통한 도서 정보 수집, 대형 글씨 도서 필터링, 개인화된 도서 추천 시스템",
+    // keyFeatures: ["웹 크롤링을 통한 도서 정보 수집", "대형 글씨 도서 필터링", "개인화된 도서 추천 시스템"],
+    // reflection: "웹 크롤링을 통한 도서 정보 수집, 대형 글씨 도서 필터링, 개인화된 도서 추천 시스템",
   },
   {
     title: "Foodie Buddy",
@@ -101,8 +113,8 @@ export const projects: ProjectItemData[] = [
     ],
     achievements: ["🏅 Korea Tourism Data Lab Competition", "🏅 Engineering Capstone Design Contest", "🏅 Graduation Project Contest"],
     roles: ["Frontend Developer", "Product Manager", "UI/UX Designer"],
-    keyFeatures: ["생성형 AI 기반 채팅 기능", "식이 제한을 고려한 맞춤형 추천", "외국인을 위한 한국 음식 정보 제공"],
-    reflection: "생성형 AI 기반 채팅 기능, 식이 제한을 고려한 맞춤형 추천, 외국인을 위한 한국 음식 정보 제공",
+    // keyFeatures: ["생성형 AI 기반 채팅 기능", "식이 제한을 고려한 맞춤형 추천", "외국인을 위한 한국 음식 정보 제공"],
+    // reflection: "생성형 AI 기반 채팅 기능, 식이 제한을 고려한 맞춤형 추천, 외국인을 위한 한국 음식 정보 제공",
   },
   {
     title: "Shopping Mall Review Ratings Classification Project",
@@ -131,8 +143,8 @@ export const projects: ProjectItemData[] = [
     ],
     achievements: ["🏅 Outstanding Project"],
     roles: ["AI Engineer"],
-    keyFeatures: ["다양한 머신러닝 모델 비교", "텍스트 전처리 및 특성 추출", "리뷰 텍스트 기반 평점 예측"],
-    reflection: "다양한 머신러닝 모델 비교, 텍스트 전처리 및 특성 추출, 리뷰 텍스트 기반 평점 예측",
+    // keyFeatures: ["다양한 머신러닝 모델 비교", "텍스트 전처리 및 특성 추출", "리뷰 텍스트 기반 평점 예측"],
+    // reflection: "다양한 머신러닝 모델 비교, 텍스트 전처리 및 특성 추출, 리뷰 텍스트 기반 평점 예측",
   },
   {
     title: "History Run",
@@ -188,8 +200,8 @@ export const projects: ProjectItemData[] = [
     ],
     achievements: ["🏅 Outstanding Project"],
     roles: ["Unity Developer", "Product Manager"],
-    keyFeatures: ["인터랙티브 게임플레이", "역사적 장소 탐험", "교육적 콘텐츠와 게임의 결합"],
-    reflection: "인터랙티브 게임플레이, 역사적 장소 탐험, 교육적 콘텐츠와 게임의 결합",
+    // keyFeatures: ["인터랙티브 게임플레이", "역사적 장소 탐험", "교육적 콘텐츠와 게임의 결합"],
+    // reflection: "인터랙티브 게임플레이, 역사적 장소 탐험, 교육적 콘텐츠와 게임의 결합",
   },
   {
     title: "SSK",
@@ -200,8 +212,8 @@ export const projects: ProjectItemData[] = [
     imageSize: "large",
     images: ["/img/SSK.png", "/img/ssk1.jpg", "/img/ssk2.jpg", "/img/ssk3.jpg", "/img/ssk4.jpg", "/img/ssk5.jpg", "/img/ssk6.jpg", "/img/ssk7.jpg", "/img/ssk8.jpg", "/img/ssk9.jpg"],
     roles: ["Frontend Developer", "Product Manager"],
-    keyFeatures: ["과외 관리 시스템", "학생-선생님 매칭", "일정 및 결제 관리"],
-    reflection: "과외 관리 시스템, 학생-선생님 매칭, 일정 및 결제 관리",
+    // keyFeatures: ["과외 관리 시스템", "학생-선생님 매칭", "일정 및 결제 관리"],
+    // reflection: "과외 관리 시스템, 학생-선생님 매칭, 일정 및 결제 관리",
   },
   {
     title: "Steady Day",
@@ -236,8 +248,8 @@ export const projects: ProjectItemData[] = [
       "/img/SteadyDay/SteadyDayPPT/SteadyDayPPT_page-0023.jpg",
     ],
     roles: ["Frontend Developer", "Product Manager"],
-    keyFeatures: ["스터디 그룹 생성 및 관리", "멤버 초대 및 관리", "일정 공유 및 알림"],
-    reflection: "스터디 그룹 생성 및 관리, 멤버 초대 및 관리, 일정 공유 및 알림",
+    // keyFeatures: ["스터디 그룹 생성 및 관리", "멤버 초대 및 관리", "일정 공유 및 알림"],
+    // reflection: "스터디 그룹 생성 및 관리, 멤버 초대 및 관리, 일정 공유 및 알림",
   },
   {
     title: "Kiosk Ally",
@@ -300,7 +312,7 @@ export const projects: ProjectItemData[] = [
     ],
     achievements: ["🏅 A+ Grade"],
     roles: ["Product Manager", "UI/UX Designer"],
-    keyFeatures: ["고령자 친화적 UI/UX", "키오스크 사용법 교육", "단계별 가이드 제공"],
-    reflection: "고령자 친화적 UI/UX, 키오스크 사용법 교육, 단계별 가이드 제공",
+    // keyFeatures: ["고령자 친화적 UI/UX", "키오스크 사용법 교육", "단계별 가이드 제공"],
+    // reflection: "고령자 친화적 UI/UX, 키오스크 사용법 교육, 단계별 가이드 제공",
   },
 ];

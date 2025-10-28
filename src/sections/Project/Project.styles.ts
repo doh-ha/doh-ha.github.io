@@ -96,6 +96,20 @@ export const ProjectImage = styled.div<{ size?: "small" | "medium" | "large" }>`
   }
 `;
 
+export const ProjectImagePlaceholder = styled.div`
+  width: 100%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: 1px dashed ${({ theme }) => theme.colors.borderColor};
+  border-radius: ${({ theme }) => theme.borderRadius.lg};
+
+  color: ${({ theme }) => theme.colors.textSecondary};
+  font-size: ${({ theme }) => theme.typography.fontSize["xl"]};
+  font-weight: ${({ theme }) => theme.typography.fontWeight.medium};
+`;
+
 export const ProjectCard = styled.div`
   background: ${({ theme }) => theme.colors.backgroundWhite};
   border-radius: ${({ theme }) => theme.borderRadius.xl};
