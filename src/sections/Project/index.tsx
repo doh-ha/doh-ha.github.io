@@ -24,11 +24,9 @@ const Project: React.FC = () => {
           <Grid columns={3}>
             {projects.map((project, index) => (
               <ProjectCard key={index} onClick={() => openModal(project)}>
-                {project.imageUrl && (
-                  <ProjectImage size={project.imageSize}>
-                    <img src={project.imageUrl} alt={project.title} />
-                  </ProjectImage>
-                )}
+                <ProjectImage size={project.imageSize}>
+                  <img src={project.imageUrl || "/img/placeholder-progress.svg"} alt={project.title} />
+                </ProjectImage>
                 <ProjectContent>
                   <ProjectTitle>{project.title}</ProjectTitle>
                   <ProjectDescription>{project.description}</ProjectDescription>
