@@ -44,16 +44,20 @@ export const ModalCloseButton = styled.button`
 
 export const ModalImage = styled.div`
   width: 100%;
+  max-width: 600px;
   height: 300px;
   border-radius: ${({ theme }) => theme.borderRadius.lg};
   overflow: hidden;
-  margin-bottom: ${({ theme }) => theme.spacing.lg};
+  margin: 0 auto ${({ theme }) => theme.spacing.lg};
   background: ${({ theme }) => theme.colors.backgroundGray};
+  display: flex;
+  align-items: center;
+  justify-content: center;
 
   img {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
+    max-width: 100%;
+    max-height: 100%;
+    object-fit: contain;
   }
 `;
 
