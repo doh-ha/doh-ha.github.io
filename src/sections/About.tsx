@@ -1,6 +1,7 @@
 import React from "react";
 import styled from "styled-components";
-import { Section, Container, Title, Subtitle, Card } from "../styles/styled-components";
+import { Section, Title, Subtitle, Card } from "../styles/styled-components";
+import { SectionContainer, SectionTitle } from "../styles/section";
 import { contacts } from "../data/Contact.data";
 import MonoIcon, { MonoIconName } from "../components/MonoIcon";
 
@@ -93,7 +94,7 @@ const labelToIconName = (label: string): MonoIconName | null => {
 const About: React.FC = () => {
   return (
     <Section id="about" background="gray">
-      <Container>
+      <SectionContainer>
         <Title>Hayeon Doh</Title>
 
         <AboutContent>
@@ -119,7 +120,7 @@ const About: React.FC = () => {
             <img src="/img/ProfileIMG.jpeg" alt="Hayeon Doh" />
           </ProfileImage>
         </AboutContent>
-      </Container>
+      </SectionContainer>
     </Section>
   );
 };

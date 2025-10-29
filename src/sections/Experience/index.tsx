@@ -33,7 +33,7 @@ const Experience: React.FC = () => {
 
   return (
     <Section id="experience">
-      <div style={{ width: "100%", maxWidth: "1200px", margin: "0 auto", padding: "0 20px" }}>
+      <div style={{ width: "100%", maxWidth: "1200px", margin: "0 auto" }}>
         <SectionTitle>Experience</SectionTitle>
         <FilterContainer>
           <FilterButton active={activeFilter === "all"} onClick={() => setActiveFilter("all")}>

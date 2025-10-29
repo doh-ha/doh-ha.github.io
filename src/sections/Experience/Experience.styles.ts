@@ -2,7 +2,7 @@ import styled from "styled-components";
 
 export const Section = styled.section`
   min-height: 100vh;
-  padding: 100px 20px 60px;
+  padding: ${({ theme }) => theme.spacing["4xl"]} ${({ theme }) => theme.spacing.md} ${({ theme }) => theme.spacing["3xl"]};
   display: flex;
   align-items: flex-start;
   justify-content: center;
@@ -10,7 +10,7 @@ export const Section = styled.section`
   width: 100%;
 
   @media (max-width: 480px) {
-    padding: 60px 12px 40px;
+    padding: ${({ theme }) => theme.spacing["3xl"]} ${({ theme }) => theme.spacing.sm} ${({ theme }) => theme.spacing["2xl"]};
   }
 `;
 

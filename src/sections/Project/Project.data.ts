@@ -27,7 +27,7 @@ export const projects: ProjectItemData[] = [
   },
   {
     title: "Book Nook",
-    subTitle: "Large-Print Book Search and Recommendation Service",
+    subTitle: "Large-Print Book Search and Recommendation Service for the Visually Impaired",
     tech: ["Python", "Selenium", "BeautifulSoup"],
     link: "#",
     imageUrl: "/img/BookNook/BookNookLogo.png",
