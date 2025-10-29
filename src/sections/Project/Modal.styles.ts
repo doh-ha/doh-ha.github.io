@@ -111,35 +111,43 @@ export const ModalImageNavigation = styled.div`
 `;
 
 export const ModalNavButton = styled.button`
-  background: ${({ theme }) => theme.colors.backgroundLight};
-  color: ${({ theme }) => theme.colors.supportGreen};
-  border: 2px solid ${({ theme }) => theme.colors.supportGreen};
+  background: rgba(255, 255, 255, 0.7);
+  color: ${({ theme }) => theme.colors.primary};
+  border: 1px solid rgba(255, 255, 255, 0.35);
   border-radius: ${({ theme }) => theme.borderRadius.full};
-  width: 40px;
-  height: 40px;
+  width: 44px;
+  height: 44px;
   display: flex;
   align-items: center;
   justify-content: center;
   cursor: pointer;
   font-size: 1.4rem;
   font-weight: bold;
-  transition: all 0.2s ease;
+  transition: background-color 0.2s ease, color 0.2s ease, transform 0.15s ease, box-shadow 0.2s ease;
   line-height: 1;
   padding: 0;
   margin: 0;
+  backdrop-filter: blur(12px);
+  box-shadow: 0 2px 12px rgba(0, 0, 0, 0.15);
 
   &:hover {
-    background: ${({ theme }) => theme.colors.supportGreen};
-    color: ${({ theme }) => theme.colors.backgroundWhite};
-    transform: scale(1.05);
+    background: rgba(255, 255, 255, 0.95);
+    color: ${({ theme }) => theme.colors.primaryHover};
+    transform: translateY(-1px);
+    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.18);
+  }
+
+  &:active {
+    transform: translateY(0);
   }
 
   &:disabled {
-    background: ${({ theme }) => theme.colors.gray200};
+    background: rgba(255, 255, 255, 0.5);
     color: ${({ theme }) => theme.colors.gray400};
-    border-color: ${({ theme }) => theme.colors.gray400};
+    border-color: rgba(255, 255, 255, 0.3);
     cursor: not-allowed;
-    opacity: 0.5;
+    opacity: 0.6;
+    box-shadow: none;
   }
 `;
 
