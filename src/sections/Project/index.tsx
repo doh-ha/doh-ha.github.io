@@ -42,7 +42,7 @@ const Project: React.FC = () => {
                 </ProjectImage>
                 <ProjectContent>
                   <ProjectTitle>{project.title}</ProjectTitle>
-                  <ProjectDescription>{project.description}</ProjectDescription>
+                  <ProjectDescription>{project.subTitle}</ProjectDescription>
 
                   {project.roles && project.roles.length > 0 && (
                     <AchievementStack>

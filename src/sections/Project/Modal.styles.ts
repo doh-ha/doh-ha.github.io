@@ -30,15 +30,21 @@ export const ModalCloseButton = styled.button`
   position: absolute;
   top: ${({ theme }) => theme.spacing.lg};
   right: ${({ theme }) => theme.spacing.lg};
-  background: none;
+  background: white;
   border: none;
   font-size: 1.5rem;
   cursor: pointer;
   color: ${({ theme }) => theme.colors.textSecondary};
   transition: color 0.2s ease;
+  z-index: 10;
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
 
   &:hover {
     color: ${({ theme }) => theme.colors.textPrimary};
+    background: ${({ theme }) => theme.colors.backgroundGray};
   }
 `;
 
@@ -113,6 +119,7 @@ export const ModalNavButton = styled.button`
   transition: all 0.2s ease;
   line-height: 1;
   padding: 0;
+  margin: 0;
 
   &:hover {
     background: ${({ theme }) => theme.colors.supportGreen};

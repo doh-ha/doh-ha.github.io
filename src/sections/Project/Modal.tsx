@@ -27,7 +27,7 @@ import {
 
 export interface ProjectModalData {
   title: string;
-  description: string;
+  subTitle: string;
   tech: string[];
   link: string;
   imageUrl?: string;
@@ -87,7 +87,7 @@ const Modal: React.FC<ModalProps> = ({ isOpen, onClose, project }) => {
             </ModalImage>
           )}
           <ModalTitle>{project.title}</ModalTitle>
-          <ModalDescription>{project.description}</ModalDescription>
+          <ModalDescription>{project.subTitle}</ModalDescription>
 
           {project.keyFeatures && project.keyFeatures.length > 0 && (
             <>

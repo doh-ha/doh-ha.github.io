@@ -1,6 +1,6 @@
 export interface ProjectItemData {
   title: string;
-  description: string;
+  subTitle: string;
   tech: string[];
   link: string;
   imageUrl?: string;
@@ -15,7 +15,7 @@ export interface ProjectItemData {
 export const projects: ProjectItemData[] = [
   {
     title: "LLM-based Diagnosis System of Math Problem Solving Skills",
-    description: "",
+    subTitle: "",
     tech: ["Prompt Engineering", "FastAPI", "LangFlow", "React"],
     link: "#",
     imageUrl: "",
@@ -27,7 +27,7 @@ export const projects: ProjectItemData[] = [
   },
   {
     title: "Book Nook",
-    description: "Large-Print Book Search and Recommendation Service",
+    subTitle: "Large-Print Book Search and Recommendation Service",
     tech: ["Python", "Selenium", "BeautifulSoup"],
     link: "#",
     imageUrl: "/img/BookNook/BookNookLogo.png",
@@ -67,7 +67,7 @@ export const projects: ProjectItemData[] = [
   },
   {
     title: "Foodie Buddy",
-    description: "Generative AI–Powered Chat Application Providing Personalized Korean Cuisine Information for Foreigners with Dietary Restrictions",
+    subTitle: "Generative AI–Powered Chat Application Providing Personalized Korean Cuisine Information for Foreigners with Dietary Restrictions",
     tech: ["React Native", "TypeScript"],
     link: "#",
     imageUrl: "/img/FoodieBuddy/FoodieBuddyLogo.png",
@@ -118,7 +118,7 @@ export const projects: ProjectItemData[] = [
   },
   {
     title: "Shopping Mall Review Ratings Classification Project",
-    description: "Rating Prediction Project Using Various Machine Learning Models Based on E-Commerce Review Texts",
+    subTitle: "Rating Prediction Project Using Various Machine Learning Models Based on E-Commerce Review Texts",
     tech: ["Python", "Pandas", "Numpy", "Scikit-learn"],
     link: "#",
     imageUrl: "/img/ReviewClassification/ReviewRating.jpg",
@@ -148,7 +148,7 @@ export const projects: ProjectItemData[] = [
   },
   {
     title: "History Run",
-    description: "Interactive Historical Tourism Game",
+    subTitle: "Interactive Historical Tourism Game",
     tech: ["Unity"],
     link: "#",
     imageUrl: "/img/HistoryRun/HistoryRunLogo.png",
@@ -205,7 +205,7 @@ export const projects: ProjectItemData[] = [
   },
   {
     title: "SSK",
-    description: "Private Tutoring Management Service",
+    subTitle: "Private Tutoring Management Service",
     tech: ["React Native", "TypeScript"],
     link: "#",
     imageUrl: "/img/SSK/SSK.png",
@@ -226,7 +226,7 @@ export const projects: ProjectItemData[] = [
   },
   {
     title: "Steady Day",
-    description: "Study Group Management Website",
+    subTitle: "Study Group Management Website",
     tech: ["React", "JavaScript", "TypeScript", "Styled Components"],
     link: "#",
     imageUrl: "/img/SteadyDay/SteadyDayLogo.png",
@@ -262,7 +262,7 @@ export const projects: ProjectItemData[] = [
   },
   {
     title: "Kiosk Ally",
-    description: "Kiosk Education Application for the Elderly",
+    subTitle: "Kiosk Education Application for the Elderly",
     tech: ["Figma"],
     link: "#",
     imageUrl: "/img/KioskAlly/KioskAlly2.png",
