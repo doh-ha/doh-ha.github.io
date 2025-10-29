@@ -21,6 +21,7 @@ import {
   SectionContainer,
   MobileOnlyBr,
   SmallMobileOnlyBr,
+  TimelineDotDesktop,
 } from "./Experience.styles";
 import { SectionTitle } from "../../styles/section";
 import { experiences } from "./Experience.data";
@@ -92,6 +93,7 @@ const Experience: React.FC = () => {
                     </div>
                   ))}
                 </ExperienceContent>
+                <TimelineDotDesktop />
               </ExperienceItem>
             </div>
           ))}

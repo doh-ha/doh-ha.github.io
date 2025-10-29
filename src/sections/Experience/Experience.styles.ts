@@ -236,6 +236,7 @@ export const LogoSlot = styled.div`
   }
 `;
 
+// Mobile-only timeline dot (inside OrgColumn)
 export const TimelineDot = styled.div`
   position: absolute;
   left: 24px;
@@ -250,6 +251,29 @@ export const TimelineDot = styled.div`
 
   @media (max-width: 768px) {
     top: 50%; /* center vertically within OrgColumn */
+    display: block;
+  }
+
+  @media (min-width: 769px) {
+    display: none;
+  }
+`;
+
+// Desktop/tablet timeline dot (positioned relative to ExperienceItem)
+export const TimelineDotDesktop = styled.div`
+  position: absolute;
+  left: 24px;
+  top: 34px; /* align with first line of card text (duration line) */
+  transform: translate(-50%, -50%);
+  width: 12px;
+  height: 12px;
+  background: ${(props) => props.theme.colors.primary};
+  border-radius: 50%;
+  border: 3px solid white;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+
+  @media (max-width: 768px) {
+    display: none;
   }
 `;
 
