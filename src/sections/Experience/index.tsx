@@ -18,6 +18,9 @@ import {
   Tag,
   FilterContainer,
   FilterButton,
+  SectionContainer,
+  MobileOnlyBr,
+  SmallMobileOnlyBr,
 } from "./Experience.styles";
 import { SectionTitle } from "../../styles/section";
 import { experiences } from "./Experience.data";
@@ -31,9 +34,18 @@ const Experience: React.FC = () => {
     return exp.tags?.includes(activeFilter.toUpperCase());
   });
 
+  const renderWithResponsiveBreaks = (text: string) => {
+    const tokens = text.split(/(\[\[BR_768\]\]|\[\[BR_480\]\])/g);
+    return tokens.map((tok, i) => {
+      if (tok === "[[BR_768]]") return <MobileOnlyBr key={`br768-${i}`} />;
+      if (tok === "[[BR_480]]") return <SmallMobileOnlyBr key={`br480-${i}`} />;
+      return tok;
+    });
+  };
+
   return (
     <Section id="experience">
-      <div style={{ width: "100%", maxWidth: "1200px", margin: "0 auto", padding: "0 16px" }}>
+      <SectionContainer>
         <SectionTitle>Experience</SectionTitle>
         <FilterContainer>
           <FilterButton active={activeFilter === "all"} onClick={() => setActiveFilter("all")}>
@@ -52,12 +64,13 @@ const Experience: React.FC = () => {
               <ExperienceItem isLeft>
                 <OrgColumn>
                   <OrgLabel>{exp.organization}</OrgLabel>
-                  <OrgDescription>{exp.orgDescription}</OrgDescription>
+                  <OrgDescription>{renderWithResponsiveBreaks(exp.orgDescription || "")}</OrgDescription>
                   {exp.logoUrl ? (
                     <OrgLogo>
                       <img src={exp.logoUrl} alt={`${exp.organization} logo`} />
                     </OrgLogo>
                   ) : null}
+                  <TimelineDot />
                 </OrgColumn>
                 <ExperienceContent isLeft>
                   {exp.roles.map((role, rIdx) => (
@@ -79,12 +92,11 @@ const Experience: React.FC = () => {
                     </div>
                   ))}
                 </ExperienceContent>
-                <TimelineDot />
               </ExperienceItem>
             </div>
           ))}
         </Timeline>
-      </div>
+      </SectionContainer>
     </Section>
   );
 };

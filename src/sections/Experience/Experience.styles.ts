@@ -1,4 +1,6 @@
 import styled from "styled-components";
+import { SectionContainer as BaseSectionContainer } from "../../styles/section";
+import { media } from "../../styles/styled-components";
 
 export const Section = styled.section`
   min-height: 100vh;
@@ -10,11 +12,18 @@ export const Section = styled.section`
   width: 100%;
 
   @media (max-width: 768px) {
-    padding: ${({ theme }) => theme.spacing["3xl"]} ${({ theme }) => theme.spacing.sm} ${({ theme }) => theme.spacing["2xl"]};
+    padding: ${({ theme }) => theme.spacing["2xl"]} 0 ${({ theme }) => theme.spacing["2xl"]};
   }
 
   @media (max-width: 480px) {
-    padding: ${({ theme }) => theme.spacing["3xl"]} ${({ theme }) => theme.spacing.sm} ${({ theme }) => theme.spacing["2xl"]};
+    padding: ${({ theme }) => theme.spacing["2xl"]} 0 ${({ theme }) => theme.spacing["2xl"]};
+  }
+`;
+
+// Experience 전용 컨테이너: 모바일에서 좌우 40px 패딩 적용
+export const SectionContainer = styled(BaseSectionContainer)`
+  ${media.mobile} {
+    padding: 0 ${({ theme }) => theme.spacing["2xl"]};
   }
 `;
 
@@ -61,10 +70,12 @@ export const OrgColumn = styled.div`
   align-items: flex-start;
   gap: 6px;
   padding-top: 20px; /* align with first line of card text */
+  position: relative;
 
   @media (max-width: 768px) {
     margin-bottom: 12px;
     padding-top: 0;
+    align-items: center;
   }
 `;
 
@@ -79,6 +90,9 @@ export const OrgLabel = styled.h3`
 
   @media (max-width: 768px) {
     padding-left: 0;
+    text-align: center;
+    width: 100%;
+    align-self: center;
   }
 `;
 
@@ -91,6 +105,8 @@ export const OrgDescription = styled.p`
 
   @media (max-width: 768px) {
     padding-left: 0;
+    text-align: center;
+    width: 100%;
   }
 `;
 
@@ -231,6 +247,10 @@ export const TimelineDot = styled.div`
   border-radius: 50%;
   border: 3px solid white;
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+
+  @media (max-width: 768px) {
+    top: 50%; /* center vertically within OrgColumn */
+  }
 `;
 
 export const Duration = styled.p`
@@ -244,6 +264,21 @@ export const Description = styled.p`
   line-height: 1.6;
   font-size: 0.9rem;
   white-space: pre-line;
+`;
+
+// Responsive line-break helpers
+export const MobileOnlyBr = styled.br`
+  display: none;
+  @media (max-width: 768px) {
+    display: inline;
+  }
+`;
+
+export const SmallMobileOnlyBr = styled.br`
+  display: none;
+  @media (max-width: 480px) {
+    display: inline;
+  }
 `;
 
 export const Row = styled.div`

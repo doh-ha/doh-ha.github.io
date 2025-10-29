@@ -105,7 +105,7 @@ export const experiences: ExperienceItemData[] = [
   },
   {
     organization: "Self Design Challenge ",
-    orgDescription: "University Innovation Center supported project for student-designed activities.",
+    orgDescription: "University Innovation Center Supported [[BR_768]] Program for Student-Designed Projects",
 
     tags: ["CSE"],
     roles: [
@@ -138,7 +138,7 @@ export const experiences: ExperienceItemData[] = [
   },
   {
     organization: "Spring Light",
-    orgDescription: "Yonsei, Ewha, Sogang University Education Voluntering Club",
+    orgDescription: "Yonsei, Ewha, Sogang University [[BR_768]]Education Voluntering Club",
 
     tags: ["EDU"],
     roles: [
