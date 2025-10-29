@@ -27,24 +27,31 @@ export const ModalContent = styled.div`
 `;
 
 export const ModalCloseButton = styled.button`
-  position: absolute;
+  position: fixed; /* keep at viewport top-right while scrolling */
   top: ${({ theme }) => theme.spacing.lg};
   right: ${({ theme }) => theme.spacing.lg};
-  background: white;
-  border: none;
+  background: rgba(255, 255, 255, 0.7);
+  border: 1px solid rgba(255, 255, 255, 0.3);
   font-size: 1.5rem;
   cursor: pointer;
-  color: ${({ theme }) => theme.colors.textSecondary};
-  transition: color 0.2s ease;
-  z-index: 10;
-  width: 40px;
-  height: 40px;
+  color: ${({ theme }) => theme.colors.textPrimary};
+  transition: background-color 0.2s ease, color 0.2s ease, box-shadow 0.2s ease, transform 0.15s ease;
+  z-index: 1100;
+  width: 44px;
+  height: 44px;
   border-radius: 50%;
-  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
+  box-shadow: 0 2px 12px rgba(0, 0, 0, 0.15);
+  backdrop-filter: blur(20px);
 
   &:hover {
-    color: ${({ theme }) => theme.colors.textPrimary};
-    background: ${({ theme }) => theme.colors.backgroundGray};
+    background: rgba(255, 255, 255, 0.95);
+    box-shadow: 0 6px 24px rgba(0, 0, 0, 0.2);
+    transform: translateY(-1px);
+  }
+
+  @media (max-width: 768px) {
+    top: ${({ theme }) => theme.spacing.md};
+    right: ${({ theme }) => theme.spacing.md};
   }
 `;
 
