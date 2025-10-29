@@ -8,6 +8,10 @@ export const Section = styled.section`
   justify-content: center;
   background: #fafafa;
   width: 100%;
+
+  @media (max-width: 480px) {
+    padding: 60px 12px 40px;
+  }
 `;
 
 export const Timeline = styled.div`
@@ -35,6 +39,16 @@ export const ExperienceItem = styled.div<{ isLeft: boolean }>`
   margin-bottom: 40px;
   position: relative;
   padding-left: 24px; /* space for timeline line */
+
+  @media (max-width: 768px) {
+    grid-template-columns: 1fr;
+    column-gap: 0;
+    padding-left: 0;
+  }
+
+  @media (max-width: 480px) {
+    margin-bottom: 24px;
+  }
 `;
 
 export const OrgColumn = styled.div`
@@ -43,6 +57,11 @@ export const OrgColumn = styled.div`
   align-items: flex-start;
   gap: 6px;
   padding-top: 20px; /* align with first line of card text */
+
+  @media (max-width: 768px) {
+    margin-bottom: 12px;
+    padding-top: 0;
+  }
 `;
 
 export const OrgLabel = styled.h3`
@@ -53,6 +72,10 @@ export const OrgLabel = styled.h3`
   align-self: start; /* align with first line of card */
   line-height: 1.3;
   padding-left: 20px; /* keep text clear from timeline dot */
+
+  @media (max-width: 768px) {
+    padding-left: 0;
+  }
 `;
 
 export const OrgDescription = styled.p`
@@ -61,6 +84,10 @@ export const OrgDescription = styled.p`
   margin: 2px 0 0;
   padding-left: 20px; /* align with label start */
   white-space: pre-line;
+
+  @media (max-width: 768px) {
+    padding-left: 0;
+  }
 `;
 
 export const OrgLogo = styled.div`
@@ -89,6 +116,10 @@ export const ExperienceContent = styled.div<{ isLeft: boolean }>`
   box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
   border: 1px solid #e5e7eb;
   position: relative;
+
+  @media (max-width: 480px) {
+    padding: 16px;
+  }
 `;
 
 export const TagsContainer = styled.div`
