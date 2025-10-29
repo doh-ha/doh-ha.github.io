@@ -77,22 +77,30 @@ export const ModalImage = styled.div`
 export const ModalImageGallery = styled.div`
   display: flex;
   flex-direction: column;
-  align-items: center;
+  align-items: stretch;
+  width: 100%;
   margin-bottom: ${({ theme }) => theme.spacing.lg};
 `;
 
 export const ModalImageContainer = styled.div`
   position: relative;
   width: 100%;
-  max-width: 600px;
-  height: 400px;
+  max-width: 720px;
+  height: 480px;
   border-radius: ${({ theme }) => theme.borderRadius.lg};
   overflow: hidden;
   background: transparent;
   margin-bottom: ${({ theme }) => theme.spacing.md};
+
+  @media (max-width: 768px) {
+    max-width: 100%;
+    height: 80vw;
+    min-height: 280px;
+  }
 `;
 
 export const ModalGalleryImage = styled.img`
+  display: block;
   width: 100%;
   height: 100%;
   object-fit: contain;
