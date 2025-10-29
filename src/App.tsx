@@ -2,6 +2,7 @@ import React, { useState, useEffect } from "react";
 import styled, { ThemeProvider } from "styled-components";
 import { GlobalStyle, theme } from "./styles/styled-components";
 import NavBar from "./components/NavBar";
+import Footer from "./components/Footer";
 import About from "./sections/About";
 import Project from "./sections/Project";
 import Experience from "./sections/Experience";
@@ -49,6 +50,7 @@ const App: React.FC = () => {
         <Project />
         <Experience />
         <Education />
+        <Footer />
       </AppContainer>
     </ThemeProvider>
   );
