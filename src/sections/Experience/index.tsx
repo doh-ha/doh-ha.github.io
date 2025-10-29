@@ -33,7 +33,7 @@ const Experience: React.FC = () => {
 
   return (
     <Section id="experience">
-      <div style={{ width: "100%", maxWidth: "1200px", margin: "0 auto" }}>
+      <div style={{ width: "100%", maxWidth: "1200px", margin: "0 auto", padding: "0 16px" }}>
         <SectionTitle>Experience</SectionTitle>
         <FilterContainer>
           <FilterButton active={activeFilter === "all"} onClick={() => setActiveFilter("all")}>
@@ -60,21 +60,21 @@ const Experience: React.FC = () => {
                   ) : null}
                 </OrgColumn>
                 <ExperienceContent isLeft>
-                  {exp.tags && (
-                    <TagsContainer>
-                      {exp.tags.map((tag, tIdx) => (
-                        <Tag key={tIdx} variant={tag.toLowerCase() as "cse" | "edu"}>
-                          {tag}
-                        </Tag>
-                      ))}
-                    </TagsContainer>
-                  )}
                   {exp.roles.map((role, rIdx) => (
                     <div key={rIdx} style={{ marginBottom: rIdx < exp.roles.length - 1 ? 12 : 0 }}>
                       <RoleTitle>
                         {role.title}
                         {role.duration && <RolePeriod>{role.duration}</RolePeriod>}
                       </RoleTitle>
+                      {rIdx === 0 && exp.tags && (
+                        <TagsContainer>
+                          {exp.tags.map((tag, tIdx) => (
+                            <Tag key={tIdx} variant={tag.toLowerCase() as "cse" | "edu"}>
+                              {tag}
+                            </Tag>
+                          ))}
+                        </TagsContainer>
+                      )}
                       <Description>{role.description}</Description>
                     </div>
                   ))}

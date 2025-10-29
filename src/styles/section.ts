@@ -5,6 +5,10 @@ export const SectionContainer = styled.div`
   width: 100%;
   margin: 0 auto;
   padding: 0 ${({ theme }) => theme.spacing.md};
+
+  @media (max-width: 768px) {
+    padding: 0 ${({ theme }) => theme.spacing.sm};
+  }
 `;
 
 export const SectionTitle = styled.h2`

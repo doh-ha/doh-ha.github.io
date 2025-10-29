@@ -9,6 +9,10 @@ export const Section = styled.section`
   background: #fafafa;
   width: 100%;
 
+  @media (max-width: 768px) {
+    padding: ${({ theme }) => theme.spacing["3xl"]} ${({ theme }) => theme.spacing.sm} ${({ theme }) => theme.spacing["2xl"]};
+  }
+
   @media (max-width: 480px) {
     padding: ${({ theme }) => theme.spacing["3xl"]} ${({ theme }) => theme.spacing.sm} ${({ theme }) => theme.spacing["2xl"]};
   }
@@ -128,6 +132,15 @@ export const TagsContainer = styled.div`
   right: 16px;
   display: flex;
   gap: 6px;
+
+  @media (max-width: 768px) {
+    position: static;
+    top: auto;
+    right: auto;
+    margin-top: 8px;
+    margin-bottom: 12px;
+    justify-content: flex-start;
+  }
 `;
 
 export const Tag = styled.span<{ variant: "cse" | "edu" }>`
