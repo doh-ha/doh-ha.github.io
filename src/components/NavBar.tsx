@@ -100,8 +100,9 @@ const NavBar: React.FC<NavBarProps> = ({ activeSection, onSectionChange }) => {
 
   const navItems = [
     { id: "about", label: "About" },
-    { id: "project", label: "Project" },
+    { id: "publication", label: "Publication" },
     { id: "experience", label: "Experience" },
+    { id: "project", label: "Project" },
     { id: "education", label: "Education" },
   ];
 

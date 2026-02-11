@@ -6,6 +6,7 @@ import Footer from "./components/Footer";
 import About from "./sections/About";
 import Project from "./sections/Project";
 import Experience from "./sections/Experience";
+import Publication from "./sections/Publication";
 import Education from "./sections/Education";
 
 const AppContainer = styled.div`
@@ -22,7 +23,7 @@ const App: React.FC = () => {
 
   useEffect(() => {
     const handleScroll = () => {
-      const sections = ["about", "project", "experience", "education"];
+      const sections = ["about", "publication", "experience", "project", "education"];
       const scrollPosition = window.scrollY + 100;
 
       for (const section of sections) {
@@ -47,9 +48,11 @@ const App: React.FC = () => {
       <AppContainer>
         <NavBar activeSection={activeSection} onSectionChange={setActiveSection} />
         <About />
-        <Project />
+        <Publication />
         <Experience />
+        <Project />
         <Education />
+
         <Footer />
       </AppContainer>
     </ThemeProvider>

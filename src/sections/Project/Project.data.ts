@@ -14,18 +14,6 @@ export interface ProjectItemData {
 
 export const projects: ProjectItemData[] = [
   {
-    title: "LLM-based Diagnosis System of Math Problem Solving Skills",
-    subTitle: "",
-    tech: ["Prompt Engineering", "FastAPI", "LangFlow", "React"],
-    link: "#",
-    imageUrl: "",
-    imageSize: "medium",
-    images: [],
-    roles: ["HCI Researcher"],
-    // keyFeatures: ["In Progress..."],
-    // reflection: "In Progress...",
-  },
-  {
     title: "Book Nook",
     subTitle: "Large-Print Book Search and Recommendation Service for the Visually Impaired",
     tech: ["Python", "Selenium", "BeautifulSoup"],
