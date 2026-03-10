@@ -4,9 +4,7 @@ import { SectionContainer, SectionTitle } from "../../styles/section";
 import {
   ProjectTitle,
   ProjectDescription,
-  TechStack,
   AchievementStack,
-  TechTag,
   AchievementTag,
   RoleTag,
   ProjectImage,

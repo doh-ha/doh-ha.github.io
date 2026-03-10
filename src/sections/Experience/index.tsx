@@ -5,9 +5,7 @@ import {
   ExperienceItem,
   ExperienceContent,
   TimelineDot,
-  Duration,
   Description,
-  CardHeader,
   RoleTitle,
   RolePeriod,
   OrgLabel,
@@ -25,7 +23,6 @@ import {
 } from "./Experience.styles";
 import { SectionTitle } from "../../styles/section";
 import { experiences } from "./Experience.data";
-import { Container } from "../../styles/styled-components";
 
 const Experience: React.FC = () => {
   const [activeFilter, setActiveFilter] = useState<string>("all");

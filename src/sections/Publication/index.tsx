@@ -1,5 +1,5 @@
 import React from "react";
-import { SectionContainer, SectionTitle, SectionSubTitle } from "../../styles/section";
+import { SectionContainer, SectionTitle } from "../../styles/section";
 import { publications } from "../../data/Publication.data";
 import { Section, PublicationList, PublicationItemRow, PublicationContent, Title, Authors, HighlightAuthor, Status, LinkButton } from "./Publication.styles";
 
