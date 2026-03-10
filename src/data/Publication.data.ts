@@ -9,8 +9,8 @@ export interface PublicationItem {
 export const publications: PublicationItem[] = [
   {
     title: "Diagnosing Problem-Solving Skills through LLM-Generated Stepwise Sub-Questions at Scale",
-    authors: "Yoonsu Kim, Hayeon Doh, Eunhye Kim, Kiyoon Choi, Jinho Son, and Juho Kim",
-    status: "Ongoing",
+    authors: "Yoonsu Kim, Hayeon Doh, Eunhye Kim, Jinho Son, and Juho Kim",
+    status: "Under Review",
     highlightName: "Hayeon Doh",
   },
   {
@@ -24,7 +24,7 @@ export const publications: PublicationItem[] = [
   {
     title: "PromptFlow: Supporting Novice Prompt Engineering Through Structured and Visual Scaffolding",
     authors: "Hayeon Doh",
-    status: "Under Review",
+    status: "CHI 2026 Student Research Competition",
     highlightName: "Hayeon Doh",
   },
 ];
