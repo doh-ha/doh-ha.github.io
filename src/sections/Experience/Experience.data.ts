@@ -162,7 +162,7 @@ export const experiences: ExperienceItemData[] = [
       },
       {
         title: "PR Team Executive",
-        duration: "Mar 2021- Feb 2022",
+        duration: "Jul 2021- Feb 2022",
         description: "Designed club promotional materials and participated in overall club operations.",
       },
     ],
