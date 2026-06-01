@@ -15,14 +15,27 @@ export interface ExperienceItemData {
 
 export const experiences: ExperienceItemData[] = [
   {
+    organization: "CSTL @KAIST",
+    orgDescription: "Collaborative Social Technology Lab \n(Prof. Joseph Seering)",
+
+    tags: ["CSE"],
+    roles: [
+      {
+        title: "HCI Research Intern",
+        duration: "Apr 2026 - Present",
+        description: "Research on Development of a Multi-Agent-Based Organizational Digital Twin System via Organization Mapping",
+      },
+    ],
+  },
+  {
     organization: "KIXLAB @KAIST",
-    orgDescription: "KAIST Interaction Lab (Prof. Juho Kim)",
+    orgDescription: "KAIST Interaction Lab \n(Prof. Juho Kim)",
 
     tags: ["CSE", "EDU"],
     roles: [
       {
         title: "HCI Research Intern",
-        duration: "Jun 2025 - Present",
+        duration: "Jun 2025 - Mar 2026",
         description: "Research on LLM-based Diagnosis System of Math Problem Solving Skills",
       },
     ],

@@ -1,7 +1,28 @@
 import React from "react";
 import { SectionContainer, SectionTitle } from "../../styles/section";
 import { publications } from "../../data/Publication.data";
-import { Section, PublicationList, PublicationItemRow, PublicationContent, Title, Authors, HighlightAuthor, Status, LinkButton } from "./Publication.styles";
+import {
+  Section,
+  PublicationList,
+  PublicationItemRow,
+  PublicationContent,
+  Title,
+  Authors,
+  HighlightAuthor,
+  MetaColumn,
+  AwardStack,
+  AwardTag,
+  Venue,
+  LinkButton,
+} from "./Publication.styles";
+
+const renderVenue = (venue: string) =>
+  venue.split("\n").map((line, i, lines) => (
+    <React.Fragment key={i}>
+      {line}
+      {i < lines.length - 1 && <br />}
+    </React.Fragment>
+  ));
 
 const renderAuthors = (authors: string, highlightName?: string) => {
   if (!highlightName) return authors;
@@ -22,12 +43,21 @@ const Publication: React.FC = () => {
                 <Title>{pub.title}</Title>
                 <Authors>{renderAuthors(pub.authors, pub.highlightName)}</Authors>
                 {pub.link && (
-                  <LinkButton href={pub.link} target="_blank" rel="noreferrer">
-                    arXiv
+                  <LinkButton href={pub.link.url} target="_blank" rel="noreferrer">
+                    {pub.link.label}
                   </LinkButton>
                 )}
               </PublicationContent>
-              <Status>{pub.status}</Status>
+              <MetaColumn>
+                <Venue>{renderVenue(pub.venue)}</Venue>
+                {pub.awards && pub.awards.length > 0 && (
+                  <AwardStack>
+                    {pub.awards.map((award) => (
+                      <AwardTag key={award}>{award}</AwardTag>
+                    ))}
+                  </AwardStack>
+                )}
+              </MetaColumn>
             </PublicationItemRow>
           ))}
         </PublicationList>

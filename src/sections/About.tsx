@@ -84,8 +84,8 @@ const labelToIconName = (label: string): MonoIconName | null => {
       return "Phone";
     case "linkedin":
       return "LinkedIn";
-    case "github":
-      return "GitHub";
+    case "google scholar":
+      return "GoogleScholar";
     default:
       return null;
   }

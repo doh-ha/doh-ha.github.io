@@ -47,10 +47,35 @@ export const HighlightAuthor = styled.span`
   color: ${({ theme }) => theme.colors.textPrimary};
 `;
 
-export const Status = styled.span`
+export const MetaColumn = styled.div`
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  gap: ${({ theme }) => theme.spacing.xs};
+`;
+
+export const AwardStack = styled.div`
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: flex-end;
+  gap: ${({ theme }) => theme.spacing.xs};
+`;
+
+export const AwardTag = styled.span`
+  background: ${({ theme }) => theme.colors.backgroundLight};
+  color: ${({ theme }) => theme.colors.primary};
+  padding: ${({ theme }) => theme.spacing.xs} ${({ theme }) => theme.spacing.sm};
+  border-radius: ${({ theme }) => theme.borderRadius.sm};
+  font-size: ${({ theme }) => theme.typography.fontSize.xs};
+  font-weight: ${({ theme }) => theme.typography.fontWeight.medium};
+`;
+
+export const Venue = styled.span`
+  display: block;
   font-size: ${({ theme }) => theme.typography.fontSize.sm};
   color: ${({ theme }) => theme.colors.textSecondary};
-  white-space: nowrap;
+  text-align: right;
+  line-height: ${({ theme }) => theme.typography.lineHeight.normal};
 `;
 
 export const LinkButton = styled.a`
@@ -66,7 +91,7 @@ export const LinkButton = styled.a`
   color: ${({ theme }) => theme.colors.primary};
   text-decoration: none;
   white-space: nowrap;
-  margin-left: ${({ theme }) => theme.spacing.sm};
+  margin-top: ${({ theme }) => theme.spacing.xs};
 
   &:hover {
     background: ${({ theme }) => theme.colors.primary};
