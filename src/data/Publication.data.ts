@@ -14,10 +14,11 @@ export interface PublicationItem {
 
 export const publications: PublicationItem[] = [
   {
-    title: "Diagnosing Problem-Solving Skills through LLM-Generated Stepwise Sub-Questions at Scale",
+    title: "STEPwise: Diagnosing Students’ MathProblem-Solving Skills via LLM-Generated Stepwise Sub-Question",
     authors: "Yoonsu Kim, Hayeon Doh, Eunhye Kim, Jinho Son, and Juho Kim",
-    venue: "Under Review",
+    venue: "AIED 2026\n Interactivity Track",
     highlightName: "Hayeon Doh",
+    link: { url: "https://www.youtube.com/watch?v=cyquqLOIEoo&feature=youtu.be", label: "Demo" },
   },
   {
     title: "Benchmarking Large Language Models for Diagnosing Students Cognitive Skills from Handwritten Math Work",
