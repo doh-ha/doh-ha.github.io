@@ -78,6 +78,13 @@ export const Venue = styled.span`
   line-height: ${({ theme }) => theme.typography.lineHeight.normal};
 `;
 
+export const LinkRow = styled.div`
+  display: flex;
+  flex-wrap: wrap;
+  gap: ${({ theme }) => theme.spacing.sm};
+  margin-top: ${({ theme }) => theme.spacing.xs};
+`;
+
 export const LinkButton = styled.a`
   display: inline-flex;
   align-items: center;
@@ -91,11 +98,8 @@ export const LinkButton = styled.a`
   color: ${({ theme }) => theme.colors.primary};
   text-decoration: none;
   white-space: nowrap;
-  margin-top: ${({ theme }) => theme.spacing.xs};
-
   &:hover {
     background: ${({ theme }) => theme.colors.primary};
     color: ${({ theme }) => theme.colors.backgroundWhite};
   }
 `;
-

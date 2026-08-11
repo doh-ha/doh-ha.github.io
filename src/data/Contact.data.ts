@@ -6,9 +6,9 @@ export interface ContactItemData {
 }
 
 export const contacts: ContactItemData[] = [
-  { icon: "📧", label: "Email", href: "mailto:hayeonlr@gmail.com" },
+  { icon: "📧", label: "Email", href: "mailto:hayeonhannahdoh@gmail.com" },
   { icon: "💼", label: "LinkedIn", href: "https://www.linkedin.com/in/hayeon-doh-45102a252/" },
-  { icon: "🎓", label: "Google Scholar", href: "https://scholar.google.com/citations?user=-UQEFlAAAAAJ&hl=en&oi=ao" },
+  { icon: "🎓", label: "Google Scholar", href: "https://scholar.google.com/citations?user=uSndvNAAAAAJ&hl=en" },
   //{ icon: "🐙", label: "GitHub", href: "https://github.com/doh-ha" },
   // { icon: "🌍", label: "Tistory", href: "https://ardohtory.tistory.com/" },
   // { icon: "👀", label: "Velog", href: "https://velog.io/@ardoh/posts" },

@@ -13,6 +13,7 @@ import {
   AwardStack,
   AwardTag,
   Venue,
+  LinkRow,
   LinkButton,
 } from "./Publication.styles";
 
@@ -42,10 +43,14 @@ const Publication: React.FC = () => {
               <PublicationContent>
                 <Title>{pub.title}</Title>
                 <Authors>{renderAuthors(pub.authors, pub.highlightName)}</Authors>
-                {pub.link && (
-                  <LinkButton href={pub.link.url} target="_blank" rel="noreferrer">
-                    {pub.link.label}
-                  </LinkButton>
+                {pub.links && pub.links.length > 0 && (
+                  <LinkRow>
+                    {pub.links.map((l) => (
+                      <LinkButton key={l.url} href={l.url} target="_blank" rel="noreferrer">
+                        {l.label}
+                      </LinkButton>
+                    ))}
+                  </LinkRow>
                 )}
               </PublicationContent>
               <MetaColumn>
