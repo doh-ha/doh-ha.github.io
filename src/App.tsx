@@ -65,20 +65,22 @@ const MainContent = styled.main`
 `;
 
 const ContentSections = styled.div`
-  padding-top: ${({ theme }) => theme.spacing.lg};
-
   > section {
     min-height: auto;
     align-items: flex-start;
-    padding-top: ${({ theme }) => theme.spacing["3xl"]};
+    padding-top: ${({ theme }) => theme.spacing["2xl"]};
     padding-bottom: ${({ theme }) => theme.spacing["2xl"]};
+    border-bottom: 1px solid ${({ theme }) => theme.colors.borderColor};
+    background: ${({ theme }) => theme.colors.backgroundWhite};
+
+    &:last-of-type {
+      border-bottom: none;
+    }
   }
 
   @media (max-width: ${theme.breakpoints.tablet}) {
-    padding-top: ${({ theme }) => theme.spacing.md};
-
     > section {
-      padding-top: ${({ theme }) => theme.spacing["2xl"]};
+      padding-top: ${({ theme }) => theme.spacing.xl};
       padding-bottom: ${({ theme }) => theme.spacing.xl};
     }
   }

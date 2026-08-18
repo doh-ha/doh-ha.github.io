@@ -3,6 +3,8 @@ import { Section as BaseSection } from "../../styles/styled-components";
 
 export const Section = styled(BaseSection)`
   background: ${({ theme }) => theme.colors.backgroundWhite};
+  padding-left: 0;
+  padding-right: 0;
 `;
 
 export const PublicationList = styled.div`

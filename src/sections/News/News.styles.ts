@@ -3,6 +3,8 @@ import { Section as BaseSection } from "../../styles/styled-components";
 
 export const Section = styled(BaseSection)`
   background: ${({ theme }) => theme.colors.backgroundWhite};
+  padding-left: 0;
+  padding-right: 0;
 `;
 
 export const NewsList = styled.div`
@@ -24,15 +26,15 @@ export const NewsItemRow = styled.div`
 `;
 
 export const NewsDate = styled.span`
-  font-size: ${({ theme }) => theme.typography.fontSize.sm};
+  font-size: ${({ theme }) => theme.typography.fontSize.xs};
   font-weight: ${({ theme }) => theme.typography.fontWeight.semibold};
-  color: ${({ theme }) => theme.colors.textAccent};
+  color: ${({ theme }) => theme.colors.textSecondary};
   white-space: nowrap;
-  padding-top: 2px;
+  padding-top: 3px;
 `;
 
 export const NewsText = styled.p`
-  font-size: ${({ theme }) => theme.typography.fontSize.base};
+  font-size: ${({ theme }) => theme.typography.fontSize.sm};
   color: ${({ theme }) => theme.colors.textPrimary};
   line-height: ${({ theme }) => theme.typography.lineHeight.normal};
 `;
@@ -57,7 +59,7 @@ export const MoreLink = styled.a`
 `;
 
 export const BackLink = styled.a`
-  display: inline-block;
+  display: block;
   margin-bottom: ${({ theme }) => theme.spacing.lg};
   color: ${({ theme }) => theme.colors.textSecondary};
   text-decoration: underline;

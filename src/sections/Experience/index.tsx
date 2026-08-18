@@ -4,7 +4,6 @@ import {
   Timeline,
   ExperienceItem,
   ExperienceContent,
-  TimelineDot,
   Description,
   RoleTitle,
   RolePeriod,
@@ -14,12 +13,12 @@ import {
   OrgDescription,
   TagsContainer,
   Tag,
+  TitleRow,
   FilterContainer,
   FilterButton,
   SectionContainer,
   MobileOnlyBr,
   SmallMobileOnlyBr,
-  TimelineDotDesktop,
   ExpandHint,
   RoleBlock,
 } from "./Experience.styles";
@@ -55,19 +54,14 @@ const Experience: React.FC = () => {
   return (
     <Section id="experience">
       <SectionContainer>
-        <SectionTitle>Experience</SectionTitle>
-
-        <FilterContainer>
-          <FilterButton active={activeFilter === "all"} onClick={() => setActiveFilter("all")}>
-            All
-          </FilterButton>
-          <FilterButton active={activeFilter === "cs"} onClick={() => setActiveFilter("cs")}>
-            CS
-          </FilterButton>
-          <FilterButton active={activeFilter === "edu"} onClick={() => setActiveFilter("edu")}>
-            EDU
-          </FilterButton>
-        </FilterContainer>
+        <TitleRow>
+          <SectionTitle>Experience</SectionTitle>
+          <FilterContainer>
+            <FilterButton active={activeFilter === "all"} onClick={() => setActiveFilter("all")}>All</FilterButton>
+            <FilterButton active={activeFilter === "cs"} onClick={() => setActiveFilter("cs")}>CS</FilterButton>
+            <FilterButton active={activeFilter === "edu"} onClick={() => setActiveFilter("edu")}>EDU</FilterButton>
+          </FilterContainer>
+        </TitleRow>
         <ExpandHint>Click a card to see details</ExpandHint>
         <Timeline>
           {filteredExperiences.map((exp, index) => {
@@ -78,15 +72,24 @@ const Experience: React.FC = () => {
                 <ExperienceItem isLeft>
                   <OrgColumn>
                     <OrgLabel>{exp.organization}</OrgLabel>
-                    {exp.orgDescription ? <OrgDescription $visible={isExpanded}>{renderWithResponsiveBreaks(exp.orgDescription)}</OrgDescription> : null}
+                    {exp.orgDescription ? (
+                      <OrgDescription $visible={isExpanded}>
+                        {renderWithResponsiveBreaks(exp.orgDescription)}
+                      </OrgDescription>
+                    ) : null}
                     {exp.logoUrl ? (
                       <OrgLogo>
                         <img src={exp.logoUrl} alt={`${exp.organization} logo`} />
                       </OrgLogo>
                     ) : null}
-                    <TimelineDot />
                   </OrgColumn>
-                  <ExperienceContent type="button" isLeft $expanded={isExpanded} aria-expanded={isExpanded} onClick={() => toggleExpanded(index)}>
+                  <ExperienceContent
+                    type="button"
+                    isLeft
+                    $expanded={isExpanded}
+                    aria-expanded={isExpanded}
+                    onClick={() => toggleExpanded(index)}
+                  >
                     {exp.tags && (
                       <TagsContainer>
                         {exp.tags.map((tag, tIdx) => (
@@ -104,7 +107,6 @@ const Experience: React.FC = () => {
                       </RoleBlock>
                     ))}
                   </ExperienceContent>
-                  <TimelineDotDesktop />
                 </ExperienceItem>
               </div>
             );

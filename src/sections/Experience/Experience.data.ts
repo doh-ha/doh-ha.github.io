@@ -18,7 +18,7 @@ export const experiences: ExperienceItemData[] = [
     organization: "CSTL @KAIST",
     orgDescription: "Collaborative Social Technology Lab \n(Prof. Joseph Seering)",
 
-    tags: ["CS"],
+    tags: ["CS", "EDU"],
     roles: [
       {
         title: "HCI Master Student",

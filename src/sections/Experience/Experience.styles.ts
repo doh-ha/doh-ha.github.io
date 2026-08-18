@@ -1,65 +1,31 @@
 import styled from "styled-components";
-import { SectionContainer as BaseSectionContainer } from "../../styles/section";
-import { media } from "../../styles/styled-components";
+export { SectionContainer } from "../../styles/section";
 
 export const Section = styled.section`
-  min-height: 100vh;
-  padding: ${({ theme }) => theme.spacing["4xl"]} ${({ theme }) => theme.spacing.md} ${({ theme }) => theme.spacing["3xl"]};
   display: flex;
   align-items: flex-start;
   justify-content: center;
-  background: #fafafa;
+  background: ${({ theme }) => theme.colors.backgroundWhite};
   width: 100%;
-
-  @media (max-width: 768px) {
-    padding: ${({ theme }) => theme.spacing["2xl"]} ${({ theme }) => theme.spacing.sm} ${({ theme }) => theme.spacing["2xl"]};
-  }
-
-  @media (max-width: 480px) {
-    padding: ${({ theme }) => theme.spacing["2xl"]} ${({ theme }) => theme.spacing.sm} ${({ theme }) => theme.spacing["2xl"]};
-  }
-`;
-
-export const SectionContainer = styled(BaseSectionContainer)`
-  ${media.mobile} {
-    padding: 0 ${({ theme }) => theme.spacing.sm};
-  }
 `;
 
 export const Timeline = styled.div`
-  position: relative;
-  min-height: 400px; /* 최소 높이 설정으로 레이아웃 폭 유지 */
-  width: 100%; /* 부모 요소의 전체 너비를 차지하도록 설정 */
-  max-width: 1200px; /* 최대 너비 제한으로 일정한 레이아웃 유지 */
-
-  &::before {
-    content: "";
-    position: absolute;
-    left: 24px;
-    top: 0;
-    bottom: 0;
-    width: 2px;
-    background: #e5e7eb;
-    transform: none;
-  }
+  display: flex;
+  flex-direction: column;
+  width: 100%;
 `;
 
 export const ExperienceItem = styled.div<{ isLeft: boolean }>`
   display: grid;
-  grid-template-columns: 0.3fr 0.7fr; /* 4:6 ratio */
-  column-gap: 24px;
-  margin-bottom: 40px;
+  grid-template-columns: 0.3fr 0.7fr;
+  column-gap: ${({ theme }) => theme.spacing.lg};
   position: relative;
-  padding-left: 24px; /* space for timeline line */
+  padding-bottom: ${({ theme }) => theme.spacing.md};
 
   @media (max-width: 768px) {
     grid-template-columns: 1fr;
     column-gap: 0;
-    padding-left: 0;
-  }
-
-  @media (max-width: 480px) {
-    margin-bottom: 24px;
+    gap: ${({ theme }) => theme.spacing.sm};
   }
 `;
 
@@ -67,48 +33,58 @@ export const OrgColumn = styled.div`
   display: flex;
   flex-direction: column;
   align-items: flex-start;
-  gap: 6px;
-  padding-top: 20px; /* align with first line of card text */
-  position: relative;
+  gap: 4px;
+  padding-top: 16px;
+  padding-left: 24px;
   min-width: 0;
+  position: relative;
+
+  &::before {
+    content: "";
+    position: absolute;
+    left: 6px;
+    top: 0;
+    bottom: -${({ theme }) => theme.spacing.md};
+    width: 1.5px;
+    background: ${({ theme }) => theme.colors.gray200};
+  }
+
+  &::after {
+    content: "";
+    position: absolute;
+    left: 0px;
+    top: 20px;
+    width: 13px;
+    height: 13px;
+    border-radius: 50%;
+    background: ${({ theme }) => theme.colors.backgroundWhite};
+    border: 2px solid ${({ theme }) => theme.colors.primary};
+  }
 
   @media (max-width: 768px) {
-    margin-bottom: 12px;
     padding-top: 0;
-    align-items: center;
+    padding-left: 0;
+
+    &::before { display: none; }
+    &::after { display: none; }
   }
 `;
 
 export const OrgLabel = styled.h3`
-  font-size: 1.125rem; /* smaller */
-  font-weight: 700;
-  color: #1a1a1a;
+  font-size: ${({ theme }) => theme.typography.fontSize.base};
+  font-weight: ${({ theme }) => theme.typography.fontWeight.semibold};
+  color: ${({ theme }) => theme.colors.textPrimary};
   margin: 0;
-  align-self: start; /* align with first line of card */
-  line-height: 1.3;
-  padding-left: 20px; /* keep text clear from timeline dot */
-
-  @media (max-width: 768px) {
-    padding-left: 0;
-    text-align: center;
-    width: 100%;
-    align-self: center;
-  }
+  line-height: ${({ theme }) => theme.typography.lineHeight.tight};
 `;
 
 export const OrgDescription = styled.p<{ $visible: boolean }>`
-  font-size: 0.9rem;
-  color: #4b5563;
-  margin: 2px 0 0;
-  padding-left: 20px;
+  font-size: ${({ theme }) => theme.typography.fontSize.xs};
+  color: ${({ theme }) => theme.colors.textSecondary};
+  margin: 0;
   white-space: pre-line;
+  line-height: ${({ theme }) => theme.typography.lineHeight.normal};
   display: ${({ $visible }) => ($visible ? "block" : "none")};
-
-  @media (max-width: 768px) {
-    padding-left: 0;
-    text-align: center;
-    width: 100%;
-  }
 `;
 
 export const OrgLogo = styled.div`
@@ -131,11 +107,10 @@ export const OrgLogo = styled.div`
 `;
 
 export const ExperienceContent = styled.button<{ isLeft: boolean; $expanded: boolean }>`
-  background: white;
-  border-radius: 12px;
-  padding: 24px;
-  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
-  border: 1px solid ${({ theme, $expanded }) => ($expanded ? theme.colors.borderColor : "#e5e7eb")};
+  background: ${({ theme, $expanded }) => ($expanded ? theme.colors.backgroundGray : theme.colors.backgroundWhite)};
+  border-radius: ${({ theme }) => theme.borderRadius.lg};
+  padding: ${({ theme }) => theme.spacing.lg};
+  border: 1px solid ${({ theme }) => theme.colors.gray200};
   position: relative;
   width: 100%;
   text-align: left;
@@ -143,15 +118,15 @@ export const ExperienceContent = styled.button<{ isLeft: boolean; $expanded: boo
   font: inherit;
   color: inherit;
   min-width: 0;
-  transition: box-shadow ${({ theme }) => theme.transitions.fast}, border-color ${({ theme }) => theme.transitions.fast};
+  transition: background ${({ theme }) => theme.transitions.fast}, border-color ${({ theme }) => theme.transitions.fast};
 
   &:hover {
-    box-shadow: ${({ theme }) => theme.shadows.md};
+    background: ${({ theme }) => theme.colors.backgroundGray};
     border-color: ${({ theme }) => theme.colors.borderColor};
   }
 
   @media (max-width: 480px) {
-    padding: 16px;
+    padding: ${({ theme }) => theme.spacing.md};
   }
 `;
 
@@ -217,18 +192,18 @@ export const Organization = styled.h3`
 `;
 
 export const RoleTitle = styled.p`
-  color: ${({ theme }) => theme.colors.primary};
-  font-weight: 800;
-  margin: 2px 0 0;
-  font-size: 1.05rem;
+  color: ${({ theme }) => theme.colors.textPrimary};
+  font-weight: ${({ theme }) => theme.typography.fontWeight.semibold};
+  margin: 0;
+  font-size: ${({ theme }) => theme.typography.fontSize.base};
 `;
 
 export const RolePeriod = styled.span`
+  display: block;
+  margin-top: 2px;
   color: ${({ theme }) => theme.colors.textSecondary};
-  font-weight: 400;
-  font-size: 0.85rem;
-  margin-left: 8px;
-  font-style: italic;
+  font-weight: ${({ theme }) => theme.typography.fontWeight.normal};
+  font-size: ${({ theme }) => theme.typography.fontSize.xs};
 `;
 
 export const LogoSlot = styled.div`
@@ -249,46 +224,6 @@ export const LogoSlot = styled.div`
   }
 `;
 
-// Mobile-only timeline dot (inside OrgColumn)
-export const TimelineDot = styled.div`
-  position: absolute;
-  left: 24px;
-  top: 34px; /* align with first line of card text */
-  transform: translate(-50%, -50%);
-  width: 12px;
-  height: 12px;
-  background: ${(props) => props.theme.colors.primary};
-  border-radius: 50%;
-  border: 3px solid white;
-  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-
-  @media (max-width: 768px) {
-    top: 50%; /* center vertically within OrgColumn */
-    display: block;
-  }
-
-  @media (min-width: 769px) {
-    display: none;
-  }
-`;
-
-// Desktop/tablet timeline dot (positioned relative to ExperienceItem)
-export const TimelineDotDesktop = styled.div`
-  position: absolute;
-  left: 24px;
-  top: 34px; /* align with first line of card text (duration line) */
-  transform: translate(-50%, -50%);
-  width: 12px;
-  height: 12px;
-  background: ${(props) => props.theme.colors.primary};
-  border-radius: 50%;
-  border: 3px solid white;
-  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-
-  @media (max-width: 768px) {
-    display: none;
-  }
-`;
 
 export const Duration = styled.p`
   color: #6b7280;
@@ -297,25 +232,23 @@ export const Duration = styled.p`
 `;
 
 export const Description = styled.p`
-  color: #374151;
-  line-height: 1.6;
-  font-size: 0.9rem;
+  color: ${({ theme }) => theme.colors.textMuted};
+  line-height: ${({ theme }) => theme.typography.lineHeight.relaxed};
+  font-size: ${({ theme }) => theme.typography.fontSize.sm};
   white-space: pre-line;
-  margin-top: 8px;
+  margin-top: ${({ theme }) => theme.spacing.sm};
 `;
 
 export const ExpandHint = styled.p`
-  text-align: center;
-  margin: -16px 0 24px;
-  font-size: ${({ theme }) => theme.typography.fontSize.sm};
-  color: ${({ theme }) => theme.colors.textSecondary};
+  text-align: right;
+  margin: -8px 0 ${({ theme }) => theme.spacing.lg};
+  font-size: ${({ theme }) => theme.typography.fontSize.xs};
+  color: ${({ theme }) => theme.colors.gray400};
 `;
 
 export const RoleBlock = styled.div`
   &:not(:first-child) {
     margin-top: 12px;
-    padding-top: 12px;
-    border-top: 1px solid ${({ theme }) => theme.colors.borderLight};
   }
 `;
 
@@ -344,24 +277,32 @@ export const Row = styled.div`
   }
 `;
 
+export const TitleRow = styled.div`
+  display: flex;
+  align-items: flex-end;
+  justify-content: space-between;
+  gap: ${({ theme }) => theme.spacing.md};
+  margin-bottom: ${({ theme }) => theme.spacing.xl};
+`;
+
 export const FilterContainer = styled.div`
   display: flex;
-  gap: 12px;
-  margin-bottom: 32px;
-  justify-content: center;
+  gap: ${({ theme }) => theme.spacing.sm};
   flex-wrap: wrap;
+  justify-content: flex-end;
+  padding-bottom: ${({ theme }) => theme.spacing.xs};
 `;
 
 export const FilterButton = styled.button<{ active: boolean }>`
-  padding: 8px 16px;
-  border-radius: 20px;
-  border: 2px solid ${({ theme, active }) => (active ? theme.colors.primary : theme.colors.borderColor)};
+  padding: 4px 14px;
+  border-radius: 9999px;
+  border: 1px solid ${({ theme, active }) => (active ? theme.colors.primary : theme.colors.gray200)};
   background: ${({ theme, active }) => (active ? theme.colors.primary : "transparent")};
   color: ${({ theme, active }) => (active ? "white" : theme.colors.textSecondary)};
-  font-size: 0.875rem;
-  font-weight: 600;
+  font-size: ${({ theme }) => theme.typography.fontSize.xs};
+  font-weight: ${({ theme }) => theme.typography.fontWeight.medium};
   cursor: pointer;
-  transition: all 0.2s ease;
+  transition: all ${({ theme }) => theme.transitions.fast};
 
   &:hover {
     border-color: ${({ theme }) => theme.colors.primary};
