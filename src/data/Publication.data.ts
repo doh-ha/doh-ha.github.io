@@ -15,7 +15,7 @@ export interface PublicationItem {
 export const publications: PublicationItem[] = [
   {
     title: "STEPwise: Diagnosing Students’ MathProblem-Solving Skills via LLM-Generated Stepwise Sub-Question",
-    authors: "Yoonsu Kim, Hayeon Doh, Eunhye Kim, Jinho Son, and Juho Kim",
+    authors: "Yoonsu Kim, Hayeon Doh, Eunhye Kim, Jinho Son, Juho Kim",
     venue: "AIED 2026\n Interactivity Track",
     highlightName: "Hayeon Doh",
     links: [
@@ -25,7 +25,7 @@ export const publications: PublicationItem[] = [
   },
   {
     title: "Benchmarking Large Language Models for Diagnosing Students Cognitive Skills from Handwritten Math Work",
-    authors: "Yoonsu Kim, Hyoungwook Jin, Hayeon Doh, Eunhye Kim, Dongyun Jung, Seungju Kim, Kiyoon Choi, Jinho Son, and Juho Kim",
+    authors: "Yoonsu Kim, Hyoungwook Jin, Hayeon Doh, Eunhye Kim, Dongyun Jung, Seungju Kim, Kiyoon Choi, Jinho Son, Juho Kim",
     venue: "Under Review",
     highlightName: "Hayeon Doh",
     links: [{ url: "https://arxiv.org/abs/2504.00843", label: "PDF" }],
