@@ -6,8 +6,17 @@ import Footer from "./components/Footer";
 import About from "./sections/About";
 import Project from "./sections/Project";
 import Experience from "./sections/Experience";
+import News from "./sections/News";
+import NewsPage from "./sections/News/NewsPage";
 import Publication from "./sections/Publication";
 import Education from "./sections/Education";
+
+type Page = "main" | "news";
+
+const getPageFromUrl = (): Page => {
+  const params = new URLSearchParams(window.location.search);
+  return params.get("page") === "news" ? "news" : "main";
+};
 
 const AppContainer = styled.div`
   font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen", "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue", sans-serif;
@@ -76,15 +85,23 @@ const ContentSections = styled.div`
 `;
 
 const App: React.FC = () => {
-  const [activeSection, setActiveSection] = useState("publication");
+  const [currentPage, setCurrentPage] = useState<Page>(getPageFromUrl);
+  const [activeSection, setActiveSection] = useState("news");
+  const [pendingSection, setPendingSection] = useState<string | null>(null);
   const mainRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
+    const handlePopState = () => setCurrentPage(getPageFromUrl());
+    window.addEventListener("popstate", handlePopState);
+    return () => window.removeEventListener("popstate", handlePopState);
+  }, []);
+
+  useEffect(() => {
     const mainEl = mainRef.current;
-    if (!mainEl) return;
+    if (!mainEl || currentPage !== "main") return;
 
     const handleScroll = () => {
-      const sections = ["publication", "experience", "project", "education"];
+      const sections = ["news", "publication", "experience", "project", "education"];
       const scrollPosition = mainEl.scrollTop + 100;
 
       for (const section of sections) {
@@ -101,9 +118,37 @@ const App: React.FC = () => {
 
     mainEl.addEventListener("scroll", handleScroll);
     return () => mainEl.removeEventListener("scroll", handleScroll);
-  }, []);
+  }, [currentPage]);
+
+  useEffect(() => {
+    if (currentPage !== "main" || !pendingSection) return;
+    const mainEl = mainRef.current;
+    const element = document.getElementById(pendingSection);
+    if (mainEl && element) {
+      mainEl.scrollTo({ top: element.offsetTop, behavior: "smooth" });
+    }
+    setPendingSection(null);
+  }, [currentPage, pendingSection]);
+
+  const goToMain = (sectionId = "news") => {
+    window.history.pushState({}, "", window.location.pathname);
+    setCurrentPage("main");
+    setActiveSection(sectionId);
+    setPendingSection(sectionId);
+  };
+
+  const openNewsPage = () => {
+    window.history.pushState({ page: "news" }, "", "?page=news");
+    setCurrentPage("news");
+    mainRef.current?.scrollTo({ top: 0 });
+  };
 
   const handleSectionChange = (sectionId: string) => {
+    if (currentPage !== "main") {
+      goToMain(sectionId);
+      return;
+    }
+
     setActiveSection(sectionId);
     const mainEl = mainRef.current;
     const element = document.getElementById(sectionId);
@@ -121,14 +166,24 @@ const App: React.FC = () => {
             <About />
           </SidebarPanel>
           <MainContent ref={mainRef}>
-            <NavBar activeSection={activeSection} onSectionChange={handleSectionChange} />
-            <ContentSections>
-              <Publication />
-              <Experience />
-              <Project />
-              <Education />
-              <Footer />
-            </ContentSections>
+            {currentPage === "news" ? (
+              <ContentSections>
+                <NewsPage onBack={() => goToMain("news")} />
+                <Footer />
+              </ContentSections>
+            ) : (
+              <>
+                <NavBar activeSection={activeSection} onSectionChange={handleSectionChange} />
+                <ContentSections>
+                  <News onMoreClick={openNewsPage} />
+                  <Publication />
+                  <Experience />
+                  <Project />
+                  <Education />
+                  <Footer />
+                </ContentSections>
+              </>
+            )}
           </MainContent>
         </TwoColumnLayout>
       </AppContainer>

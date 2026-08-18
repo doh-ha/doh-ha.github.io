@@ -85,6 +85,7 @@ interface NavBarProps {
 
 const NavBar: React.FC<NavBarProps> = ({ activeSection, onSectionChange }) => {
   const navItems = [
+    { id: "news", label: "News" },
     { id: "publication", label: "Publication" },
     { id: "experience", label: "Experience" },
     { id: "project", label: "Project" },
