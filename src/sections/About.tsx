@@ -1,79 +1,122 @@
 import React from "react";
 import styled from "styled-components";
-import { Section, Title } from "../styles/styled-components";
-import { SectionContainer } from "../styles/section";
 import { contacts } from "../data/Contact.data";
 import MonoIcon, { MonoIconName } from "../components/MonoIcon";
 
-const AboutContent = styled.div`
-  display: grid;
-  grid-template-columns: 1fr auto;
-  gap: 40px;
-  align-items: start;
+const SidebarSection = styled.section`
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-right: 1px solid ${({ theme }) => theme.colors.borderColor};
 
   @media (max-width: ${({ theme }) => theme.breakpoints.tablet}) {
-    grid-template-columns: 1fr;
-    gap: 24px;
+    min-height: auto;
+    align-items: flex-start;
+    justify-content: flex-start;
+    border-right: none;
+    border-bottom: 1px solid ${({ theme }) => theme.colors.borderColor};
+    padding: 72px 0 ${({ theme }) => theme.spacing.xl};
+  }
+`;
+
+const SidebarInner = styled.div`
+  padding: 0 ${({ theme }) => theme.spacing.xl} ${({ theme }) => theme.spacing["2xl"]};
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: ${({ theme }) => theme.spacing.md};
+  width: 100%;
+  text-align: center;
+
+  @media (max-width: ${({ theme }) => theme.breakpoints.tablet}) {
+    align-items: flex-start;
+    text-align: left;
+    padding: 0 ${({ theme }) => theme.spacing.md};
   }
 `;
 
 const ProfileImage = styled.div`
-  width: 200px;
-  height: 200px;
+  width: 148px;
+  height: 148px;
   border-radius: 50%;
   overflow: hidden;
-  box-shadow: ${({ theme }) => theme.shadows.lg};
-  border: 4px solid ${({ theme }) => theme.colors.backgroundWhite};
-  margin-top: -60px;
-
-  img {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-  }
+  box-shadow: ${({ theme }) => theme.shadows.md};
+  border: 3px solid ${({ theme }) => theme.colors.backgroundWhite};
+  margin-bottom: ${({ theme }) => theme.spacing.xs};
 
   @media (max-width: ${({ theme }) => theme.breakpoints.tablet}) {
-    width: 150px;
-    height: 150px;
-    justify-self: center;
-    margin-top: 0;
+    width: 132px;
+    height: 132px;
+  }
+
+  img {
+    width: 108%;
+    height: 108%;
+    object-fit: cover;
+    object-position: center 35%;
+    transform: translate(-6%, -5%);
   }
 `;
 
-const AboutText = styled.div`
-  display: flex;
-  flex-direction: column;
-  gap: 16px;
+const Name = styled.h1`
+  font-size: 1.5rem;
+  font-weight: ${({ theme }) => theme.typography.fontWeight.bold};
+  color: ${({ theme }) => theme.colors.textPrimary};
+  letter-spacing: -0.02em;
+  margin: 0;
+`;
+
+const Bio = styled.p`
+  font-size: ${({ theme }) => theme.typography.fontSize.sm};
+  color: ${({ theme }) => theme.colors.textSecondary};
+  line-height: ${({ theme }) => theme.typography.lineHeight.relaxed};
+  margin: 0;
+`;
+
+const Divider = styled.div`
+  width: 32px;
+  height: 2px;
+  background: ${({ theme }) => theme.colors.borderColor};
+  border-radius: 1px;
 `;
 
 const ContactRow = styled.div`
   display: flex;
   flex-wrap: wrap;
-  gap: 12px;
-  margin-top: 16px;
+  gap: 8px;
+  width: 100%;
+  justify-content: center;
+
+  @media (max-width: ${({ theme }) => theme.breakpoints.tablet}) {
+    justify-content: flex-start;
+  }
 `;
 
-const ContactChip = styled.a`
+const ContactChip = styled.a<{ $pill?: boolean }>`
   display: inline-flex;
   align-items: center;
   gap: 8px;
-  padding: 8px 12px;
-  border-radius: 9999px;
+  padding: ${({ $pill }) => ($pill ? "8px 14px" : "6px 10px")};
+  border-radius: ${({ $pill }) => ($pill ? "9999px" : "8px")};
   text-decoration: none;
-  background: ${({ theme }) => theme.colors.backgroundLight};
+  background: ${({ $pill, theme }) => ($pill ? theme.colors.backgroundLight : "transparent")};
   color: ${({ theme }) => theme.colors.textSecondary};
-  border: 1px solid ${({ theme }) => theme.colors.borderColor};
-  transition: background-color ${({ theme }) => theme.transitions.fast}, color ${({ theme }) => theme.transitions.fast}, border-color ${({ theme }) => theme.transitions.fast};
+  border: ${({ $pill, theme }) => ($pill ? `1px solid ${theme.colors.borderColor}` : "none")};
+  transition:
+    color ${({ theme }) => theme.transitions.fast},
+    background ${({ theme }) => theme.transitions.fast},
+    border-color ${({ theme }) => theme.transitions.fast};
 
   &:hover {
-    background: ${({ theme }) => theme.colors.supportGreen};
-    color: ${({ theme }) => theme.colors.backgroundWhite};
-    border-color: ${({ theme }) => theme.colors.supportGreen};
+    color: ${({ $pill, theme }) => ($pill ? theme.colors.backgroundWhite : theme.colors.primary)};
+    background: ${({ $pill, theme }) => ($pill ? theme.colors.supportGreen : theme.colors.backgroundLight)};
+    border-color: ${({ $pill, theme }) => ($pill ? theme.colors.supportGreen : "transparent")};
   }
 `;
 
 const ContactLabel = styled.span`
-  font-size: 0.9rem;
+  font-size: ${({ theme }) => theme.typography.fontSize.sm};
 `;
 
 const labelToIconName = (label: string): MonoIconName | null => {
@@ -93,35 +136,40 @@ const labelToIconName = (label: string): MonoIconName | null => {
 
 const About: React.FC = () => {
   return (
-    <Section id="about" background="gray">
-      <SectionContainer>
-        <Title>Hayeon Doh</Title>
+    <SidebarSection id="about">
+      <SidebarInner>
+        <ProfileImage>
+          <img src="/img/26profile.jpg" alt="Hayeon Doh" />
+        </ProfileImage>
 
-        <AboutContent>
-          <AboutText>
-            <p style={{ fontSize: "1rem", color: "#374151", lineHeight: "1.7" }}>
-              My passion lies in bridging technology and people by making technology more accessible for marginalized communities. 🔗🫂 My research interests include Human-Computer Interaction (HCI),
-              Educational Technology, Large Language Models.
-            </p>
-            <ContactRow>
-              {contacts.map((c, idx) => {
-                const iconName = labelToIconName(c.label);
-                return (
-                  <ContactChip key={idx} href={c.href || "#"} target={c.href?.startsWith("http") ? "_blank" : undefined} rel={c.href?.startsWith("http") ? "noreferrer" : undefined}>
-                    {iconName && <MonoIcon name={iconName} size={16} />}
-                    <ContactLabel>{c.label}</ContactLabel>
-                  </ContactChip>
-                );
-              })}
-            </ContactRow>
-          </AboutText>
+        <Name>Hayeon (Hannah) Doh</Name>
 
-          <ProfileImage>
-            <img src="/img/ProfileIMG.jpeg" alt="Hayeon Doh" />
-          </ProfileImage>
-        </AboutContent>
-      </SectionContainer>
-    </Section>
+        <Divider />
+
+        <Bio>
+          My passion lies in bridging technology and people by making technology more accessible for marginalized communities. My research interests include Human-Computer Interaction (HCI),
+          Educational Technology, and Large Language Models.
+        </Bio>
+
+        <ContactRow>
+          {contacts.map((c, idx) => {
+            const iconName = labelToIconName(c.label);
+            return (
+              <ContactChip
+                key={idx}
+                href={c.href || "#"}
+                target={c.href?.startsWith("http") ? "_blank" : undefined}
+                rel={c.href?.startsWith("http") ? "noreferrer" : undefined}
+                $pill={c.label === "Email" || c.label === "LinkedIn" || c.label === "Google Scholar"}
+              >
+                {iconName && <MonoIcon name={iconName} size={16} />}
+                <ContactLabel>{c.label}</ContactLabel>
+              </ContactChip>
+            );
+          })}
+        </ContactRow>
+      </SidebarInner>
+    </SidebarSection>
   );
 };
 

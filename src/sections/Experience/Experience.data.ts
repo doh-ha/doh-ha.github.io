@@ -18,11 +18,16 @@ export const experiences: ExperienceItemData[] = [
     organization: "CSTL @KAIST",
     orgDescription: "Collaborative Social Technology Lab \n(Prof. Joseph Seering)",
 
-    tags: ["CSE"],
+    tags: ["CS", "EDU"],
     roles: [
       {
+        title: "HCI Master Student",
+        duration: "Sep 2026 - Present",
+        description: "Research in Human–Computer Interaction",
+      },
+      {
         title: "HCI Research Intern",
-        duration: "Apr 2026 - Present",
+        duration: "Apr 2026 - Aug 2026",
         description: "Research on Development of a Multi-Agent-Based Organizational Digital Twin System via Organization Mapping",
       },
     ],
@@ -31,7 +36,7 @@ export const experiences: ExperienceItemData[] = [
     organization: "KIXLAB @KAIST",
     orgDescription: "KAIST Interaction Lab \n(Prof. Juho Kim)",
 
-    tags: ["CSE", "EDU"],
+    tags: ["CS", "EDU"],
     roles: [
       {
         title: "HCI Research Intern",
@@ -44,7 +49,7 @@ export const experiences: ExperienceItemData[] = [
     organization: "Jinseon Girls' Middle School",
     orgDescription: "",
 
-    tags: ["CSE", "EDU"],
+    tags: ["CS", "EDU"],
     roles: [
       {
         title: "Information Science Teacher",
@@ -57,7 +62,7 @@ export const experiences: ExperienceItemData[] = [
     organization: "HCIL @EWHA",
     orgDescription: "Human-Computer Interaction Lab \n (Prof. Uran Oh)",
 
-    tags: ["CSE", "EDU"],
+    tags: ["CS", "EDU"],
     roles: [
       {
         title: "HCI Research Intern",
@@ -70,7 +75,7 @@ export const experiences: ExperienceItemData[] = [
     organization: "GDGoC",
     orgDescription: "Google Developers Group on Campus",
 
-    tags: ["CSE"],
+    tags: ["CS"],
     roles: [
       {
         title: "AI Member",
@@ -89,7 +94,7 @@ export const experiences: ExperienceItemData[] = [
     organization: "Ewha W.U. Elementary School",
     orgDescription: "",
 
-    tags: ["CSE", "EDU"],
+    tags: ["CS", "EDU"],
     roles: [
       {
         title: "Teaching Assistant",
@@ -102,7 +107,7 @@ export const experiences: ExperienceItemData[] = [
     organization: "EURON",
     orgDescription: "Ewha AI & Data Analysis Club",
 
-    tags: ["CSE"],
+    tags: ["CS"],
     roles: [
       {
         title: "ML Member",
@@ -120,7 +125,7 @@ export const experiences: ExperienceItemData[] = [
     organization: "Self Design Challenge ",
     orgDescription: "University Innovation Center Supported [[BR_768]] Program for Student-Designed Projects",
 
-    tags: ["CSE"],
+    tags: ["CS"],
     roles: [
       {
         title: "Unity Developer",
@@ -140,7 +145,7 @@ export const experiences: ExperienceItemData[] = [
     organization: "EFUB",
     orgDescription: "Ewha Web Development Carrer Club",
 
-    tags: ["CSE"],
+    tags: ["CS"],
     roles: [
       {
         title: "Frontend Developer",

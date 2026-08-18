@@ -1,12 +1,11 @@
 import styled from "styled-components";
 
 export const Section = styled.section`
-  min-height: 100vh;
-  padding: 80px 20px 40px;
   display: flex;
-  align-items: center;
+  align-items: flex-start;
   justify-content: center;
   background: ${({ theme }) => theme.colors.backgroundWhite};
+  width: 100%;
 `;
 
 export const Container = styled.div`
@@ -25,42 +24,47 @@ export const Title = styled.h2`
 export const List = styled.div`
   display: flex;
   flex-direction: column;
-  gap: 28px;
+  gap: ${({ theme }) => theme.spacing.md};
 `;
 
 export const Block = styled.div`
-  padding: 0 0 8px;
+  padding-bottom: ${({ theme }) => theme.spacing.md};
 `;
 
 export const Row = styled.div`
   display: grid;
-  grid-template-columns: 0.3fr 0.7fr; /* 4:6 ratio */
-  gap: 16px;
+  grid-template-columns: 0.3fr 0.7fr;
+  column-gap: ${({ theme }) => theme.spacing.lg};
   align-items: start;
 
   @media (max-width: ${({ theme }) => theme.breakpoints.mobile}) {
     grid-template-columns: 1fr;
+    gap: ${({ theme }) => theme.spacing.sm};
   }
 `;
 
 export const Column = styled.div`
   display: flex;
   flex-direction: column;
-  gap: 10px;
+  gap: 4px;
 `;
 
 export const LeftColumn = styled(Column)`
-  padding-left: 20px; /* align left edge with Experience OrgLabel */
+  padding-top: 16px;
+  min-width: 0;
 `;
 
 export const RightColumn = styled(Column)`
-  padding-left: 24px; /* match Experience card inner padding */
+  padding-left: 0;
+  min-width: 0;
+  gap: 0;
 `;
 
 export const School = styled.h3`
-  font-size: 1.25rem; /* 20px */
-  font-weight: 700;
+  font-size: ${({ theme }) => theme.typography.fontSize.base};
+  font-weight: ${({ theme }) => theme.typography.fontWeight.semibold};
   color: ${({ theme }) => theme.colors.textPrimary};
+  line-height: ${({ theme }) => theme.typography.lineHeight.tight};
   margin: 0;
 `;
 
@@ -74,35 +78,47 @@ export const Degree = styled.h3`
 export const DegreeGroup = styled.div`
   display: flex;
   flex-direction: column;
-  gap: 10px;
-
-  > h3 {
-    margin-bottom: 2px;
-  }
+  gap: ${({ theme }) => theme.spacing.sm};
 `;
 
 export const HighlightSubTitle = styled.h3`
-  font-size: ${(props) => props.theme.typography.fontSize.lg};
-  font-weight: ${(props) => props.theme.typography.fontWeight.medium};
-  color: ${(props) => props.theme.colors.textPrimary};
-  background: none;
-  background-color: ${(props) => props.theme.colors.primary}12;
-  border-left: 4px solid ${(props) => props.theme.colors.primary};
-  padding: ${(props) => props.theme.spacing.xs} ${(props) => props.theme.spacing.sm};
-  border-radius: ${(props) => props.theme.borderRadius.sm};
-  margin: 0 0 4px; /* tighter bottom to couple with details */
-  display: inline-block;
-  width: fit-content;
+  font-size: ${({ theme }) => theme.typography.fontSize.base};
+  font-weight: ${({ theme }) => theme.typography.fontWeight.semibold};
+  color: ${({ theme }) => theme.colors.textPrimary};
+  margin: 0;
+  line-height: ${({ theme }) => theme.typography.lineHeight.tight};
+  overflow-wrap: anywhere;
+`;
+
+export const ExpandHint = styled.p`
+  text-align: right;
+  margin: -8px 0 ${({ theme }) => theme.spacing.lg};
+  font-size: ${({ theme }) => theme.typography.fontSize.xs};
+  color: ${({ theme }) => theme.colors.gray400};
+`;
+
+export const EducationCard = styled.div<{ $expanded: boolean }>`
+  background: ${({ theme, $expanded }) => ($expanded ? theme.colors.backgroundGray : theme.colors.backgroundWhite)};
+  border-radius: ${({ theme }) => theme.borderRadius.lg};
+  padding: ${({ theme }) => theme.spacing.lg};
+  border: 1px solid ${({ theme }) => theme.colors.gray200};
+  cursor: pointer;
+  transition: background ${({ theme }) => theme.transitions.fast}, border-color ${({ theme }) => theme.transitions.fast};
+
+  &:hover {
+    background: ${({ theme }) => theme.colors.backgroundGray};
+    border-color: ${({ theme }) => theme.colors.borderColor};
+  }
+
+  @media (max-width: ${({ theme }) => theme.breakpoints.mobile}) {
+    padding: ${({ theme }) => theme.spacing.md};
+  }
 `;
 
 export const DegreeItem = styled.div`
   display: flex;
   flex-direction: column;
-  margin: 0 0 8px;
-
-  &:last-child {
-    margin-bottom: 0;
-  }
+  gap: 2px;
 `;
 
 export const Meta = styled.div`
@@ -118,31 +134,27 @@ export const Meta = styled.div`
 
 export const Period = styled.p`
   color: ${({ theme }) => theme.colors.textSecondary};
-  font-size: 0.975rem; /* ~15.6px */
-  font-weight: 600;
+  font-size: ${({ theme }) => theme.typography.fontSize.xs};
+  font-weight: ${({ theme }) => theme.typography.fontWeight.normal};
   margin: 0;
 `;
 
 export const Location = styled.p`
   color: ${({ theme }) => theme.colors.textSecondary};
-  font-size: 0.975rem;
-  font-weight: 600;
+  font-size: ${({ theme }) => theme.typography.fontSize.xs};
+  font-weight: ${({ theme }) => theme.typography.fontWeight.normal};
   margin: 0;
 `;
 
 export const Details = styled.ul`
-  margin: 2px 0 0; /* tighter top to couple with heading */
+  margin: ${({ theme }) => theme.spacing.xs} 0 0;
   padding-left: 1rem;
   color: ${({ theme }) => theme.colors.textMuted};
-  line-height: 1.65;
-  font-size: 0.95rem; /* ~15px */
+  line-height: ${({ theme }) => theme.typography.lineHeight.relaxed};
+  font-size: ${({ theme }) => theme.typography.fontSize.sm};
 
   li {
-    margin: 1px 0;
-  }
-
-  li::marker {
-    color: ${({ theme }) => theme.colors.primary};
+    margin: 2px 0;
   }
 `;
 
@@ -151,7 +163,9 @@ export const InlineLink = styled.a`
   text-decoration: underline;
   text-underline-offset: 3px;
   text-decoration-color: ${({ theme }) => theme.colors.borderColor};
-  transition: color 0.2s ease, text-decoration-color 0.2s ease;
+  transition:
+    color 0.2s ease,
+    text-decoration-color 0.2s ease;
 
   &:hover {
     color: ${({ theme }) => theme.colors.primary};
@@ -160,8 +174,5 @@ export const InlineLink = styled.a`
 `;
 
 export const Divider = styled.hr`
-  border: 0;
-  height: 1px;
-  background: ${({ theme }) => theme.colors.gray200};
-  margin: 20px 0 0;
+  display: none;
 `;

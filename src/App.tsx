@@ -1,13 +1,22 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useRef } from "react";
 import styled, { ThemeProvider } from "styled-components";
 import { GlobalStyle, theme } from "./styles/styled-components";
 import NavBar from "./components/NavBar";
 import Footer from "./components/Footer";
 import About from "./sections/About";
-import Project from "./sections/Project";
 import Experience from "./sections/Experience";
+// import Project from "./sections/Project"; // temporarily hidden
+import News from "./sections/News";
+import NewsPage from "./sections/News/NewsPage";
 import Publication from "./sections/Publication";
 import Education from "./sections/Education";
+
+type Page = "main" | "news";
+
+const getPageFromUrl = (): Page => {
+  const params = new URLSearchParams(window.location.search);
+  return params.get("page") === "news" ? "news" : "main";
+};
 
 const AppContainer = styled.div`
   font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen", "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue", sans-serif;
@@ -18,13 +27,84 @@ const AppContainer = styled.div`
   overflow-x: hidden;
 `;
 
+const TwoColumnLayout = styled.div`
+  display: grid;
+  grid-template-columns: 3fr 7fr;
+  min-height: 100vh;
+
+  @media (max-width: ${theme.breakpoints.tablet}) {
+    grid-template-columns: 1fr;
+  }
+`;
+
+const SidebarPanel = styled.aside`
+  position: sticky;
+  top: 0;
+  height: 100vh;
+  overflow-y: auto;
+  background: ${theme.colors.backgroundGray};
+
+  @media (max-width: ${theme.breakpoints.tablet}) {
+    position: static;
+    height: auto;
+  }
+`;
+
+const MainContent = styled.main`
+  height: 100vh;
+  overflow-y: auto;
+  min-width: 0;
+  position: sticky;
+  top: 0;
+
+  @media (max-width: ${theme.breakpoints.tablet}) {
+    height: auto;
+    overflow-y: visible;
+    position: static;
+  }
+`;
+
+const ContentSections = styled.div`
+  > section {
+    min-height: auto;
+    align-items: flex-start;
+    padding-top: ${({ theme }) => theme.spacing["2xl"]};
+    padding-bottom: ${({ theme }) => theme.spacing["2xl"]};
+    border-bottom: 1px solid ${({ theme }) => theme.colors.borderColor};
+    background: ${({ theme }) => theme.colors.backgroundWhite};
+
+    &:last-of-type {
+      border-bottom: none;
+    }
+  }
+
+  @media (max-width: ${theme.breakpoints.tablet}) {
+    > section {
+      padding-top: ${({ theme }) => theme.spacing.xl};
+      padding-bottom: ${({ theme }) => theme.spacing.xl};
+    }
+  }
+`;
+
 const App: React.FC = () => {
-  const [activeSection, setActiveSection] = useState("about");
+  const [currentPage, setCurrentPage] = useState<Page>(getPageFromUrl);
+  const [activeSection, setActiveSection] = useState("news");
+  const [pendingSection, setPendingSection] = useState<string | null>(null);
+  const mainRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
+    const handlePopState = () => setCurrentPage(getPageFromUrl());
+    window.addEventListener("popstate", handlePopState);
+    return () => window.removeEventListener("popstate", handlePopState);
+  }, []);
+
+  useEffect(() => {
+    const mainEl = mainRef.current;
+    if (!mainEl || currentPage !== "main") return;
+
     const handleScroll = () => {
-      const sections = ["about", "publication", "experience", "project", "education"];
-      const scrollPosition = window.scrollY + 100;
+      const sections = ["news", "publication", "experience", "education"];
+      const scrollPosition = mainEl.scrollTop + 100;
 
       for (const section of sections) {
         const element = document.getElementById(section);
@@ -38,22 +118,76 @@ const App: React.FC = () => {
       }
     };
 
-    window.addEventListener("scroll", handleScroll);
-    return () => window.removeEventListener("scroll", handleScroll);
-  }, []);
+    mainEl.addEventListener("scroll", handleScroll);
+    return () => mainEl.removeEventListener("scroll", handleScroll);
+  }, [currentPage]);
+
+  useEffect(() => {
+    if (currentPage !== "main" || !pendingSection) return;
+    const mainEl = mainRef.current;
+    const element = document.getElementById(pendingSection);
+    if (mainEl && element) {
+      mainEl.scrollTo({ top: element.offsetTop, behavior: "smooth" });
+    }
+    setPendingSection(null);
+  }, [currentPage, pendingSection]);
+
+  const goToMain = (sectionId = "news") => {
+    window.history.pushState({}, "", window.location.pathname);
+    setCurrentPage("main");
+    setActiveSection(sectionId);
+    setPendingSection(sectionId);
+  };
+
+  const openNewsPage = () => {
+    window.history.pushState({ page: "news" }, "", "?page=news");
+    setCurrentPage("news");
+    mainRef.current?.scrollTo({ top: 0 });
+  };
+
+  const handleSectionChange = (sectionId: string) => {
+    if (currentPage !== "main") {
+      goToMain(sectionId);
+      return;
+    }
+
+    setActiveSection(sectionId);
+    const mainEl = mainRef.current;
+    const element = document.getElementById(sectionId);
+    if (mainEl && element) {
+      mainEl.scrollTo({ top: element.offsetTop, behavior: "smooth" });
+    }
+  };
 
   return (
     <ThemeProvider theme={theme}>
       <GlobalStyle />
       <AppContainer>
-        <NavBar activeSection={activeSection} onSectionChange={setActiveSection} />
-        <About />
-        <Publication />
-        <Experience />
-        <Project />
-        <Education />
-
-        <Footer />
+        <TwoColumnLayout>
+          <SidebarPanel>
+            <About />
+          </SidebarPanel>
+          <MainContent ref={mainRef}>
+            {currentPage === "news" ? (
+              <ContentSections>
+                <NewsPage onBack={() => goToMain("news")} />
+                <Footer />
+              </ContentSections>
+            ) : (
+              <>
+                <NavBar activeSection={activeSection} onSectionChange={handleSectionChange} />
+                <ContentSections>
+                  <News onMoreClick={openNewsPage} />
+                  <Publication />
+                  <Experience />
+                  {/* <Project /> temporarily hidden */}
+                  <Education />
+                  <Footer />
+                </ContentSections>
+              </>
+            )}
+          </MainContent>
+        </TwoColumnLayout>
       </AppContainer>
     </ThemeProvider>
   );
