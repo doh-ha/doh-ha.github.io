@@ -96,12 +96,13 @@ export const OrgLabel = styled.h3`
   }
 `;
 
-export const OrgDescription = styled.p`
+export const OrgDescription = styled.p<{ $visible: boolean }>`
   font-size: 0.9rem;
-  color: #4b5563; /* neutral caption */
+  color: #4b5563;
   margin: 2px 0 0;
-  padding-left: 20px; /* align with label start */
+  padding-left: 20px;
   white-space: pre-line;
+  display: ${({ $visible }) => ($visible ? "block" : "none")};
 
   @media (max-width: 768px) {
     padding-left: 0;
@@ -129,13 +130,24 @@ export const OrgLogo = styled.div`
   }
 `;
 
-export const ExperienceContent = styled.div<{ isLeft: boolean }>`
+export const ExperienceContent = styled.button<{ isLeft: boolean; $expanded: boolean }>`
   background: white;
   border-radius: 12px;
   padding: 24px;
   box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
-  border: 1px solid #e5e7eb;
+  border: 1px solid ${({ theme, $expanded }) => ($expanded ? theme.colors.borderColor : "#e5e7eb")};
   position: relative;
+  width: 100%;
+  text-align: left;
+  cursor: pointer;
+  font: inherit;
+  color: inherit;
+  transition: box-shadow ${({ theme }) => theme.transitions.fast}, border-color ${({ theme }) => theme.transitions.fast};
+
+  &:hover {
+    box-shadow: ${({ theme }) => theme.shadows.md};
+    border-color: ${({ theme }) => theme.colors.borderColor};
+  }
 
   @media (max-width: 480px) {
     padding: 16px;
@@ -288,6 +300,22 @@ export const Description = styled.p`
   line-height: 1.6;
   font-size: 0.9rem;
   white-space: pre-line;
+  margin-top: 8px;
+`;
+
+export const ExpandHint = styled.p`
+  text-align: center;
+  margin: -16px 0 24px;
+  font-size: ${({ theme }) => theme.typography.fontSize.sm};
+  color: ${({ theme }) => theme.colors.textSecondary};
+`;
+
+export const RoleBlock = styled.div`
+  &:not(:first-child) {
+    margin-top: 12px;
+    padding-top: 12px;
+    border-top: 1px solid ${({ theme }) => theme.colors.borderLight};
+  }
 `;
 
 // Responsive line-break helpers

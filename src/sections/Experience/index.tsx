@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import {
   Section,
   Timeline,
@@ -20,17 +20,24 @@ import {
   MobileOnlyBr,
   SmallMobileOnlyBr,
   TimelineDotDesktop,
+  ExpandHint,
+  RoleBlock,
 } from "./Experience.styles";
 import { SectionTitle } from "../../styles/section";
 import { experiences } from "./Experience.data";
 
 const Experience: React.FC = () => {
   const [activeFilter, setActiveFilter] = useState<string>("all");
+  const [expandedIndex, setExpandedIndex] = useState<number | null>(null);
 
   const filteredExperiences = experiences.filter((exp) => {
     if (activeFilter === "all") return true;
     return exp.tags?.includes(activeFilter.toUpperCase());
   });
+
+  useEffect(() => {
+    setExpandedIndex(null);
+  }, [activeFilter]);
 
   const renderWithResponsiveBreaks = (text: string) => {
     const tokens = text.split(/(\[\[BR_768\]\]|\[\[BR_480\]\])/g);
@@ -41,10 +48,15 @@ const Experience: React.FC = () => {
     });
   };
 
+  const toggleExpanded = (index: number) => {
+    setExpandedIndex((prev) => (prev === index ? null : index));
+  };
+
   return (
     <Section id="experience">
       <SectionContainer>
         <SectionTitle>Experience</SectionTitle>
+
         <FilterContainer>
           <FilterButton active={activeFilter === "all"} onClick={() => setActiveFilter("all")}>
             All
@@ -56,44 +68,49 @@ const Experience: React.FC = () => {
             EDU
           </FilterButton>
         </FilterContainer>
+        <ExpandHint>Click to see details</ExpandHint>
         <Timeline>
-          {filteredExperiences.map((exp, index) => (
-            <div key={index} style={{ position: "relative" }}>
-              <ExperienceItem isLeft>
-                <OrgColumn>
-                  <OrgLabel>{exp.organization}</OrgLabel>
-                  <OrgDescription>{renderWithResponsiveBreaks(exp.orgDescription || "")}</OrgDescription>
-                  {exp.logoUrl ? (
-                    <OrgLogo>
-                      <img src={exp.logoUrl} alt={`${exp.organization} logo`} />
-                    </OrgLogo>
-                  ) : null}
-                  <TimelineDot />
-                </OrgColumn>
-                <ExperienceContent isLeft>
-                  {exp.roles.map((role, rIdx) => (
-                    <div key={rIdx} style={{ marginBottom: rIdx < exp.roles.length - 1 ? 12 : 0 }}>
-                      <RoleTitle>
-                        {role.title}
-                        {role.duration && <RolePeriod>{role.duration}</RolePeriod>}
-                      </RoleTitle>
-                      {rIdx === 0 && exp.tags && (
-                        <TagsContainer>
-                          {exp.tags.map((tag, tIdx) => (
-                            <Tag key={tIdx} variant={tag.toLowerCase() as "cs" | "edu"}>
-                              {tag}
-                            </Tag>
-                          ))}
-                        </TagsContainer>
-                      )}
-                      <Description>{role.description}</Description>
-                    </div>
-                  ))}
-                </ExperienceContent>
-                <TimelineDotDesktop />
-              </ExperienceItem>
-            </div>
-          ))}
+          {filteredExperiences.map((exp, index) => {
+            const isExpanded = expandedIndex === index;
+
+            return (
+              <div key={index} style={{ position: "relative" }}>
+                <ExperienceItem isLeft>
+                  <OrgColumn>
+                    <OrgLabel>{exp.organization}</OrgLabel>
+                    {exp.orgDescription ? <OrgDescription $visible={isExpanded}>{renderWithResponsiveBreaks(exp.orgDescription)}</OrgDescription> : null}
+                    {exp.logoUrl ? (
+                      <OrgLogo>
+                        <img src={exp.logoUrl} alt={`${exp.organization} logo`} />
+                      </OrgLogo>
+                    ) : null}
+                    <TimelineDot />
+                  </OrgColumn>
+                  <ExperienceContent type="button" isLeft $expanded={isExpanded} aria-expanded={isExpanded} onClick={() => toggleExpanded(index)}>
+                    {exp.tags && (
+                      <TagsContainer>
+                        {exp.tags.map((tag, tIdx) => (
+                          <Tag key={tIdx} variant={tag.toLowerCase() as "cs" | "edu"}>
+                            {tag}
+                          </Tag>
+                        ))}
+                      </TagsContainer>
+                    )}
+                    {exp.roles.map((role, rIdx) => (
+                      <RoleBlock key={rIdx}>
+                        <RoleTitle>
+                          {role.title}
+                          {role.duration && <RolePeriod>{role.duration}</RolePeriod>}
+                        </RoleTitle>
+                        {isExpanded && <Description>{role.description}</Description>}
+                      </RoleBlock>
+                    ))}
+                  </ExperienceContent>
+                  <TimelineDotDesktop />
+                </ExperienceItem>
+              </div>
+            );
+          })}
         </Timeline>
       </SectionContainer>
     </Section>

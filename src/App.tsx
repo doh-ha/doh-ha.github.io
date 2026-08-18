@@ -4,8 +4,8 @@ import { GlobalStyle, theme } from "./styles/styled-components";
 import NavBar from "./components/NavBar";
 import Footer from "./components/Footer";
 import About from "./sections/About";
-import Project from "./sections/Project";
 import Experience from "./sections/Experience";
+// import Project from "./sections/Project"; // temporarily hidden
 import News from "./sections/News";
 import NewsPage from "./sections/News/NewsPage";
 import Publication from "./sections/Publication";
@@ -101,7 +101,7 @@ const App: React.FC = () => {
     if (!mainEl || currentPage !== "main") return;
 
     const handleScroll = () => {
-      const sections = ["news", "publication", "experience", "project", "education"];
+      const sections = ["news", "publication", "experience", "education"];
       const scrollPosition = mainEl.scrollTop + 100;
 
       for (const section of sections) {
@@ -178,7 +178,7 @@ const App: React.FC = () => {
                   <News onMoreClick={openNewsPage} />
                   <Publication />
                   <Experience />
-                  <Project />
+                  {/* <Project /> temporarily hidden */}
                   <Education />
                   <Footer />
                 </ContentSections>

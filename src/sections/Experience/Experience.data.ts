@@ -21,8 +21,13 @@ export const experiences: ExperienceItemData[] = [
     tags: ["CS"],
     roles: [
       {
+        title: "HCI Master Student",
+        duration: "Sep 2026 - Present",
+        description: "Research in Human–Computer Interaction",
+      },
+      {
         title: "HCI Research Intern",
-        duration: "Apr 2026 - Present",
+        duration: "Apr 2026 - Aug 2026",
         description: "Research on Development of a Multi-Agent-Based Organizational Digital Twin System via Organization Mapping",
       },
     ],

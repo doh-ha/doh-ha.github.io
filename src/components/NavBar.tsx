@@ -88,7 +88,7 @@ const NavBar: React.FC<NavBarProps> = ({ activeSection, onSectionChange }) => {
     { id: "news", label: "News" },
     { id: "publication", label: "Publication" },
     { id: "experience", label: "Experience" },
-    { id: "project", label: "Project" },
+    // { id: "project", label: "Project" }, // temporarily hidden
     { id: "education", label: "Education" },
   ];
 
