@@ -159,7 +159,7 @@ export const TagsContainer = styled.div`
   }
 `;
 
-export const Tag = styled.span<{ variant: "cse" | "edu" }>`
+export const Tag = styled.span<{ variant: "cs" | "edu" }>`
   padding: 4px 8px;
   border-radius: 6px;
   font-size: 0.75rem;
@@ -169,7 +169,7 @@ export const Tag = styled.span<{ variant: "cse" | "edu" }>`
 
   ${({ variant, theme }) => {
     switch (variant) {
-      case "cse":
+      case "cs":
         return `
           background: ${theme.colors.primary};
           color: white;

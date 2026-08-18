@@ -1,16 +1,16 @@
-import React, { useState, useEffect } from "react";
+import React from "react";
 import styled from "styled-components";
 
-const NavContainer = styled.nav<{ isScrolled: boolean }>`
-  position: fixed;
+const NavContainer = styled.nav`
+  position: sticky;
   top: 24px;
-  left: 50%;
-  transform: translateX(-50%);
-  background: ${(props) => (props.isScrolled ? "rgba(255, 255, 255, 0.9)" : "rgba(255, 255, 255, 0.7)")};
+  width: fit-content;
+  margin: 0 auto;
+  background: rgba(255, 255, 255, 0.9);
   backdrop-filter: blur(20px);
   border-radius: 16px;
   padding: 8px 16px;
-  box-shadow: ${(props) => (props.isScrolled ? "0 4px 20px rgba(0, 0, 0, 0.08)" : "0 2px 12px rgba(0, 0, 0, 0.05)")};
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
   border: 1px solid rgba(255, 255, 255, 0.3);
   z-index: 1000;
   transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
@@ -24,9 +24,6 @@ const NavContainer = styled.nav<{ isScrolled: boolean }>`
     top: 16px;
     padding: 6px 12px;
     border-radius: 12px;
-    left: ${({ theme }) => theme.spacing.sm};
-    right: ${({ theme }) => theme.spacing.sm};
-    transform: none;
   }
 `;
 
@@ -87,19 +84,7 @@ interface NavBarProps {
 }
 
 const NavBar: React.FC<NavBarProps> = ({ activeSection, onSectionChange }) => {
-  const [isScrolled, setIsScrolled] = useState(false);
-
-  useEffect(() => {
-    const handleScroll = () => {
-      setIsScrolled(window.scrollY > 50);
-    };
-
-    window.addEventListener("scroll", handleScroll);
-    return () => window.removeEventListener("scroll", handleScroll);
-  }, []);
-
   const navItems = [
-    { id: "about", label: "About" },
     { id: "publication", label: "Publication" },
     { id: "experience", label: "Experience" },
     { id: "project", label: "Project" },
@@ -109,15 +94,10 @@ const NavBar: React.FC<NavBarProps> = ({ activeSection, onSectionChange }) => {
   const handleClick = (e: React.MouseEvent<HTMLAnchorElement>, sectionId: string) => {
     e.preventDefault();
     onSectionChange(sectionId);
-
-    const element = document.getElementById(sectionId);
-    if (element) {
-      element.scrollIntoView({ behavior: "smooth" });
-    }
   };
 
   return (
-    <NavContainer isScrolled={isScrolled}>
+    <NavContainer>
       <NavList>
         {navItems.map((item) => (
           <NavItem key={item.id}>

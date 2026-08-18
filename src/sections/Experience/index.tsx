@@ -49,8 +49,8 @@ const Experience: React.FC = () => {
           <FilterButton active={activeFilter === "all"} onClick={() => setActiveFilter("all")}>
             All
           </FilterButton>
-          <FilterButton active={activeFilter === "cse"} onClick={() => setActiveFilter("cse")}>
-            CSE
+          <FilterButton active={activeFilter === "cs"} onClick={() => setActiveFilter("cs")}>
+            CS
           </FilterButton>
           <FilterButton active={activeFilter === "edu"} onClick={() => setActiveFilter("edu")}>
             EDU
@@ -80,7 +80,7 @@ const Experience: React.FC = () => {
                       {rIdx === 0 && exp.tags && (
                         <TagsContainer>
                           {exp.tags.map((tag, tIdx) => (
-                            <Tag key={tIdx} variant={tag.toLowerCase() as "cse" | "edu"}>
+                            <Tag key={tIdx} variant={tag.toLowerCase() as "cs" | "edu"}>
                               {tag}
                             </Tag>
                           ))}

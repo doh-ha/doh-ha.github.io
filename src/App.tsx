@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useRef } from "react";
 import styled, { ThemeProvider } from "styled-components";
 import { GlobalStyle, theme } from "./styles/styled-components";
 import NavBar from "./components/NavBar";
@@ -18,13 +18,74 @@ const AppContainer = styled.div`
   overflow-x: hidden;
 `;
 
+const TwoColumnLayout = styled.div`
+  display: grid;
+  grid-template-columns: 3fr 7fr;
+  min-height: 100vh;
+
+  @media (max-width: ${theme.breakpoints.tablet}) {
+    grid-template-columns: 1fr;
+  }
+`;
+
+const SidebarPanel = styled.aside`
+  position: sticky;
+  top: 0;
+  height: 100vh;
+  overflow-y: auto;
+  background: ${theme.colors.backgroundGray};
+
+  @media (max-width: ${theme.breakpoints.tablet}) {
+    position: static;
+    height: auto;
+  }
+`;
+
+const MainContent = styled.main`
+  height: 100vh;
+  overflow-y: auto;
+  min-width: 0;
+  position: sticky;
+  top: 0;
+
+  @media (max-width: ${theme.breakpoints.tablet}) {
+    height: auto;
+    overflow-y: visible;
+    position: static;
+  }
+`;
+
+const ContentSections = styled.div`
+  padding-top: ${({ theme }) => theme.spacing.lg};
+
+  > section {
+    min-height: auto;
+    align-items: flex-start;
+    padding-top: ${({ theme }) => theme.spacing["3xl"]};
+    padding-bottom: ${({ theme }) => theme.spacing["2xl"]};
+  }
+
+  @media (max-width: ${theme.breakpoints.tablet}) {
+    padding-top: ${({ theme }) => theme.spacing.md};
+
+    > section {
+      padding-top: ${({ theme }) => theme.spacing["2xl"]};
+      padding-bottom: ${({ theme }) => theme.spacing.xl};
+    }
+  }
+`;
+
 const App: React.FC = () => {
-  const [activeSection, setActiveSection] = useState("about");
+  const [activeSection, setActiveSection] = useState("publication");
+  const mainRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
+    const mainEl = mainRef.current;
+    if (!mainEl) return;
+
     const handleScroll = () => {
-      const sections = ["about", "publication", "experience", "project", "education"];
-      const scrollPosition = window.scrollY + 100;
+      const sections = ["publication", "experience", "project", "education"];
+      const scrollPosition = mainEl.scrollTop + 100;
 
       for (const section of sections) {
         const element = document.getElementById(section);
@@ -38,22 +99,38 @@ const App: React.FC = () => {
       }
     };
 
-    window.addEventListener("scroll", handleScroll);
-    return () => window.removeEventListener("scroll", handleScroll);
+    mainEl.addEventListener("scroll", handleScroll);
+    return () => mainEl.removeEventListener("scroll", handleScroll);
   }, []);
+
+  const handleSectionChange = (sectionId: string) => {
+    setActiveSection(sectionId);
+    const mainEl = mainRef.current;
+    const element = document.getElementById(sectionId);
+    if (mainEl && element) {
+      mainEl.scrollTo({ top: element.offsetTop, behavior: "smooth" });
+    }
+  };
 
   return (
     <ThemeProvider theme={theme}>
       <GlobalStyle />
       <AppContainer>
-        <NavBar activeSection={activeSection} onSectionChange={setActiveSection} />
-        <About />
-        <Publication />
-        <Experience />
-        <Project />
-        <Education />
-
-        <Footer />
+        <TwoColumnLayout>
+          <SidebarPanel>
+            <About />
+          </SidebarPanel>
+          <MainContent ref={mainRef}>
+            <NavBar activeSection={activeSection} onSectionChange={handleSectionChange} />
+            <ContentSections>
+              <Publication />
+              <Experience />
+              <Project />
+              <Education />
+              <Footer />
+            </ContentSections>
+          </MainContent>
+        </TwoColumnLayout>
       </AppContainer>
     </ThemeProvider>
   );

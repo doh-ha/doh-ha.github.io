@@ -1,56 +1,65 @@
 import React from "react";
 import styled from "styled-components";
-import { Section, Title } from "../styles/styled-components";
-import { SectionContainer } from "../styles/section";
+import { Title } from "../styles/styled-components";
 import { contacts } from "../data/Contact.data";
 import MonoIcon, { MonoIconName } from "../components/MonoIcon";
 
-const AboutContent = styled.div`
-  display: grid;
-  grid-template-columns: 1fr auto;
-  gap: 40px;
-  align-items: start;
+const SidebarSection = styled.section`
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: ${({ theme }) => theme.spacing.xl} 0;
 
   @media (max-width: ${({ theme }) => theme.breakpoints.tablet}) {
-    grid-template-columns: 1fr;
-    gap: 24px;
+    min-height: auto;
+    align-items: flex-start;
+    justify-content: flex-start;
+    padding: 80px 0 ${({ theme }) => theme.spacing.xl};
+  }
+`;
+
+const SidebarInner = styled.div`
+  padding: 0 ${({ theme }) => theme.spacing.xl} ${({ theme }) => theme.spacing["3xl"]};
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: ${({ theme }) => theme.spacing.lg};
+  width: 100%;
+  max-width: 420px;
+  text-align: center;
+
+  @media (max-width: ${({ theme }) => theme.breakpoints.tablet}) {
+    align-items: flex-start;
+    text-align: left;
   }
 `;
 
 const ProfileImage = styled.div`
-  width: 200px;
-  height: 200px;
+  width: 140px;
+  height: 140px;
   border-radius: 50%;
   overflow: hidden;
   box-shadow: ${({ theme }) => theme.shadows.lg};
-  border: 4px solid ${({ theme }) => theme.colors.backgroundWhite};
-  margin-top: -60px;
+  border: 3px solid ${({ theme }) => theme.colors.backgroundWhite};
 
   img {
     width: 100%;
     height: 100%;
     object-fit: cover;
   }
-
-  @media (max-width: ${({ theme }) => theme.breakpoints.tablet}) {
-    width: 150px;
-    height: 150px;
-    justify-self: center;
-    margin-top: 0;
-  }
-`;
-
-const AboutText = styled.div`
-  display: flex;
-  flex-direction: column;
-  gap: 16px;
 `;
 
 const ContactRow = styled.div`
   display: flex;
   flex-wrap: wrap;
+  justify-content: center;
   gap: 12px;
   margin-top: 16px;
+
+  @media (max-width: ${({ theme }) => theme.breakpoints.tablet}) {
+    justify-content: flex-start;
+  }
 `;
 
 const ContactChip = styled.a`
@@ -93,35 +102,32 @@ const labelToIconName = (label: string): MonoIconName | null => {
 
 const About: React.FC = () => {
   return (
-    <Section id="about" background="gray">
-      <SectionContainer>
+    <SidebarSection id="about">
+      <SidebarInner>
+        <ProfileImage>
+          <img src="/img/ProfileIMG.jpeg" alt="Hayeon Doh" />
+        </ProfileImage>
+
         <Title>Hayeon Doh</Title>
 
-        <AboutContent>
-          <AboutText>
-            <p style={{ fontSize: "1rem", color: "#374151", lineHeight: "1.7" }}>
-              My passion lies in bridging technology and people by making technology more accessible for marginalized communities. 🔗🫂 My research interests include Human-Computer Interaction (HCI),
-              Educational Technology, Large Language Models.
-            </p>
-            <ContactRow>
-              {contacts.map((c, idx) => {
-                const iconName = labelToIconName(c.label);
-                return (
-                  <ContactChip key={idx} href={c.href || "#"} target={c.href?.startsWith("http") ? "_blank" : undefined} rel={c.href?.startsWith("http") ? "noreferrer" : undefined}>
-                    {iconName && <MonoIcon name={iconName} size={16} />}
-                    <ContactLabel>{c.label}</ContactLabel>
-                  </ContactChip>
-                );
-              })}
-            </ContactRow>
-          </AboutText>
+        <p style={{ fontSize: "0.95rem", color: "#374151", lineHeight: "1.7" }}>
+          My passion lies in bridging technology and people by making technology more accessible for marginalized communities. My research interests include Human-Computer Interaction (HCI),
+          Educational Technology, Large Language Models.
+        </p>
 
-          <ProfileImage>
-            <img src="/img/ProfileIMG.jpeg" alt="Hayeon Doh" />
-          </ProfileImage>
-        </AboutContent>
-      </SectionContainer>
-    </Section>
+        <ContactRow>
+          {contacts.map((c, idx) => {
+            const iconName = labelToIconName(c.label);
+            return (
+              <ContactChip key={idx} href={c.href || "#"} target={c.href?.startsWith("http") ? "_blank" : undefined} rel={c.href?.startsWith("http") ? "noreferrer" : undefined}>
+                {iconName && <MonoIcon name={iconName} size={16} />}
+                <ContactLabel>{c.label}</ContactLabel>
+              </ContactChip>
+            );
+          })}
+        </ContactRow>
+      </SidebarInner>
+    </SidebarSection>
   );
 };
 
