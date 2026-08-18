@@ -64,6 +64,16 @@ const MainContent = styled.main`
   }
 `;
 
+const NewsPageLayout = styled.div`
+  display: flex;
+  flex-direction: column;
+  min-height: 100%;
+
+  > footer {
+    margin-top: auto;
+  }
+`;
+
 const ContentSections = styled.div`
   > section {
     min-height: auto;
@@ -169,10 +179,12 @@ const App: React.FC = () => {
           </SidebarPanel>
           <MainContent ref={mainRef}>
             {currentPage === "news" ? (
-              <ContentSections>
-                <NewsPage onBack={() => goToMain("news")} />
+              <NewsPageLayout>
+                <ContentSections>
+                  <NewsPage onBack={() => goToMain("news")} />
+                </ContentSections>
                 <Footer />
-              </ContentSections>
+              </NewsPageLayout>
             ) : (
               <>
                 <NavBar activeSection={activeSection} onSectionChange={handleSectionChange} />

@@ -147,8 +147,8 @@ const About: React.FC = () => {
         <Divider />
 
         <Bio>
-          My passion lies in bridging technology and people by making technology more accessible for marginalized communities. My research interests include Human-Computer Interaction (HCI),
-          Educational Technology, and Large Language Models.
+          I am a M.S. student at KAIST working with Prof. Joseph Seering. My passion lies in bridging technology and people by making technology more accessible for marginalized communities. My
+          research interests include Human-Computer Interaction (HCI), Educational Technology, and Large Language Models.
         </Bio>
 
         <ContactRow>
