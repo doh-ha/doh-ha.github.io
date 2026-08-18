@@ -2,11 +2,15 @@ import styled from "styled-components";
 
 export const Section = styled.section`
   min-height: 100vh;
-  padding: 80px 20px 40px;
+  padding: ${({ theme }) => theme.spacing["4xl"]} ${({ theme }) => theme.spacing.md} ${({ theme }) => theme.spacing["3xl"]};
   display: flex;
-  align-items: center;
+  align-items: flex-start;
   justify-content: center;
   background: ${({ theme }) => theme.colors.backgroundWhite};
+
+  @media (max-width: ${({ theme }) => theme.breakpoints.mobile}) {
+    padding: ${({ theme }) => theme.spacing["2xl"]} ${({ theme }) => theme.spacing.sm} ${({ theme }) => theme.spacing["2xl"]};
+  }
 `;
 
 export const Container = styled.div`
@@ -51,10 +55,12 @@ export const Column = styled.div`
 
 export const LeftColumn = styled(Column)`
   padding-left: 20px; /* align left edge with Experience OrgLabel */
+  min-width: 0;
 `;
 
 export const RightColumn = styled(Column)`
-  padding-left: 24px; /* match Experience card inner padding */
+  padding-left: 0;
+  min-width: 0;
 `;
 
 export const School = styled.h3`
@@ -85,14 +91,35 @@ export const HighlightSubTitle = styled.h3`
   font-size: ${(props) => props.theme.typography.fontSize.lg};
   font-weight: ${(props) => props.theme.typography.fontWeight.medium};
   color: ${(props) => props.theme.colors.textPrimary};
-  background: none;
-  background-color: ${(props) => props.theme.colors.primary}12;
-  border-left: 4px solid ${(props) => props.theme.colors.primary};
-  padding: ${(props) => props.theme.spacing.xs} ${(props) => props.theme.spacing.sm};
-  border-radius: ${(props) => props.theme.borderRadius.sm};
-  margin: 0 0 4px; /* tighter bottom to couple with details */
-  display: inline-block;
-  width: fit-content;
+  margin: 0 0 4px;
+  line-height: ${({ theme }) => theme.typography.lineHeight.normal};
+  overflow-wrap: anywhere;
+`;
+
+export const ExpandHint = styled.p`
+  text-align: center;
+  margin: -8px 0 24px;
+  font-size: ${({ theme }) => theme.typography.fontSize.sm};
+  color: ${({ theme }) => theme.colors.textSecondary};
+`;
+
+export const EducationCard = styled.div<{ $expanded: boolean }>`
+  background: ${({ theme }) => theme.colors.backgroundWhite};
+  border-radius: 12px;
+  padding: 24px;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+  border: 1px solid ${({ theme, $expanded }) => ($expanded ? theme.colors.borderColor : theme.colors.gray200)};
+  cursor: pointer;
+  transition: box-shadow ${({ theme }) => theme.transitions.fast}, border-color ${({ theme }) => theme.transitions.fast};
+
+  &:hover {
+    box-shadow: ${({ theme }) => theme.shadows.md};
+    border-color: ${({ theme }) => theme.colors.borderColor};
+  }
+
+  @media (max-width: ${({ theme }) => theme.breakpoints.mobile}) {
+    padding: 16px;
+  }
 `;
 
 export const DegreeItem = styled.div`

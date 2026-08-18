@@ -68,7 +68,7 @@ const Experience: React.FC = () => {
             EDU
           </FilterButton>
         </FilterContainer>
-        <ExpandHint>Click to see details</ExpandHint>
+        <ExpandHint>Click a card to see details</ExpandHint>
         <Timeline>
           {filteredExperiences.map((exp, index) => {
             const isExpanded = expandedIndex === index;
@@ -98,10 +98,8 @@ const Experience: React.FC = () => {
                     )}
                     {exp.roles.map((role, rIdx) => (
                       <RoleBlock key={rIdx}>
-                        <RoleTitle>
-                          {role.title}
-                          {role.duration && <RolePeriod>{role.duration}</RolePeriod>}
-                        </RoleTitle>
+                        <RoleTitle>{role.title}</RoleTitle>
+                        {isExpanded && role.duration && <RolePeriod>{role.duration}</RolePeriod>}
                         {isExpanded && <Description>{role.description}</Description>}
                       </RoleBlock>
                     ))}

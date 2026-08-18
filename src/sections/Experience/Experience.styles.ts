@@ -12,18 +12,17 @@ export const Section = styled.section`
   width: 100%;
 
   @media (max-width: 768px) {
-    padding: ${({ theme }) => theme.spacing["2xl"]} 0 ${({ theme }) => theme.spacing["2xl"]};
+    padding: ${({ theme }) => theme.spacing["2xl"]} ${({ theme }) => theme.spacing.sm} ${({ theme }) => theme.spacing["2xl"]};
   }
 
   @media (max-width: 480px) {
-    padding: ${({ theme }) => theme.spacing["2xl"]} 0 ${({ theme }) => theme.spacing["2xl"]};
+    padding: ${({ theme }) => theme.spacing["2xl"]} ${({ theme }) => theme.spacing.sm} ${({ theme }) => theme.spacing["2xl"]};
   }
 `;
 
-// Experience 전용 컨테이너: 모바일에서 좌우 40px 패딩 적용
 export const SectionContainer = styled(BaseSectionContainer)`
   ${media.mobile} {
-    padding: 0 ${({ theme }) => theme.spacing["2xl"]};
+    padding: 0 ${({ theme }) => theme.spacing.sm};
   }
 `;
 
@@ -71,6 +70,7 @@ export const OrgColumn = styled.div`
   gap: 6px;
   padding-top: 20px; /* align with first line of card text */
   position: relative;
+  min-width: 0;
 
   @media (max-width: 768px) {
     margin-bottom: 12px;
@@ -142,6 +142,7 @@ export const ExperienceContent = styled.button<{ isLeft: boolean; $expanded: boo
   cursor: pointer;
   font: inherit;
   color: inherit;
+  min-width: 0;
   transition: box-shadow ${({ theme }) => theme.transitions.fast}, border-color ${({ theme }) => theme.transitions.fast};
 
   &:hover {
