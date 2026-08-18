@@ -57,9 +57,15 @@ const Experience: React.FC = () => {
         <TitleRow>
           <SectionTitle>Experience</SectionTitle>
           <FilterContainer>
-            <FilterButton active={activeFilter === "all"} onClick={() => setActiveFilter("all")}>All</FilterButton>
-            <FilterButton active={activeFilter === "cs"} onClick={() => setActiveFilter("cs")}>CS</FilterButton>
-            <FilterButton active={activeFilter === "edu"} onClick={() => setActiveFilter("edu")}>EDU</FilterButton>
+            <FilterButton active={activeFilter === "all"} onClick={() => setActiveFilter("all")}>
+              All
+            </FilterButton>
+            <FilterButton active={activeFilter === "cs"} onClick={() => setActiveFilter("cs")}>
+              CS
+            </FilterButton>
+            <FilterButton active={activeFilter === "edu"} onClick={() => setActiveFilter("edu")}>
+              EDU
+            </FilterButton>
           </FilterContainer>
         </TitleRow>
         <ExpandHint>Click a card to see details</ExpandHint>
@@ -72,24 +78,14 @@ const Experience: React.FC = () => {
                 <ExperienceItem isLeft>
                   <OrgColumn>
                     <OrgLabel>{exp.organization}</OrgLabel>
-                    {exp.orgDescription ? (
-                      <OrgDescription $visible={isExpanded}>
-                        {renderWithResponsiveBreaks(exp.orgDescription)}
-                      </OrgDescription>
-                    ) : null}
+                    {exp.orgDescription ? <OrgDescription $visible={isExpanded}>{renderWithResponsiveBreaks(exp.orgDescription)}</OrgDescription> : null}
                     {exp.logoUrl ? (
                       <OrgLogo>
                         <img src={exp.logoUrl} alt={`${exp.organization} logo`} />
                       </OrgLogo>
                     ) : null}
                   </OrgColumn>
-                  <ExperienceContent
-                    type="button"
-                    isLeft
-                    $expanded={isExpanded}
-                    aria-expanded={isExpanded}
-                    onClick={() => toggleExpanded(index)}
-                  >
+                  <ExperienceContent type="button" isLeft $expanded={isExpanded} aria-expanded={isExpanded} onClick={() => toggleExpanded(index)}>
                     {exp.tags && (
                       <TagsContainer>
                         {exp.tags.map((tag, tIdx) => (
