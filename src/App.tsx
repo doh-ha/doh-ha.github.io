@@ -96,11 +96,40 @@ const ContentSections = styled.div`
   }
 `;
 
+const NAV_SCROLL_OFFSET = 80;
+
+const isDocumentScroll = () => window.matchMedia(`(max-width: ${theme.breakpoints.tablet})`).matches;
+
 const App: React.FC = () => {
   const [currentPage, setCurrentPage] = useState<Page>(getPageFromUrl);
   const [activeSection, setActiveSection] = useState("news");
   const [pendingSection, setPendingSection] = useState<string | null>(null);
   const mainRef = useRef<HTMLDivElement>(null);
+
+  const scrollToSection = (sectionId: string) => {
+    const element = document.getElementById(sectionId);
+    if (!element) return;
+
+    if (isDocumentScroll()) {
+      const top = element.getBoundingClientRect().top + window.scrollY - NAV_SCROLL_OFFSET;
+      window.scrollTo({ top, behavior: "smooth" });
+      return;
+    }
+
+    const mainEl = mainRef.current;
+    if (mainEl) {
+      mainEl.scrollTo({ top: element.offsetTop - NAV_SCROLL_OFFSET, behavior: "smooth" });
+    }
+  };
+
+  const scrollToTop = () => {
+    if (isDocumentScroll()) {
+      window.scrollTo({ top: 0, behavior: "smooth" });
+      return;
+    }
+
+    mainRef.current?.scrollTo({ top: 0, behavior: "smooth" });
+  };
 
   useEffect(() => {
     const handlePopState = () => setCurrentPage(getPageFromUrl());
@@ -109,18 +138,16 @@ const App: React.FC = () => {
   }, []);
 
   useEffect(() => {
-    const mainEl = mainRef.current;
-    if (!mainEl || currentPage !== "main") return;
+    if (currentPage !== "main") return;
 
     const handleScroll = () => {
       const sections = ["news", "publication", "experience", "education"];
-      const scrollPosition = mainEl.scrollTop + 100;
 
       for (const section of sections) {
         const element = document.getElementById(section);
         if (element) {
-          const { offsetTop, offsetHeight } = element;
-          if (scrollPosition >= offsetTop && scrollPosition < offsetTop + offsetHeight) {
+          const rect = element.getBoundingClientRect();
+          if (rect.top <= NAV_SCROLL_OFFSET && rect.bottom > NAV_SCROLL_OFFSET) {
             setActiveSection(section);
             break;
           }
@@ -128,17 +155,16 @@ const App: React.FC = () => {
       }
     };
 
-    mainEl.addEventListener("scroll", handleScroll);
-    return () => mainEl.removeEventListener("scroll", handleScroll);
+    const scrollTarget = isDocumentScroll() ? window : mainRef.current;
+    if (!scrollTarget) return;
+
+    scrollTarget.addEventListener("scroll", handleScroll, { passive: true });
+    return () => scrollTarget.removeEventListener("scroll", handleScroll);
   }, [currentPage]);
 
   useEffect(() => {
     if (currentPage !== "main" || !pendingSection) return;
-    const mainEl = mainRef.current;
-    const element = document.getElementById(pendingSection);
-    if (mainEl && element) {
-      mainEl.scrollTo({ top: element.offsetTop, behavior: "smooth" });
-    }
+    scrollToSection(pendingSection);
     setPendingSection(null);
   }, [currentPage, pendingSection]);
 
@@ -152,7 +178,7 @@ const App: React.FC = () => {
   const openNewsPage = () => {
     window.history.pushState({ page: "news" }, "", "?page=news");
     setCurrentPage("news");
-    mainRef.current?.scrollTo({ top: 0 });
+    scrollToTop();
   };
 
   const handleSectionChange = (sectionId: string) => {
@@ -162,11 +188,7 @@ const App: React.FC = () => {
     }
 
     setActiveSection(sectionId);
-    const mainEl = mainRef.current;
-    const element = document.getElementById(sectionId);
-    if (mainEl && element) {
-      mainEl.scrollTo({ top: element.offsetTop, behavior: "smooth" });
-    }
+    scrollToSection(sectionId);
   };
 
   return (
