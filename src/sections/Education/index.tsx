@@ -55,7 +55,7 @@ const Education: React.FC = () => {
                 <EducationCard $expanded={kaistExpanded} role="button" tabIndex={0} aria-expanded={kaistExpanded} onClick={() => toggleExpanded(2)} onKeyDown={(event) => handleCardKeyDown(event, 2)}>
                   <DegreeGroup>
                     <DegreeItem>
-                      <HighlightSubTitle>Department of AI Computing, Graduate School </HighlightSubTitle>
+                      <HighlightSubTitle>M.S. in AI Computing</HighlightSubTitle>
                       {kaistExpanded && (
                         <Details>
                           <li>Research-focused graduate studies at KAIST.</li>
