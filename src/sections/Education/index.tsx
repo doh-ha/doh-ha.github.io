@@ -17,6 +17,7 @@ import {
   HighlightSubTitle,
   ExpandHint,
   EducationCard,
+  Honor,
 } from "./Education.styles";
 import { SectionContainer, SectionTitle } from "../../styles/section";
 
@@ -72,6 +73,7 @@ const Education: React.FC = () => {
             <Row>
               <LeftColumn>
                 <School>Ewha Womans University</School>
+                <Honor>Summa Cum Laude</Honor>
                 <Period>Mar 2021 ~ Aug 2026</Period>
                 <Location>Seoul, South Korea</Location>
               </LeftColumn>
@@ -85,12 +87,7 @@ const Education: React.FC = () => {
                   )}
                   <DegreeGroup>
                     <DegreeItem>
-                      <HighlightSubTitle>
-                        {/* <InlineLink href="https://cse.ewha.ac.kr/cseeng/index.do" target="_blank" rel="noreferrer" onClick={(e) => e.stopPropagation()}>
-                          B.S. in Computer Science & Engineering
-                        </InlineLink> */}
-                        B.S. in Computer Science & Engineering
-                      </HighlightSubTitle>
+                      <HighlightSubTitle>B.S. in Computer Science & Engineering</HighlightSubTitle>
                       {ewhaExpanded && (
                         <Details>
                           <li>Primary major</li>
@@ -99,12 +96,7 @@ const Education: React.FC = () => {
                     </DegreeItem>
 
                     <DegreeItem>
-                      <HighlightSubTitle>
-                        {/* <InlineLink href="https://scrantoncollege.ewha.ac.kr/escranton/shp/about-shp.do" target="_blank" rel="noreferrer" onClick={(e) => e.stopPropagation()}>
-                          B.A. in Scranton Honors Program (Digital Humanities Track)
-                        </InlineLink> */}
-                        B.A. in Scranton Honors Program (Digital Humanities Track)
-                      </HighlightSubTitle>
+                      <HighlightSubTitle>B.A. in Scranton Honors Program (Digital Humanities Track)</HighlightSubTitle>
                       {ewhaExpanded && (
                         <Details>
                           <li>

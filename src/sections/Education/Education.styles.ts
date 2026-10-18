@@ -103,7 +103,9 @@ export const EducationCard = styled.div<{ $expanded: boolean }>`
   padding: ${({ theme }) => theme.spacing.lg};
   border: 1px solid ${({ theme }) => theme.colors.gray200};
   cursor: pointer;
-  transition: background ${({ theme }) => theme.transitions.fast}, border-color ${({ theme }) => theme.transitions.fast};
+  transition:
+    background ${({ theme }) => theme.transitions.fast},
+    border-color ${({ theme }) => theme.transitions.fast};
 
   &:hover {
     background: ${({ theme }) => theme.colors.backgroundGray};
@@ -175,4 +177,11 @@ export const InlineLink = styled.a`
 
 export const Divider = styled.hr`
   display: none;
+`;
+export const Honor = styled.div`
+  font-size: 0.85rem;
+  font-weight: 400;
+  font-style: italic;
+  color: var(--accent);
+  margin: 0.15rem 0 0.35rem;
 `;

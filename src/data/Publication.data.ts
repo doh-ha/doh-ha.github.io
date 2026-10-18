@@ -14,7 +14,14 @@ export interface PublicationItem {
 
 export const publications: PublicationItem[] = [
   {
-    title: "STEPwise: Diagnosing Students’ MathProblem-Solving Skills via LLM-Generated Stepwise Sub-Question",
+    title: "STEPwise: Supporting Teachers in Diagnosing Students' Mathematical Problem-Solving Skills through LLM-Generated Questions and Rubric",
+    authors: "Yoonsu Kim, Hayeon Doh, Eunhye Kim, Jinho Son, Juho Kim",
+    venue: "Under Review",
+    highlightName: "Hayeon Doh",
+    links: [{ url: "https://arxiv.org/pdf/2610.06328", label: "Paper" }],
+  },
+  {
+    title: "STEPwise: Diagnosing Students’ Math Problem-Solving Skills via LLM-Generated Stepwise Sub-Question",
     authors: "Yoonsu Kim, Hayeon Doh, Eunhye Kim, Jinho Son, Juho Kim",
     venue: "AIED 2026\n Interactivity Track",
     highlightName: "Hayeon Doh",
@@ -28,7 +35,7 @@ export const publications: PublicationItem[] = [
     authors: "Yoonsu Kim, Hyoungwook Jin, Hayeon Doh, Eunhye Kim, Dongyun Jung, Seungju Kim, Kiyoon Choi, Jinho Son, Juho Kim",
     venue: "Under Review",
     highlightName: "Hayeon Doh",
-    links: [{ url: "https://arxiv.org/abs/2504.00843", label: "PDF" }],
+    links: [{ url: "https://arxiv.org/abs/2504.00843", label: "Paper" }],
   },
   {
     title: "PromptFlow: Supporting Novice Prompt Engineering Through Structured and Visual Scaffolding",
@@ -36,6 +43,6 @@ export const publications: PublicationItem[] = [
     venue: "CHI 2026\nStudent Research Competition",
     highlightName: "Hayeon Doh",
     awards: ["🏅 2nd Place"],
-    links: [{ url: "https://dl.acm.org/doi/full/10.1145/3772363.3799168", label: "PDF" }],
+    links: [{ url: "https://dl.acm.org/doi/full/10.1145/3772363.3799168", label: "Paper" }],
   },
 ];
