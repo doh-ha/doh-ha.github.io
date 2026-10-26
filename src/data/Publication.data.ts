@@ -8,6 +8,9 @@ export interface PublicationItem {
   authors: string;
   venue: string;
   highlightName?: string;
+  year: number;
+  image?: string;
+  doi?: string;
   links?: PublicationLink[];
   awards?: string[];
 }
@@ -18,13 +21,17 @@ export const publications: PublicationItem[] = [
     authors: "Yoonsu Kim, Hayeon Doh, Eunhye Kim, Jinho Son, Juho Kim",
     venue: "Under Review",
     highlightName: "Hayeon Doh",
-    links: [{ url: "https://arxiv.org/pdf/2610.06328", label: "Paper" }],
+    year: 2026,
+    image: "/img/publications/stepwise-teacher.svg",
+    links: [{ url: "https://arxiv.org/abs/2610.16344", label: "Paper" }],
   },
   {
     title: "STEPwise: Diagnosing Students’ Math Problem-Solving Skills via LLM-Generated Stepwise Sub-Question",
     authors: "Yoonsu Kim, Hayeon Doh, Eunhye Kim, Jinho Son, Juho Kim",
     venue: "AIED 2026\n Interactivity Track",
     highlightName: "Hayeon Doh",
+    year: 2026,
+    image: "/img/publications/stepwise-aied.svg",
     links: [
       { url: "https://yoonsu0816.github.io/assets/files/AIED_stepwise.pdf", label: "PDF" },
       { url: "https://www.youtube.com/watch?v=cyquqLOIEoo&feature=youtu.be", label: "Demo" },
@@ -35,6 +42,8 @@ export const publications: PublicationItem[] = [
     authors: "Yoonsu Kim, Hyoungwook Jin, Hayeon Doh, Eunhye Kim, Dongyun Jung, Seungju Kim, Kiyoon Choi, Jinho Son, Juho Kim",
     venue: "Under Review",
     highlightName: "Hayeon Doh",
+    year: 2025,
+    image: "/img/publications/mathcog.svg",
     links: [{ url: "https://arxiv.org/abs/2504.00843", label: "Paper" }],
   },
   {
@@ -42,6 +51,9 @@ export const publications: PublicationItem[] = [
     authors: "Hayeon Doh",
     venue: "CHI 2026\nStudent Research Competition",
     highlightName: "Hayeon Doh",
+    year: 2026,
+    image: "/img/publications/promptflow.svg",
+    doi: "10.1145/3772363.3799168",
     awards: ["🏅 2nd Place"],
     links: [{ url: "https://dl.acm.org/doi/full/10.1145/3772363.3799168", label: "Paper" }],
   },

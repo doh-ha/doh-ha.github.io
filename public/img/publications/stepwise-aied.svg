@@ -1,0 +1,32 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 160 120" role="img" aria-label="A math word problem broken down into four problem-solving stages">
+  <rect width="160" height="120" rx="10" fill="#F3F8F6"/>
+  <rect x="8" y="22" width="52" height="76" rx="6" fill="#fff" stroke="#CDE1D9" stroke-width="2"/>
+  <g stroke="#CDE1D9" stroke-width="3" stroke-linecap="round">
+    <path d="M15 34h38M15 43h32M15 52h38M15 61h26M15 70h36"/>
+  </g>
+  <path d="M15 82h16" stroke="#935F06" stroke-width="3" stroke-linecap="round"/>
+  <text x="36" y="85" font-family="-apple-system, Helvetica, Arial, sans-serif" font-size="9" font-weight="700" fill="#935F06">?</text>
+  <g fill="none" stroke="#4A5D57" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round">
+    <path d="M60 60h6M66 24.5v71"/>
+    <path d="M66 24.5h6M66 48h12M66 71.5h18M66 95h24"/>
+  </g>
+  <g fill="#fff" stroke="#CDE1D9" stroke-width="1.5">
+    <rect x="72" y="16" width="62" height="17" rx="4"/>
+    <rect x="78" y="39.5" width="62" height="17" rx="4"/>
+    <rect x="84" y="63" width="62" height="17" rx="4"/>
+    <rect x="90" y="86.5" width="62" height="17" rx="4"/>
+  </g>
+  <circle cx="81" cy="24.5" r="5.5" fill="#6BAE9C"/>
+  <circle cx="87" cy="48" r="5.5" fill="#36AE92"/>
+  <circle cx="93" cy="71.5" r="5.5" fill="#1F7A5C"/>
+  <circle cx="99" cy="95" r="5.5" fill="#00462A"/>
+  <g font-family="-apple-system, Helvetica, Arial, sans-serif" font-size="7.5" font-weight="700" fill="#fff" text-anchor="middle">
+    <text x="81" y="27.2">1</text><text x="87" y="50.7">2</text><text x="93" y="74.2">3</text><text x="99" y="97.7">4</text>
+  </g>
+  <g stroke="#CDE1D9" stroke-width="3" stroke-linecap="round">
+    <path d="M90 24.5h28M96 48h28M102 71.5h28M108 95h28"/>
+  </g>
+  <g font-family="-apple-system, Helvetica, Arial, sans-serif" font-size="9" font-weight="700" fill="#935F06" text-anchor="middle">
+    <text x="127" y="27.8">?</text><text x="133" y="51.3">?</text><text x="139" y="74.8">?</text><text x="145" y="98.3">?</text>
+  </g>
+</svg>

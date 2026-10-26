@@ -15,7 +15,7 @@ export const PublicationList = styled.div`
 
 export const PublicationItemRow = styled.div`
   display: grid;
-  grid-template-columns: minmax(0, 1fr) auto;
+  grid-template-columns: 136px minmax(0, 1fr) auto;
   column-gap: ${({ theme }) => theme.spacing.lg};
   row-gap: ${({ theme }) => theme.spacing.xs};
   align-items: flex-start;
@@ -23,6 +23,18 @@ export const PublicationItemRow = styled.div`
   @media (max-width: ${({ theme }) => theme.breakpoints.mobile}) {
     grid-template-columns: 1fr;
     row-gap: ${({ theme }) => theme.spacing.sm};
+  }
+`;
+
+export const Thumbnail = styled.img`
+  display: block;
+  width: 136px;
+  aspect-ratio: 4 / 3;
+  border-radius: ${({ theme }) => theme.borderRadius.md};
+  border: 1px solid ${({ theme }) => theme.colors.borderColor};
+
+  @media (max-width: ${({ theme }) => theme.breakpoints.mobile}) {
+    width: 160px;
   }
 `;
 

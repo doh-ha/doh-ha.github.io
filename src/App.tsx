@@ -14,6 +14,7 @@ import Education from "./sections/Education";
 type Page = "main" | "news";
 
 const getPageFromUrl = (): Page => {
+  if (typeof window === "undefined") return "main"; // build-time prerender
   const params = new URLSearchParams(window.location.search);
   return params.get("page") === "news" ? "news" : "main";
 };

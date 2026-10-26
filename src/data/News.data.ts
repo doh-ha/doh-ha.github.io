@@ -14,10 +14,18 @@ export const newsItems: NewsItem[] = [
   },
   {
     date: "Apr 2026",
-    text: "🇪🇸 Awarded 2nd Place at CHI 2026 Student Research Competition for PromptFlow.",
+    text: "🏆 Awarded 2nd Place at CHI 2026 Student Research Competition for PromptFlow.",
   },
   {
     date: "Apr 2026",
     text: "🇪🇸 Attending CHI 2026 in Barcelona, Spain.",
+  },
+    {
+    date: "Apr 2026",
+    text: "🚩 Starting Undergraduate Internship at CSTL @KAIST.",
+  },
+  {
+    date: "Jun 2025",
+    text: "🚩 Starting Undergraduate Internship at KIXLAB @KAIST.",
   },
 ];

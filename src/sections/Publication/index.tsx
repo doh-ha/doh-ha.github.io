@@ -8,6 +8,7 @@ import {
   PublicationContent,
   Title,
   Authors,
+  Thumbnail,
   HighlightAuthor,
   MetaColumn,
   AwardStack,
@@ -40,6 +41,7 @@ const Publication: React.FC = () => {
         <PublicationList>
           {publications.map((pub, idx) => (
             <PublicationItemRow key={`${pub.title}-${idx}`}>
+              {pub.image ? <Thumbnail src={pub.image} alt={`Illustration for ${pub.title}`} loading="lazy" /> : <div />}
               <PublicationContent>
                 <Title>{pub.title}</Title>
                 <Authors>{renderAuthors(pub.authors, pub.highlightName)}</Authors>
