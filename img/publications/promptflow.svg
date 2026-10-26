@@ -1,0 +1,21 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 160 120" role="img" aria-label="Visual flow blocks assembling into a structured prompt">
+  <rect width="160" height="120" rx="10" fill="#F3F8F6"/>
+  <g stroke-width="2">
+    <rect x="14" y="16" width="46" height="20" rx="5" fill="#E8F1ED" stroke="#6BAE9C"/>
+    <rect x="14" y="50" width="46" height="20" rx="5" fill="#E8F1ED" stroke="#6BAE9C"/>
+    <rect x="14" y="84" width="46" height="20" rx="5" fill="#E8F1ED" stroke="#6BAE9C"/>
+  </g>
+  <circle cx="23" cy="26" r="4" fill="#36AE92"/><circle cx="23" cy="60" r="4" fill="#00462A"/><circle cx="23" cy="94" r="4" fill="#935F06"/>
+  <g stroke="#6BAE9C" stroke-width="3" stroke-linecap="round"><path d="M31 26h21M31 60h16M31 94h19"/></g>
+  <g stroke="#4A5D57" stroke-width="1.8" fill="none" stroke-linecap="round" stroke-linejoin="round">
+    <path d="M37 36v12M34 45l3 3 3-3M37 70v12M34 79l3 3 3-3"/>
+    <path d="M60 60c10 0 12 0 20 0M76 56l4 4-4 4"/>
+  </g>
+  <rect x="84" y="28" width="62" height="64" rx="8" fill="#fff" stroke="#CDE1D9" stroke-width="2"/>
+  <g stroke-width="3" stroke-linecap="round">
+    <path d="M92 44v0" stroke="#36AE92" stroke-width="4"/><path d="M98 44h38" stroke="#CDE1D9"/>
+    <path d="M92 58v0" stroke="#00462A" stroke-width="4"/><path d="M98 58h30" stroke="#CDE1D9"/>
+    <path d="M92 72v0" stroke="#935F06" stroke-width="4"/><path d="M98 72h34" stroke="#CDE1D9"/>
+  </g>
+  <path d="M140 14l2.5 6.5L149 23l-6.5 2.5L140 32l-2.5-6.5L131 23l6.5-2.5z" fill="#36AE92"/>
+</svg>
