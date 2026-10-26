@@ -119,7 +119,9 @@ const App: React.FC = () => {
 
     const mainEl = mainRef.current;
     if (mainEl) {
-      mainEl.scrollTo({ top: element.offsetTop - NAV_SCROLL_OFFSET, behavior: "smooth" });
+      // News is the first section, so jump to the very top instead of offsetting below the nav.
+      const top = sectionId === "news" ? 0 : element.offsetTop - NAV_SCROLL_OFFSET;
+      mainEl.scrollTo({ top, behavior: "smooth" });
     }
   };
 
@@ -144,11 +146,21 @@ const App: React.FC = () => {
     const handleScroll = () => {
       const sections = ["news", "publication", "experience", "education"];
 
+      // At the very bottom, the last section may be too short to ever reach the middle.
+      const scroller = isDocumentScroll() ? document.documentElement : mainRef.current;
+      if (scroller && scroller.scrollTop + scroller.clientHeight >= scroller.scrollHeight - 2) {
+        setActiveSection(sections[sections.length - 1]);
+        return;
+      }
+
+      // Highlight whichever section occupies the vertical middle of the viewport.
+      const viewportMiddle = window.innerHeight / 2;
+
       for (const section of sections) {
         const element = document.getElementById(section);
         if (element) {
           const rect = element.getBoundingClientRect();
-          if (rect.top <= NAV_SCROLL_OFFSET && rect.bottom > NAV_SCROLL_OFFSET) {
+          if (rect.top <= viewportMiddle && rect.bottom > viewportMiddle) {
             setActiveSection(section);
             break;
           }
